@@ -1,0 +1,14 @@
+{{ $links := .Site.Params.links }}
+<footer class="bg-dark py-4 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div
+        class="col align-self-end text-xs-center text-lg-right order-sm-3 pr-5"
+      >
+        {{ with resources.Get "icons/logo_ccplus1_sm.svg" }}{{ ( . | minify
+        ).Content | safeHTML }}{{ end }}
+      </div>
+    </div>
+  </div>
+</footer>
+{{ define "footer-links-block" }} {{ end }}

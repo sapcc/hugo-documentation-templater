@@ -34,7 +34,7 @@ go 1.17
 require github.com/sapcc/hugo-documentation-templater v0.0.0-somegiberish // indirect
 ```
 
-## Edit the Hugo config file as following to import the templater:
+## Edit the Hugo config file `config.yaml` (originally is `config.toml` but I prefer yaml) as following to import the templater:
 
 ```
 baseURL: "http://example.org/"
@@ -51,6 +51,24 @@ module:
 ```
 
 # Content and Customization
+
+## Site name
+
+Edit the name attribute on the Hugo config file `config.yaml`.
+
+## Add Non-content Entries to a Menu
+
+Add a menu configuration similar to the following in the `config.yaml` (see [Hugo documentation](https://gohugo.io/content-management/menus/)):
+
+```
+menu:
+  main:
+    - identifier: "Home"
+      name: "Home"
+      pre: "<i class='fas fa-home'></i>"
+      url: "/"
+      weight: 100
+```
 
 ## Landing page
 
@@ -82,3 +100,7 @@ to allow management and configuration of ABAP, HANA, WebDispatcher and other com
 This section provides an overview of the custom resources used by the Cloud Native Management Platform.
 {{% /pageinfo %}}
 ```
+
+# Extra information
+
+Based on Bootstrap 4.6

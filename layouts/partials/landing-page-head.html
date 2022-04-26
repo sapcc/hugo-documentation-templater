@@ -1,0 +1,5 @@
+<!-- prettier-ignore -->
+{{ $landingScssStyle := resources.Get "scss/landing-page.scss" }}
+{{ $cssOpts := (dict "enableSourceMap" true ) }}
+{{ $styles := $landingScssStyle | toCSS $cssOpts }}
+<link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen" />

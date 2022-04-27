@@ -81,6 +81,10 @@ heroSubtitle: "This is the subtitle of the hero section"
 ---
 ```
 
+## Landing page with custom section index to jump to specific documentation sections
+
+Add this parameter `landingSectionIndex: true` to the `_index.md` file of the desired section.
+
 ## Documentation
 
 Just drop your documnentation well organized in folders under `content/docs/`. Each folder should contain a `_index.md` file containing following information:
@@ -89,18 +93,22 @@ Just drop your documnentation well organized in folders under `content/docs/`. E
 ---
 title: "Main title of the section"
 linkTitle: "Name on the side navigation"
-weight: "integer number describing the deepness in the sidebar navigation"
+weight: "integer number describing the position in the side bar"
 description: >
-  "Description that goes below the title of the section"
+  "Some description useful"
 ---
-
-{{% pageinfo %}}
-The CNMP project extends the Kubernetes API with [Custom Resources Definitions (CRDs)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)
-to allow management and configuration of ABAP, HANA, WebDispatcher and other components.
-This section provides an overview of the custom resources used by the Cloud Native Management Platform.
-{{% /pageinfo %}}
 ```
 
 # Extra information
 
+## Bootstrap version
+
 Based on Bootstrap 4.6
+
+## Buil assets
+
+Creating a new package.json file
+https://docs.npmjs.com/creating-a-package-json-file
+
+Install PostCSS so that the site build can create the final CSS assets
+https://github.com/google/docsy#prerequisites

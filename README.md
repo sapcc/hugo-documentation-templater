@@ -83,7 +83,23 @@ heroSubtitle: "This is the subtitle of the hero section"
 
 ## Landing page with custom section index to jump to specific documentation sections
 
-Add this parameter `landingSectionIndex: true` to the `_index.md` file of the desired section.
+Add this parameter `landingSectionIndex: true` to the `_index.md` file of the desired section or markdown file.
+
+Example:
+Given an architecture folder with the section definition file `content/docs/architecture/_index.md` with parameter `landingSectionIndex: true` as following:
+
+```
+---
+title: "Architecture"
+linkTitle: "Architecture"
+weight: 1
+landingSectionIndex: true
+description: >
+  Architecture overview
+---
+```
+
+A new entry will be created in the section at the bottom of the landing page with links and descriptions to jump directly to the desired sections.
 
 ## Documentation
 

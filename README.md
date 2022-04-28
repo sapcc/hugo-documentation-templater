@@ -1,19 +1,37 @@
-# Create a new documentation site from scratch
+# Welcome to the Hugo documentation templater
 
-## Create a hugo site
+This guide shows you how to use this templater to create a Converged Cloud technical documentation site.
+
+## Create a new documentation site from scratch
+
+### Install Hugo extended version
+
+## Mac users
+
+```
+brew install hugo
+```
+
+To verify your new install:
+
+```
+hugo version
+```
+
+### Create a Hugo site
 
 ```
 hugo new site my-docu-site
 cd  my-docu-site
 ```
 
-## Turn your site into a Hugo Module
+### Turn your site into a Hugo Module
 
 ```
   hugo mod init github.com/cc/my-docu-site
 ```
 
-## Declare the hugo-documentation-templater module as a dependency for your site
+### Declare the hugo-documentation-templater module as a dependency for your site
 
 Normally you would add the module as following:
 
@@ -34,7 +52,7 @@ go 1.17
 require github.com/sapcc/hugo-documentation-templater v0.0.0-somegiberish // indirect
 ```
 
-## Edit the Hugo config file `config.yaml` (originally is `config.toml` but I prefer yaml) as following to import the templater:
+### Edit the Hugo config file `config.yaml` (originally is `config.toml` but I prefer yaml) as following to import the templater:
 
 ```
 baseURL: "http://example.org/"
@@ -50,13 +68,13 @@ module:
       disable: false
 ```
 
-# Content and Customization
+## Content and Customization
 
-## Site name
+### Site name
 
 Edit the name attribute on the Hugo config file `config.yaml`.
 
-## Add Non-content Entries to a Menu
+### Add Non-content Entries to a Menu
 
 Add a menu configuration similar to the following in the `config.yaml` (see [Hugo documentation](https://gohugo.io/content-management/menus/)):
 
@@ -70,7 +88,7 @@ menu:
       weight: 100
 ```
 
-## Landing page
+### Landing page
 
 Add a file named `_index.md` to the root of content folder with following content to customize the landing page:
 
@@ -81,7 +99,7 @@ heroSubtitle: "This is the subtitle of the hero section"
 ---
 ```
 
-## Landing page with custom section index to jump to specific documentation sections
+### Landing page with custom section index to jump to specific documentation sections
 
 Add this parameter `landingSectionIndex: true` to the `_index.md` file of the desired section or markdown file.
 
@@ -101,7 +119,7 @@ description: >
 
 A new entry will be created in the section at the bottom of the landing page with links and descriptions to jump directly to the desired sections.
 
-## Documentation
+### Documentation
 
 Just drop your documnentation well organized in folders under `content/docs/`. Each folder should contain a `_index.md` file containing following information:
 
@@ -115,13 +133,13 @@ description: >
 ---
 ```
 
-# Extra information
+## Extra information
 
-## Bootstrap version
+### Bootstrap version
 
 Based on Bootstrap 4.6
 
-## Buil assets
+### Buil assets
 
 Creating a new package.json file
 https://docs.npmjs.com/creating-a-package-json-file

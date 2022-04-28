@@ -6,9 +6,12 @@ This guide shows you how to use this templater to create a Converged Cloud techn
 
 ### Install Hugo extended version
 
+Prerequisite: Golang
+
 #### Mac users
 
 ```
+brew install golang
 brew install hugo
 ```
 

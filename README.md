@@ -65,12 +65,12 @@ params:
 
 menu:
   # uncomment this section to add custom links to the top navigation
-  main:
-    - identifier: "Github"
-      name: "Github"
-      pre: "<i class='fab fa-github'></i>"
-      url: "https://github.com/sapcc/your-repo-pointing-to-the-documentation"
-      weight: 0
+  # main:
+  #   - identifier: "Github"
+  #     name: "Github"
+  #     pre: "<i class='fab fa-github'></i>"
+  #     url: "https://github.com/sapcc/your-repo-pointing-to-the-documentation"
+  #     weight: 0
 
 module:
   hugoVersion:
@@ -82,9 +82,11 @@ module:
 ```
 
 ### Start Hugo Server
+
 ```
 hugo server --disableFastRender
 ```
+
 The `--disableFastRender` option ensures that nothing is cached.
 
 ## Content and Customization

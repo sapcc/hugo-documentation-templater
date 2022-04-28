@@ -44,8 +44,8 @@ But if you are developing this module add the following config to the go.mod fil
 ```
 module github.com/me/my-docu-site
 
-// just for local dev!
-replace github.wdf.sap.corp/cc/hugo-documentation-templater => /Users/d063222/Documents/sap/monsoon/hugo-documentation-templater
+// just for local dev add this line (adjust to your folder location)!
+replace github.com/sapcc/hugo-documentation-templater => /Users/d063222/Documents/sap/monsoon/hugo-documentation-templater
 
 go 1.17
 
@@ -67,6 +67,12 @@ module:
     - path: github.com/sapcc/hugo-documentation-templater
       disable: false
 ```
+
+### Start Hugo Server
+```
+hugo server --disableFastRender
+```
+The `--disableFastRender` option ensures that nothing is cached.
 
 ## Content and Customization
 

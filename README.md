@@ -59,6 +59,19 @@ baseURL: "http://example.org/"
 languageCode: "en-us"
 title: "My New SAP CC Doc Site"
 
+params:
+  # change this url to the one of your project to enable 'View page source', 'Edit this page' and 'Create documentation issue' links on the right side navigation
+  github_repo: "https://github.com/sapcc/your-repo-pointing-to-the-documentation"
+
+menu:
+  # uncomment this section to add custom links to the top navigation
+  main:
+    - identifier: "Github"
+      name: "Github"
+      pre: "<i class='fab fa-github'></i>"
+      url: "https://github.com/sapcc/your-repo-pointing-to-the-documentation"
+      weight: 0
+
 module:
   hugoVersion:
     extended: true
@@ -87,11 +100,11 @@ Add a menu configuration similar to the following in the `config.yaml` (see [Hug
 ```
 menu:
   main:
-    - identifier: "Home"
-      name: "Home"
-      pre: "<i class='fas fa-home'></i>"
-      url: "/"
-      weight: 100
+    - identifier: "Github"
+      name: "Github"
+      pre: "<i class='fab fa-github'></i>"
+      url: "https://github.com/sapcc/your-repo-pointing-to-the-documentation"
+      weight: 0
 ```
 
 ### Landing page

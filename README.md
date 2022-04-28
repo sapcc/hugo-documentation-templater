@@ -6,7 +6,7 @@ This guide shows you how to use this templater to create a Converged Cloud techn
 
 ### Install Hugo extended version
 
-## Mac users
+#### Mac users
 
 ```
 brew install hugo

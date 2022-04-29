@@ -31,7 +31,7 @@ cd  my-docu-site
 ### Turn your site into a Hugo Module
 
 ```
-  hugo mod init github.com/cc/my-docu-site
+  hugo mod init github.com/sapcc/my-docu-site
 ```
 
 ### Declare the hugo-documentation-templater module as a dependency for your site

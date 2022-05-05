@@ -31,7 +31,7 @@ cd  my-docu-site
 ### Turn your site into a Hugo Module
 
 ```
-  hugo mod init github.com/sapcc/my-docu-site
+hugo mod init github.com/sapcc/my-docu-site
 ```
 
 ### Declare the hugo-documentation-templater module as a dependency for your site
@@ -44,7 +44,7 @@ hugo mod get github.com/sapcc/hugo-documentation-templater
 
 But if you are developing this module add the following config to the go.mod file and it will redirect to your local folder:
 
-```
+```go.mod
 module github.com/me/my-docu-site
 
 // just for local dev add this line (adjust to your folder location)!
@@ -57,7 +57,7 @@ require github.com/sapcc/hugo-documentation-templater v0.0.0-somegiberish // ind
 
 ### Edit the Hugo config file `config.yaml` (originally is `config.toml` but I prefer yaml) as following to import the templater:
 
-```
+```yaml
 baseURL: "http://example.org/"
 languageCode: "en-us"
 title: "My New SAP CC Doc Site"
@@ -102,7 +102,7 @@ Edit the name attribute on the Hugo config file `config.yaml`.
 
 Add a menu configuration similar to the following in the `config.yaml` (see [Hugo documentation](https://gohugo.io/content-management/menus/)):
 
-```
+```yaml
 menu:
   main:
     - identifier: "Github"
@@ -118,7 +118,7 @@ menu:
 
 Add a file named `_index.md` to the root of content folder with following content to customize the landing page:
 
-```
+```markdown
 ---
 heroTitle: "The best documentation ever"
 heroSubtitle: "This is the subtitle of the hero section"
@@ -132,7 +132,7 @@ Add this parameter `landingSectionIndex: true` to the `_index.md` file of the de
 Example:
 Given an architecture folder with the section definition file `content/docs/architecture/_index.md` with parameter `landingSectionIndex: true` as following:
 
-```
+```markdown
 ---
 title: "Architecture"
 linkTitle: "Architecture"
@@ -151,7 +151,7 @@ A new entry will be created in the section at the bottom of the landing page wit
 
 Just drop your documentation well organized in folders under `content/docs/`. Each folder should contain a `_index.md` file containing following information:
 
-```
+```markdown
 ---
 title: "Main title of the section"
 linkTitle: "Name on the side navigation"

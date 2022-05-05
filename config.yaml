@@ -1,3 +1,10 @@
+params:
+  # Enable local search
+  offlineSearch: true
+  ui:
+    # disables search bar on the left navigation
+    sidebar_search_disable: true
+
 module:
   hugoVersion:
     min: 0.73.0

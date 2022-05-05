@@ -6,9 +6,12 @@ This guide shows you how to use this templater to create a Converged Cloud techn
 
 ### Install Hugo extended version
 
+Prerequisite: Golang
+
 #### Mac users
 
 ```
+brew install golang
 brew install hugo
 ```
 
@@ -28,12 +31,12 @@ cd  my-docu-site
 ### Turn your site into a Hugo Module
 
 ```
-hugo mod init github.com/cc/my-docu-site
+hugo mod init github.com/sapcc/my-docu-site
 ```
 
 ### Declare the hugo-documentation-templater module as a dependency for your site
 
-Normally you would add the module as following:
+Normally you would add the sapcc docs templater (hugo-documentation-templater) module as following:
 
 ```
 hugo mod get github.com/sapcc/hugo-documentation-templater
@@ -111,6 +114,8 @@ menu:
 
 ### Landing page
 
+#### Customize hero section
+
 Add a file named `_index.md` to the root of content folder with following content to customize the landing page:
 
 ```markdown
@@ -120,7 +125,7 @@ heroSubtitle: "This is the subtitle of the hero section"
 ---
 ```
 
-### Landing page with custom section index to jump to specific documentation sections
+#### Add custom section index to jump to specific documentation sections
 
 Add this parameter `landingSectionIndex: true` to the `_index.md` file of the desired section or markdown file.
 
@@ -142,7 +147,9 @@ A new entry will be created in the section at the bottom of the landing page wit
 
 ### Documentation
 
-Just drop your documnentation well organized in folders under `content/docs/`. Each folder should contain a `_index.md` file containing following information:
+#### Content
+
+Just drop your documentation well organized in folders under `content/docs/`. Each folder should contain a `_index.md` file containing following information:
 
 ```markdown
 ---
@@ -153,6 +160,10 @@ description: >
   "Some description useful"
 ---
 ```
+
+#### Search
+
+Search engine and field in the top navigation bar is setup per default.
 
 ## Extra information
 
@@ -165,5 +176,14 @@ Based on Bootstrap 4.6
 Creating a new package.json file
 https://docs.npmjs.com/creating-a-package-json-file
 
+```
+npm init
+```
+
 Install PostCSS so that the site build can create the final CSS assets
 https://github.com/google/docsy#prerequisites
+
+```
+npm install --save-dev autoprefixer
+npm install --save-dev postcss-cli
+```

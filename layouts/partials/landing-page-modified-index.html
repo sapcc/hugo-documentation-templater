@@ -1,0 +1,10 @@
+<!-- prettier-ignore -->
+<div class="section-index">
+  {{ $pages := .Site.RegularPages.ByLastmod }}
+  {{ $recent := ($pages | last 5).Reverse }} {{ range $recent }}
+  <div class="entry">
+    {{ partial "breadcrumb.html" . }}
+    <p class="">Edited on the {{ .Lastmod.Format "2 January" }}</p>
+  </div>
+  {{ end }}
+</div>

@@ -1,5 +1,4 @@
 <div class="section-index">  
-  {{ $parent := .Page }}
   {{ $pages := (.Site.Pages).ByWeight }}
   {{ $pages = (where $pages ".Params.landingSectionIndex" "==" true) }}
 

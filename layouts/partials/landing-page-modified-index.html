@@ -1,7 +1,10 @@
 <!-- prettier-ignore -->
+{{ $NumberOfEntries := (default 5 ($.Param "modifiedEntries")) }}
+
+<!-- prettier-ignore -->
 <div class="section-index">
   {{ $pages := .Site.RegularPages.ByLastmod }}
-  {{ $recent := ($pages | last 5).Reverse }} {{ range $recent }}
+  {{ $recent := ($pages | last $NumberOfEntries).Reverse }} {{ range $recent }}
   <div class="entry">
     {{ partial "breadcrumb.html" . }}
     <p class="">Edited on the {{ .Lastmod.Format "2 January" }}</p>

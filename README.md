@@ -125,7 +125,17 @@ heroSubtitle: "This is the subtitle of the hero section"
 ---
 ```
 
-#### Add custom section index to jump to specific documentation sections
+#### Configure the number of entries in the modified section in the landing page
+
+In the landing page will be shown per default a section with the last 5 modified files of the content as they are committed in github. To modify the number of modified files shown in the section add following configuration to the `config.yaml`:
+
+```yaml
+params:
+  # number of entries in the modified section in the landing page. Default is 5
+  modifiedEntries: 10
+```
+
+#### Add custom section index to jump to specific documentation sections in the landing page
 
 Add this parameter `landingSectionIndex: true` to the `_index.md` file of the desired section or markdown file.
 
@@ -163,7 +173,7 @@ description: >
 
 #### Search
 
-Search engine and field in the top navigation bar is setup per default.
+Search engine and field in the top navigation bar is setup per default. Search field on the right side navigation is per default disabled.
 
 ## Extra information
 
@@ -187,3 +197,8 @@ https://github.com/google/docsy#prerequisites
 npm install --save-dev autoprefixer
 npm install --save-dev postcss-cli
 ```
+
+### Git Information
+
+https://www.dinofizzotti.com/blog/2017-05-01-adding-hugo-version-and-commit-information-to-a-status-page/
+https://sizeof.cat/post/git-info-on-a-hugo-static-website/

@@ -1,0 +1,12 @@
+{{ if not .Params.notoc }}
+{{ with .TableOfContents }}
+{{ if ge (len .) 200 }}
+<div class="td-toc">
+    <h5 class="toc-header">
+        Page Navigation
+    </h5>
+    {{ . }}
+</div>
+{{ end }}
+{{ end }}
+{{ end }}

@@ -4,7 +4,7 @@
     {{ partial "head.html" . }}
     {{ partial "landing-page-head.html" . }}
   </head>
-  <body>
+  <body class="theme-dark">
     <header>{{ partial "navbar.html" . }}</header>
     <main role="main">
       <section class="jumbotron jumbotron-lp bg-dark text-center">
@@ -102,7 +102,7 @@
       </div>
 
     </main>
-      {{ partial "footer.html" . }}
+      {{ partial "footer_landingpage.html" . }}
     </div>
     {{ partialCached "scripts.html" . }}
   </body>

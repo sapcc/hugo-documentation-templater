@@ -1,0 +1,120 @@
+:root {
+    // Juno Grey Blue
+    // RGB
+    --color-juno-grey-blue-11: rgb(0, 8, 16);
+    --color-juno-grey-blue-10: rgb(13, 20, 28);
+    --color-juno-grey-blue-9: rgb(18, 25, 32);
+    --color-juno-grey-blue-8: rgb(23, 30, 37);
+    --color-juno-grey-blue-7: rgb(28, 35, 42);
+    --color-juno-grey-blue-6: rgb(31, 38, 45);
+    --color-juno-grey-blue-5: rgb(36, 42, 49);
+    --color-juno-grey-blue-4: rgb(38, 44, 51);
+    --color-juno-grey-blue-3: rgb(41, 47, 54);
+    --color-juno-grey-blue-2: rgb(48, 54, 60);
+    --color-juno-grey-blue-1: rgb(64, 70, 75);
+
+    // Juno Blue
+    // RGB
+    --color-juno-blue-10: rgb(3, 55, 84);
+    --color-juno-blue-9: rgb(5, 70, 105);
+    --color-juno-blue-8: rgb(7, 85, 128);
+    --color-juno-blue-7: var(--color-sap-blue-dark);
+    --color-juno-blue-6: var(--color-sap-blue-dark-1);
+    --color-juno-blue-5: var(--color-sap-blue);
+    --color-juno-blue-4: var(--color-sap-blue-light-3);
+    --color-juno-blue-3: var(--color-sap-blue-light-2);
+    --color-juno-blue-2: var(--color-sap-blue-light-1);
+    --color-juno-blue-1: var(--color-sap-blue-light);
+
+    // Juno Turquoise
+    --color-juno-turquoise-1: rgb(197, 247, 255);
+    --color-juno-turquoise-2: rgb(132, 241, 255);
+    --color-juno-turquoise-3: rgb(25, 232, 250);
+    --color-juno-turquoise-4: rgb(22, 217, 234);
+    --color-juno-turquoise-5: rgb(21, 208, 224);
+    --color-juno-turquoise-6: rgb(15, 167, 180);
+    --color-juno-turquoise-7: rgb(9, 133, 144);
+    --color-juno-turquoise-8: rgb(5, 100, 109);
+    --color-juno-turquoise-9: rgb(2, 69, 75);
+    --color-juno-turquoise-10: rgb(1, 41, 45);
+
+    // Juno Grey
+    // RGB
+    --color-juno-grey-light-1: rgb(249, 249, 249);
+    --color-juno-grey-light-2: rgb(247, 247, 247);
+    --color-juno-grey-light-3: rgb(244, 244, 244);
+    --color-juno-grey-light-4: rgb(241, 241, 241);
+    --color-juno-grey-light-5: rgb(238, 238, 238);
+    --color-juno-grey-light-6: rgb(235, 235, 235);
+    --color-juno-grey-light-7: rgb(233, 233, 233);
+    --color-juno-grey-light-8: rgb(230, 230, 230);
+    --color-juno-grey-light-9: rgb(227, 227, 227);
+    --color-juno-grey-light-10: rgb(215, 215, 215);
+
+    // SAP Blue
+    // RGB
+    --color-sap-blue-dark: rgb(10, 103, 153);
+    --color-sap-blue-dark-1: rgb(30, 106, 146);
+    --color-sap-blue: rgb(0, 125, 184);
+    --color-sap-blue-light-3: rgb(67, 162, 208);
+    --color-sap-blue-light-2: rgb(137, 201, 232);
+    --color-sap-blue-light-1: rgb(165, 211, 234);
+    --color-sap-blue-light: rgb(203, 232, 247);
+
+    // SAP Brand Gold
+    // RGB
+    --color-sap-gold-dark-1: rgb(150, 105, 0);
+    --color-sap-gold-dark: rgb(217, 151, 0);
+    --color-sap-gold: rgb(240, 171, 0);
+    --color-sap-gold-light-3: rgb(243, 188, 58);
+    --color-sap-gold-light-2: rgb(246, 204, 108);
+    --color-sap-gold-light-1: rgb(248, 219, 150);
+    --color-sap-gold-light: rgb(251, 232, 188);
+
+    .theme-dark {
+        // TEXT COLORS
+        // RGB
+        --color-juno-text-high: rgb(222, 223, 224);
+        --color-juno-text-default: rgb(187, 187, 187);
+        --color-juno-text-light: rgb(150, 150, 150);
+        --color-juno-text-disabled: rgb(92, 92, 92);
+
+        // DT Background Colors
+        --color-background-lvl-0: var(--color-juno-grey-blue-7);
+        --color-background-lvl-1: var(--color-juno-grey-blue-5);
+        --color-background-lvl-2: var(--color-juno-grey-blue-3);
+        --color-background-lvl-3: var(--color-juno-grey-blue-2);
+        --color-background-lvl-4: var(--color-juno-grey-blue-1);
+
+        --color-global-bg: var(--color-juno-grey-blue-10);
+        --color-global-text: var(--color-juno-text-default);
+        --color-accent: var(--color-juno-turquoise-5);
+        --color-main-nav-border: var(--color-juno-grey-blue-10);
+    }
+
+    // LIGHT COLORS ARE THE DEFAULT
+    // TEXT COLORS
+    // RGB
+    --color-juno-text-high: rgb(0, 0, 0);
+    --color-juno-text-default: rgb(76, 76, 76);
+    --color-juno-text-light: rgb(150, 150, 150);
+    --color-juno-text-disabled: rgb(183, 183, 183);
+
+    // LT Background Colors
+    --color-background-lvl-0: var(--color-white);
+    --color-background-lvl-1: var(--color-juno-grey-light-1);
+    --color-background-lvl-2: var(--color-juno-grey-light-3);
+    --color-background-lvl-3: var(--color-juno-grey-light-4);
+    --color-background-lvl-4: var(--color-juno-grey-light-10);
+
+    --color-global-bg: var(--color-juno-grey-light-1);
+    --color-global-text: var(--color-juno-text-default);
+    --color-accent: var(--color-juno-blue-5);
+    --color-main-nav-border: var(--color-juno-grey-light-10);
+
+}
+
+$primary: rgb(0, 8, 16);
+$dark: rgb(13, 20, 28); // var(--color-juno-grey-blue-10);
+$td-sidebar-bg-color: rgb(249, 249, 249); // --color-global-bg -> --color-juno-grey-light-1
+$link-color: rgb(0, 125, 184); // var(--color-accent);

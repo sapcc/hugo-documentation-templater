@@ -79,6 +79,41 @@ body {
 
 }
 
+// breadcrumb.scss
+.td-breadcrumbs.landing-page-breadcrumbs {
+
+    .breadcrumb {
+        margin: 0;
+        padding: 0;
+    }
+
+    .breadcrumb-item {
+        a {
+            color: var(--color-juno-text-light);
+            font-weight: 400;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        &.active {
+            a {
+                color: var(--color-juno-text-high);
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+.modified-date {
+    color: var(--color-sap-grey-3);
+
+    i {
+        margin-right: 0.3rem;
+    }
+}
+
 
 // _sidebar-tree.scss
 
@@ -229,5 +264,47 @@ footer {
         font-size: 1.125rem;
         line-height: 1.75rem;
         padding-left: 1rem;
+    }
+}
+
+// CUSTOM STYLES
+
+// Landingpage layout
+
+.layout-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.layout-box {
+    background: var(--color-background-lvl-0);
+}
+
+.landing-page-section-entry {
+    margin: 1rem 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-background-lvl-2);
+
+    &:last-of-type {
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+
+    a {
+        font-weight: 700;
+        color: var(--color-global-text);
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.landing-page-section-header {
+    padding: 1rem 2rem 0 2rem;
+
+    i {
+        margin-right: 0.5rem;
     }
 }

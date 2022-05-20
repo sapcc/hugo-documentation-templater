@@ -4,6 +4,7 @@ params:
   ui:
     # disables search bar on the left navigation
     sidebar_search_disable: true
+    sidebar_menu_foldable: true
 
 module:
   hugoVersion:

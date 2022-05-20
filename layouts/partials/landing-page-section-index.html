@@ -1,14 +1,13 @@
-<div class="section-index">  
+<div class="landing-page-section">
+    <h4 class="landing-page-section-header"><i class="fas fa-paperclip"></i>Important documentation</h4>
   {{ $pages := (.Site.Pages).ByWeight }}
   {{ $pages = (where $pages ".Params.landingSectionIndex" "==" true) }}
 
   {{ range $pages }}
       {{ $manualLink := cond (isset .Params "manuallink") .Params.manualLink ( cond (isset .Params "manuallinkrelref") (relref . .Params.manualLinkRelref) .RelPermalink) }}
-      <div class="entry">
-          <h5>
-              <a href="{{ $manualLink }}"{{ with .Params.manualLinkTitle }} title="{{ . }}"{{ end }}{{ with .Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }}>{{- .Title -}}</a>
-          </h5>
-          <p>{{ .Description | markdownify }}</p>
+      <div class="landing-page-section-entry">
+          <div><a href="{{ $manualLink }}"{{ with .Params.manualLinkTitle }} title="{{ . }}"{{ end }}{{ with .Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }}>{{- .Title -}}</a></div>
+          <div>{{ .Description | markdownify }}</div>
       </div>
   {{ end }}
   

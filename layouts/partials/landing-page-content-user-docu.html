@@ -1,0 +1,24 @@
+<section class="jumbotron jumbotron-lp bg-dark text-center">
+  <div class="container">
+    <h1>User docu landing page content</h1>
+    {{ if .Params.heroTitle}}
+    <h1>{{ .Params.heroTitle}}</h1>
+    {{ else }}
+    <h1>Documentation App example</h1>
+    {{ end }} {{ if .Params.heroSubtitle}}
+    <p class="lead">{{ .Params.heroSubtitle}}</p>
+    {{ else }}
+    <p class="lead">
+      Something short and leading about the documentation. Make it short and
+      sweet, but not too short so folks don’t simply skip over it entirely.
+    </p>
+    {{ end }}
+  </div>
+</section>
+
+<div class="container">
+  <div class="layout-col">
+    <div class="layout-box">{{ partial "landing-page-section-index" . }}</div>
+    <div class="layout-box">{{ partial "landing-page-modified-index" . }}</div>
+  </div>
+</div>

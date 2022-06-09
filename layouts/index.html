@@ -1,43 +1,23 @@
+<!-- prettier-ignore -->
 <!DOCTYPE html>
 <html lang="{{ .Site.Language.Lang }}" class="no-js">
   <head>
-    {{ partial "head.html" . }}
-    {{ partial "landing-page-head.html" . }}
+    {{ partial "head.html" . }} {{ partial "landing-page-head.html" . }}
   </head>
   <body class="theme-dark">
     <header>{{ partial "navbar.html" . }}</header>
+
+    <!-- prettier-ignore -->
     <main role="main">
-      <section class="jumbotron jumbotron-lp bg-dark text-center">
-        <div class="container">
-          {{ if .Params.heroTitle}} 
-            <h1>{{ .Params.heroTitle}} </h1>
-          {{ else }}  
-            <h1>Documentation App example</h1>
-          {{ end }}
-          {{ if .Params.heroSubtitle}} 
-            <p class="lead">{{ .Params.heroSubtitle}} </p>
-          {{ else }}  
-            <p class="lead">Something short and leading about the documentation. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
-          {{ end }}
-        </div>
-      </section>
-
-      <div class="container">
-
-        <div class="layout-col">
-          <div class="layout-box">
-            {{ partial "landing-page-section-index" . }}
-          </div>
-          <div class="layout-box">
-            {{ partial "landing-page-modified-index" . }}
-          </div>
-        </div>
-
-      </div>
-
+    {{ if ($.Param "landingPageContentTemplateName")}}
+    {{ partial ($.Param "landingPageContentTemplateName") . }}
+    {{ else }}
+    <!-- prettier-ignore -->
+    {{ partial "landing-page-content-default.html" . }}
+    {{ end }}
     </main>
-      {{ partial "footer_landingpage.html" . }}
-    </div>
+    <!-- prettier-ignore -->
+    {{ partial "footer_landingpage.html" . }}
     {{ partialCached "scripts.html" . }}
   </body>
 </html>

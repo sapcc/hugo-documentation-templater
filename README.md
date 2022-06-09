@@ -155,6 +155,23 @@ description: >
 
 A new entry will be created in the section at the bottom of the landing page with links and descriptions to jump directly to the desired sections.
 
+#### Create an own landing page content template
+
+1. Create a file with the landing page content (`landing-page-new-content.html`) and save it in the `partials` folder.
+2. The content will be automatically added between the <main> tags in the landing page.
+
+```html
+<main>{{/* your own content here coming from the partial */}}</main>
+```
+
+3. Reference the landing page content file in the configuration file `config.yaml`
+
+```yaml
+params:
+  # landing page content template
+  landingPageContentTemplateName: "landing-page-new-content"
+```
+
 ### Documentation
 
 #### Content

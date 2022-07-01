@@ -39,7 +39,7 @@ hugo mod init github.com/sapcc/my-docu-site
 Normally you would add the sapcc docs templater (hugo-documentation-templater) module as following:
 
 ```
-hugo mod get github.com/sapcc/hugo-documentation-templater
+hugo mod get github.com/sapcc/hugo-documentation-templater@v1.0.0
 ```
 
 But if you are developing this module add the following config to the go.mod file and it will redirect to your local folder:
@@ -52,7 +52,7 @@ replace github.com/sapcc/hugo-documentation-templater => /Users/d063222/Document
 
 go 1.17
 
-require github.com/sapcc/hugo-documentation-templater v0.0.0-somegiberish // indirect
+require github.com/sapcc/hugo-documentation-templater v1.0.0 // indirect
 ```
 
 ### Edit the Hugo config file `config.yaml` (originally is `config.toml` but I prefer yaml) as following to import the templater:

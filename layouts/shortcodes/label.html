@@ -1,0 +1,7 @@
+<span class="badge badge-{{ .Get 0 }} ">
+{{ if eq .Page.File.Ext "md" }}
+    {{ .Inner | markdownify }}
+{{ else }}
+    {{ .Inner | htmlUnescape | safeHTML }}
+{{ end }}
+</span>

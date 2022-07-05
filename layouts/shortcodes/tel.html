@@ -1,0 +1,3 @@
+{{ $telnr := .Get 0 }}
+{{ $linktext := default false (.Get 1) }}
+<a href="tel:{{ $telnr }}"><i class="fa fa-phone"/>{{ default $telnr (.Get 1) | $.Page.RenderString }}</a>

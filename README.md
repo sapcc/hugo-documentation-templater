@@ -52,7 +52,7 @@ replace github.com/sapcc/hugo-documentation-templater => /Users/d063222/Document
 
 go 1.17
 
-require github.com/sapcc/hugo-documentation-templater v1.0.0 // indirect
+require github.com/sapcc/hugo-documentation-templater v1.0.1 // indirect
 ```
 
 ### Edit the Hugo config file `config.yaml` (originally is `config.toml` but I prefer yaml) as following to import the templater:

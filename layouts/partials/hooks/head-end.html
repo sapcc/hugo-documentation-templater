@@ -7,10 +7,10 @@
 {{ end }}
 
 {{ if .Page.Store.Get "hasNomnoml" }}
-  <script src="https://cdn.jsdelivr.net/npm/nomnoml/dist/nomnoml.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/graphre/dist/graphre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/nomnoml/dist/nomnoml.min.js"></script>
 {{ end }}
 
 {{- if .Page.Store.Get "hasDiagramsNet" -}}
-<script src="/js/diagramsnet-loader.js"></script>
+  <script src="/js/diagramsnet-loader.js"></script>
 {{- end -}}

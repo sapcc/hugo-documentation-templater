@@ -57,6 +57,10 @@ body {
     .navbar-search {
         margin-left: auto;
     }
+
+    .navbar-nav {
+        flex-direction: row;
+    }
 }
 
 // Search

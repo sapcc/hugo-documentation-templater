@@ -198,6 +198,7 @@ Original documentation: <https://geekdocs.de/shortcodes/mermaid/>
 
 Live Editor to test diagrams: <https://mermaid-js.github.io/mermaid-live-editor>
 
+````tpl
 ```mermaid
 sequenceDiagram
     Alice->>Bob: Hello Bob, how are you?
@@ -210,6 +211,7 @@ sequenceDiagram
         Bob->>Alice: Thanks for asking
     end
 ```
+````
 
 ![Nomnoml example](/static/images/ex_mermaid.png)
 

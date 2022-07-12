@@ -1,5 +1,10 @@
 {{/* vim: set filetype=gohtmltmpl shiftwidth=2 tabstop=2 : */}}
 <div class="nomnoml">
-  {{- .Inner | safeHTML }}
+  <canvas id="canvas-nomnoml-{{- .Inner | md5 -}}"></canvas>
+  <script>
+    var canvas = document.getElementById("canvas-nomnoml-{{- .Inner | md5 -}}")
+    var source = "{{- .Inner | safeHTML }}"
+    nomnoml.draw(canvas, source)
+  </script>
 </div>
 {{ .Page.Store.Set "hasNomnoml" true }}

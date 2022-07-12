@@ -213,7 +213,9 @@ sequenceDiagram
 ```
 ````
 
+<div style="width:500px">
 ![Nomnoml example](/static/images/ex_mermaid.png)
+</div>
 
 #### Diagram draw.io / diagrams.net
 
@@ -229,7 +231,9 @@ Now to use the diagram you will have to include it in your document with the abs
 {{</* diagramsnet file="source/help/diagram-drawio-example.drawio" */>}}
 ```
 
+<div style="width:500px">
 ![Draw.io / diagrams.net example](/static/images/ex_draw_io_diagrams_net.png)
+</div>
 
 #### Diagram Nomnoml
 
@@ -257,7 +261,9 @@ Example:
 [<actor>Sailor] - [<usecase>shiver me;timbers]
 ```
 
+<div style="width:500px">
 ![Nomnoml example](/static/images/ex_nomnoml.png)
+</div>
 
 ## Extra information
 

@@ -2,9 +2,9 @@
 <div class="nomnoml">
   <canvas id="canvas-nomnoml-{{- .Inner | md5 -}}"></canvas>
   <script>
-    var canvas = document.getElementById("canvas-nomnoml-{{- .Inner | md5 -}}")
-    var source = "{{- .Inner | safeHTML }}"
-    nomnoml.draw(canvas, source)
+    var canvas = document.getElementById("canvas-nomnoml-{{- .Inner | md5 -}}");
+    var source = `{{ .Inner | safeJS }}`
+    nomnoml.draw(canvas, source);
   </script>
 </div>
-{{ .Page.Store.Set "hasNomnoml" true }}
+{{- .Page.Store.Set "hasNomnoml" true -}}

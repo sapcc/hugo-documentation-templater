@@ -192,6 +192,71 @@ description: >
 
 Search engine and field in the top navigation bar is setup per default. Search field on the right side navigation is per default disabled.
 
+#### Diagram Mermaid
+
+Original documentation: <https://geekdocs.de/shortcodes/mermaid/>
+
+Live Editor to test diagrams: <https://mermaid-js.github.io/mermaid-live-editor>
+
+```mermaid
+sequenceDiagram
+    Alice->>Bob: Hello Bob, how are you?
+    alt is sick
+        Bob->>Alice: Not so good :(
+    else is well
+        Bob->>Alice: Feeling fresh like a daisy
+    end
+    opt Extra response
+        Bob->>Alice: Thanks for asking
+    end
+```
+
+![Nomnoml example](/static/images/ex_mermaid.png)
+
+#### Diagram draw.io / diagrams.net
+
+To use diagrams created with `draw.io` you need to save the it in the `.drawio` format.
+
+`File` -> `Save as` -> `Format: XML File (.drawio)`
+
+After you have created your `.drawio` file you have to push it to the desired location.
+
+Now to use the diagram you will have to include it in your document with the absolute path like this:
+
+```tpl
+{{</* diagramsnet file="source/help/diagram-drawio-example.drawio" */>}}
+```
+
+![Draw.io / diagrams.net example](/static/images/ex_draw_io_diagrams_net.png)
+
+#### Diagram Nomnoml
+
+Nomnoml is a tool to draw UML diagrams based on a simple syntax. Further details can be obtained at <https://www.nomnoml.com/> or the [github repo](https://github.com/skanaar/nomnoml).
+
+Example:
+
+```nomnoml
+[Pirate|eyeCount: Int|raid();pillage()|
+ [beard]--[parrot]
+ [beard]-:>[foul mouth]
+]
+[<abstract>Marauder]<:--[Pirate]
+[Pirate]- 0..7[mischief]
+[jollyness]->[plunder]
+[jollyness]->[rum]
+[jollyness]->[singing]
+[Pirate]-> *[rum|tastiness: Int|swig()]
+[Pirate]->[singing]
+[singing]<->[rum]
+[<start>st]->[<state>plunder]
+[plunder]->[<choice>more loot]
+[more loot]->[st]
+[more loot] no ->[<end>e]
+[<actor>Sailor] - [<usecase>shiver me;timbers]
+```
+
+![Nomnoml example](/static/images/ex_nomnoml.png)
+
 ## Extra information
 
 ### Bootstrap version
@@ -204,18 +269,26 @@ Creating a new package.json file
 https://docs.npmjs.com/creating-a-package-json-file
 
 ```
+
 npm init
+
 ```
 
 Install PostCSS so that the site build can create the final CSS assets
 https://github.com/google/docsy#prerequisites
 
 ```
+
 npm install --save-dev autoprefixer
 npm install --save-dev postcss-cli
+
 ```
 
 ### Git Information
 
 https://www.dinofizzotti.com/blog/2017-05-01-adding-hugo-version-and-commit-information-to-a-status-page/
 https://sizeof.cat/post/git-info-on-a-hugo-static-website/
+
+```
+
+```

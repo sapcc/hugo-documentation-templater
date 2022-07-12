@@ -1,0 +1,4 @@
+{{ $file := .Get "file" }}
+
+{{- $file | readFile | safeHTML -}}
+{{ .Page.Store.Set "hasDiagramsNet" true }}

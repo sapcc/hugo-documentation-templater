@@ -1,0 +1,5 @@
+{{/* vim: set filetype=gohtmltmpl shiftwidth=2 tabstop=2 : */}}
+<div class="nomnoml">
+  {{- .Inner | safeHTML }}
+</div>
+{{ .Page.Store.Set "hasNomnoml" true }}

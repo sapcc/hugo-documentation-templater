@@ -1,0 +1,5 @@
+{{/* vim: set filetype=gohtmltmpl shiftwidth=2 tabstop=2 : */}}
+<div class="mermaid">
+  {{- .Inner | safeHTML }}
+</div>
+{{ .Page.Store.Set "hasMermaid" true }}

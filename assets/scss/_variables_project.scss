@@ -130,3 +130,80 @@ $primary: rgb(0, 8, 16);
 $dark: rgb(13, 20, 28); // var(--color-juno-grey-blue-10);
 $td-sidebar-bg-color: rgb(249, 249, 249); // --color-global-bg -> --color-juno-grey-light-1
 $link-color: rgb(0, 125, 184); // var(--color-accent);
+
+$primary-light: lighten($primary, 75%);
+$primary-dark: rgb(0, 8, 16);
+$secondary: rgb(28, 35, 42);
+$success: #28a745 !default;
+$info: #17a2b8 !default;
+$warning: #ffc107 !default;
+$danger: #dc3545 !default;
+//$white: rgb(222, 223, 224);
+$light: #fff;
+
+/* callout / hint/alert box */
+$bs-callout-lightness: +90%;
+.bs-callout {
+    padding: 20px !important;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px !important;
+    border-radius: 3px;
+}
+.bs-callout h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.bs-callout p:last-child {
+    margin-bottom: 0;
+}
+.bs-callout code {
+    border-radius: 3px;
+}
+.bs-callout+.bs-callout {
+    margin-top: -5px;
+}
+.bs-callout-default {
+    border-left-color: #777 !important;
+    background-color: scale-color(#777, $lightness:$bs-callout-lightness);
+}
+.bs-callout-default h4 {
+    color: #777;
+}
+.bs-callout-primary {
+    border-left-color: $primary !important;
+    background-color: scale-color($primary, $lightness:$bs-callout-lightness);
+}
+.bs-callout-primary h4 {
+    color: #428bca;
+}
+.bs-callout-success {
+    border-left-color: $success !important;
+    background-color: scale-color($success, $lightness:$bs-callout-lightness);
+}
+.bs-callout-success h4 {
+    color: #5cb85c;
+}
+.bs-callout-danger {
+    border-left-color: $danger !important;
+    background-color: scale-color($danger, $lightness:$bs-callout-lightness);
+}
+.bs-callout-danger h4 {
+    color: #d9534f;
+}
+.bs-callout-warning {
+    border-left-color: $warning !important;
+    background-color: scale-color($warning, $lightness:$bs-callout-lightness);
+}
+.bs-callout-warning h4 {
+    color: #f0ad4e;
+}
+.bs-callout-info {
+    border-left-color: $info !important;
+    background-color: scale-color($info, $lightness:$bs-callout-lightness);
+}
+.bs-callout-info h4 {
+    color: #5bc0de;
+}
+
+/*/ callout / hint/alert box */

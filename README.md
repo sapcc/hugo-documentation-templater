@@ -1,6 +1,14 @@
 # Welcome to the Hugo documentation templater
 
-This guide shows you how to use this templater to create a Converged Cloud technical documentation site.
+This guide shows you how to use this templater to create a Converged Cloud technical documentation site. But before you keep reading have a look at our beauty:
+
+Custom landing page:
+
+![Landing page example](static/images/landing_page_example.png)
+
+Documentation page:
+
+![Landing page example](static/images/documentation_page_example.png)
 
 ## Create a new documentation site from scratch
 
@@ -39,7 +47,7 @@ hugo mod init github.com/sapcc/my-docu-site
 Normally you would add the sapcc docs templater (hugo-documentation-templater) module as following:
 
 ```
-hugo mod get github.com/sapcc/hugo-documentation-templater@v1.0.0
+hugo mod get github.com/sapcc/hugo-documentation-templater@v1.1.0
 ```
 
 But if you are developing this module add the following config to the go.mod file and it will redirect to your local folder:
@@ -52,7 +60,7 @@ replace github.com/sapcc/hugo-documentation-templater => /Users/d063222/Document
 
 go 1.17
 
-require github.com/sapcc/hugo-documentation-templater v1.0.1 // indirect
+require github.com/sapcc/hugo-documentation-templater v1.1.0 // indirect
 ```
 
 ### Edit the Hugo config file `config.yaml` (originally is `config.toml` but I prefer yaml) as following to import the templater:
@@ -91,6 +99,16 @@ hugo server --disableFastRender
 ```
 
 The `--disableFastRender` option ensures that nothing is cached.
+
+### Errors
+
+If you have any errors when starting the application try running following command to clean up the cache:
+
+```bash
+hugo mod clean
+```
+
+Afterwards start again the Hugo server as described in the section below.
 
 ## Content and Customization
 

@@ -130,6 +130,17 @@ menu:
       weight: 0
 ```
 
+### Print option
+
+Add to the `config.yaml` following setting to display the print link:
+
+```yaml
+outputs:
+  section:
+    - HTML
+    - print
+```
+
 ### Landing page
 
 #### Customize hero section

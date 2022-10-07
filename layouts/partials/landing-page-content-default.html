@@ -17,7 +17,9 @@
 
 <div class="container">
   <div class="layout-col">
-    <div class="layout-box">{{ partial "landing-page-section-index" . }}</div>
-    <div class="layout-box">{{ partial "landing-page-modified-index" . }}</div>
+    <!-- prettier-ignore -->
+    {{ partial "landing-page-section-index" . }}
+    {{ partial "landing-page-section-recent-doc-changes" . }}
+    {{ partial "landing-page-section-recent-blogposts" . }}
   </div>
 </div>

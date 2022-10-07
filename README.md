@@ -154,14 +154,24 @@ heroSubtitle: "This is the subtitle of the hero section"
 ---
 ```
 
-#### Configure the number of entries in the modified section in the landing page
+#### Configure the latest changes section in the landing page
 
-In the landing page will be shown per default a section with the last 5 modified files of the content as they are committed in github. To modify the number of modified files shown in the section add following configuration to the `config.yaml`:
+Display the recent file changes of the documentation content as they are committed in github. To activate this section enter the number of file changes to be shown in the section adding following configuration to the `config.yaml`:
 
 ```yaml
 params:
-  # number of entries in the modified section in the landing page. Default is 5
-  modifiedEntries: 10
+  # number of file changes to be displayed in the landing page.
+  recentDocChanges: 10
+```
+
+#### Configure the news section in the landing page
+
+Display the recent news from the blog section as they are committed in github. To activate this section enter the number of blog posts to be shown by adding following configuration to the `config.yaml`:
+
+```yaml
+params:
+  # number of last blog posts to be displayed in the landing page.
+  recentBlogPosts: 10
 ```
 
 #### Add custom section index to jump to specific documentation sections in the landing page

@@ -1,0 +1,18 @@
+<!-- prettier-ignore -->
+{{ $NumberOfEntries := ($.Param "recentDocChanges") }}
+
+{{ if $NumberOfEntries}}
+<!-- prettier-ignore -->
+<div class="layout-box">
+  <div class="landing-page-section">
+    <h4 class="landing-page-section-header"><i class="fas fa-history"></i>Latest changes</h4>
+    {{ $pages := where .Site.RegularPages.ByLastmod "Type" "docs" }}
+    {{ $recent := ($pages | last $NumberOfEntries).Reverse }} {{ range $recent }}
+    <div class="landing-page-section-entry">
+      {{ partial "landing-page-breadcrumb.html" . }}
+      <div class="modified-date"><i class="fas fa-fw fa-clock"></i>Last updated on {{ .Lastmod.Format "2 January" }}</div>
+    </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

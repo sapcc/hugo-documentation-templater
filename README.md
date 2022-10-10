@@ -194,6 +194,44 @@ description: >
 
 A new entry will be created in the section at the bottom of the landing page with links and descriptions to jump directly to the desired sections.
 
+#### Configure an overview section for the landing page
+
+Display an overview index section based on a configuration
+
+Configuration description:
+
+```yaml
+params:
+  overviewSection: <[]Object>
+    label: <string>
+    icon: <string>
+    links: <[]Object>
+      - label: <string>
+        path: <string>
+```
+
+Example:
+
+```yaml
+params:
+  # overview section configuration
+  overviewSection:
+    - label: Compute
+      icon: "fas fa-paperclip"
+      links:
+        - label: Servers
+          path: "/docs/customer/compute/virtual-servers/"
+        - label: "Block Storage"
+          path: "/docs/customer/compute/block-storage/"
+    - label: Networking
+      icon: "fas fa-paperclip"
+      links:
+        - label: Jump Servers
+          path: "/docs/customer/networking/jump-servers/"
+        - label: "Load Balancer"
+          path: "/docs/customer/networking/load-balancers/"
+```
+
 #### Create an own landing page content template
 
 1. Create a file with the landing page content (`landing-page-new-content.html`) and save it in the `partials` folder.

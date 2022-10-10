@@ -1,0 +1,26 @@
+<!-- prettier-ignore -->
+{{ $overviewSection := ($.Param "overviewSection") }}
+
+{{ if $overviewSection }}
+<div class="parent-element">
+  {{ range $overviewSection }}
+  <div class="layout-box">
+    <div class="landing-page-section">
+      <div class="landing-page-section-entry">
+        <i class="{{ .icon }}"></i>
+        {{ .label }}
+        <div>
+          {{ if .links }}
+          <ul>
+            {{ range .links }}
+            <li><a href="{{ .path }}">{{ .label }}</a></li>
+            {{ end }}
+          </ul>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+  {{ end }}
+</div>
+{{ end }}

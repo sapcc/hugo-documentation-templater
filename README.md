@@ -171,7 +171,7 @@ Display the recent news from the blog section as they are committed in github. T
 ```yaml
 params:
   # number of last blog posts to be displayed in the landing page.
-  recentBlogPosts: 10
+  recentBlogPosts: 5
 ```
 
 #### Add custom section index to jump to specific documentation sections in the landing page

@@ -1,6 +1,5 @@
 <section class="jumbotron jumbotron-lp bg-dark text-center">
   <div class="container">
-    <h1>User docu landing page content</h1>
     {{ if .Params.heroTitle}}
     <h1>{{ .Params.heroTitle}}</h1>
     {{ else }}
@@ -9,21 +8,28 @@
     <p class="lead">{{ .Params.heroSubtitle}}</p>
     {{ else }}
     <p class="lead">
-      Something short and leading about the documentation. Make it short and
-      sweet, but not too short so folks don’t simply skip over it entirely.
+      Find user guides, tutorials, API references, blogs and more to learn how to build on SAP Converged Cloud
     </p>
     {{ end }}
+    <a href="/docs/customer" class="btn btn-primary">
+      <i class="fas fa-book"></i>
+      Documentation
+    </a>
   </div>
 </section>
 
-  <div class="container">
-    <div class="layout-col">
-      <!-- prettier-ignore -->
-      {{ partial "landing-page-section-index" . }}
-      {{ partial "landing-page-section-recent-doc-changes" . }}
-      {{ partial "landing-page-section-recent-blogposts" . }}
-    </div>
+  <div class="container mb-5">
+    {{ partial "landing-page-section-recent-blogposts" . }}
+  </div>
+  
+  <div class="container mb-5">
+    {{ partial "landing-page-section-overview" . }}    
+  </div>
+
+  <div class="container pt-5">
+    {{ partial "landing-page-section-footer" . }}  
   </div>
 </div>
 
-{{ partial "landing-page-section-overview" . }}
+
+<!-- {{ partial "landing-page-section-index" . }} -->

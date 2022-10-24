@@ -4,7 +4,7 @@ This guide shows you how to use this templater to create a Converged Cloud techn
 
 Custom landing page:
 
-![Landing page example](static/images/landing_page_example.png)
+![landing page example](https://user-images.githubusercontent.com/1465143/197484902-fe51387a-5ee8-4f7f-aeca-edaf6851e458.png)
 
 Documentation page:
 
@@ -154,14 +154,24 @@ heroSubtitle: "This is the subtitle of the hero section"
 ---
 ```
 
-#### Configure the number of entries in the modified section in the landing page
+#### Configure the latest changes section in the landing page
 
-In the landing page will be shown per default a section with the last 5 modified files of the content as they are committed in github. To modify the number of modified files shown in the section add following configuration to the `config.yaml`:
+Display the recent file changes of the documentation content as they are committed in github. To activate this section enter the number of file changes to be shown in the section adding following configuration to the `config.yaml`:
 
 ```yaml
 params:
-  # number of entries in the modified section in the landing page. Default is 5
-  modifiedEntries: 10
+  # number of file changes to be displayed in the landing page.
+  recentDocChanges: 10
+```
+
+#### Configure the news section in the landing page
+
+Display the recent news from the blog section as they are committed in github. To activate this section enter the number of blog posts to be shown by adding following configuration to the `config.yaml`:
+
+```yaml
+params:
+  # number of last blog posts to be displayed in the landing page.
+  recentBlogPosts: 5
 ```
 
 #### Add custom section index to jump to specific documentation sections in the landing page
@@ -183,6 +193,44 @@ description: >
 ```
 
 A new entry will be created in the section at the bottom of the landing page with links and descriptions to jump directly to the desired sections.
+
+#### Configure an overview section for the landing page
+
+Display an overview index section based on a configuration
+
+Configuration description:
+
+```yaml
+params:
+  overviewSection: <[]Object>
+    label: <string>
+    icon: <string>
+    links: <[]Object>
+      - label: <string>
+        path: <string>
+```
+
+Example:
+
+```yaml
+params:
+  # overview section configuration
+  overviewSection:
+    - label: Compute
+      icon: "fas fa-paperclip"
+      links:
+        - label: Servers
+          path: "/docs/customer/compute/virtual-servers/"
+        - label: "Block Storage"
+          path: "/docs/customer/compute/block-storage/"
+    - label: Networking
+      icon: "fas fa-paperclip"
+      links:
+        - label: Jump Servers
+          path: "/docs/customer/networking/jump-servers/"
+        - label: "Load Balancer"
+          path: "/docs/customer/networking/load-balancers/"
+```
 
 #### Create an own landing page content template
 

@@ -1,0 +1,29 @@
+<!-- prettier-ignore -->
+{{ $NumberOfPosts := ($.Param "recentBlogPosts") }}
+
+<!-- prettier-ignore -->
+{{ if $NumberOfPosts}}
+<div class="landing-page-section">
+  <h3 class="landing-page-section-header">
+    <span>News</span>
+    <span class="landing-page-section-header-buttons"><a class="btn" href="/docs/blogs"><i class="fas fa-newspaper"></i>See all news</a></span>
+  </h3>
+  
+  <div class="layout-box">
+    <div class="landing-page-news-container">
+      {{ $allPosts := where .Site.RegularPages.ByLastmod "Type" "blog" }}
+      <!-- prettier-ignore -->
+      {{ $recentPosts := ($allPosts | last $NumberOfPosts).Reverse }} {{ range $recentPosts }}
+      <div class="landing-page-section-entry">
+        <div class="modified-date">
+          <!-- prettier-ignore -->
+          {{ .Lastmod.Format "2 January" }}
+        </div>
+        <!-- {{ partial "landing-page-breadcrumb.html" . }} -->
+        <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ end }}

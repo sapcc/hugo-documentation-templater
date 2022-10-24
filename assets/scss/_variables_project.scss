@@ -80,6 +80,8 @@
     --color-sap-grey-4: rgb(198, 198, 198);
     --color-sap-grey-5: rgb(234, 234, 234);
 
+    --color-white: #fff;
+
     .theme-dark {
         // TEXT COLORS
         // RGB
@@ -99,6 +101,65 @@
         --color-global-text: var(--color-juno-text-default);
         --color-accent: var(--color-juno-turquoise-5);
         --color-main-nav-border: var(--color-juno-grey-blue-10);
+
+        // DT Button
+        // DT Primary Button
+        --color-button-primary-text: var(--color-white);
+        --gradient-button-primary-bg: linear-gradient(
+            to right top,
+            rgb(7, 79, 90) 0%,
+            var(--color-accent) 100%
+        );
+        // |-- DT Primary Button :hover
+        --color-button-primary-border: var(--color-accent);
+        --color-button-primary-hover-bg: var(--color-juno-turquoise-8);
+        --color-button-primary-hover-border: var(--color-accent);
+        --color-button-primary-hover-text: var(--color-white);
+        // |-- DT Primary Button :active
+        --color-button-primary-active-bg: var(--color-accent);
+        --color-button-primary-active-border: var(--color-white);
+        --color-button-primary-active-text: var(--color-white);
+        // |-- DT Primary Button :disabled
+        --gradient-button-primary-disabled-bg: linear-gradient(
+            to right top,
+            rgb(0, 7, 15) 0%,
+            rgb(44, 46, 49) 100%
+        );
+        --color-button-primary-disabled-border: rgb(76, 79, 83);
+        --color-button-primary-disabled-text: rgb(76, 79, 83);
+        // DT Default Button
+        --color-button-default-text: var(--color-text-default);
+        --color-button-default-icon: var(--color-accent-raw);
+        --color-button-default-bg: transparent;
+        --color-button-default-border: var(--color-accent);
+        // |-- DT Default Button :hover
+        --color-button-default-hover-text: var(--color-accent);
+        --color-button-default-hover-bg: transparent;
+        --color-button-default-hover-border: var(--color-accent);
+        // |-- DT Default Button :active
+        --color-button-default-active-bg: var(--color-juno-grey-blue-1);
+        --color-button-default-active-border: var(--color-accent);
+        --color-button-default-active-text: var(--color-text-default);
+        // |-- DT Default Button :disabled
+        --color-button-default-disabled-text: rgb(76, 79, 83);
+        --color-button-default-disabled-bg: transparent;
+        --color-button-default-disabled-border: rgb(76, 79, 83);
+        // DT Subdued Button
+        --color-button-subdued-text: var(--color-text-default);
+        --color-button-subdued-bg: transparent;
+        --color-button-subdued-border: var(--color-juno-text-default);
+        // |-- DT Subdued Button :hover
+        --color-button-subdued-hover-text: var(--color-text-default);
+        --color-button-subdued-bg: transparent;
+        --color-button-subdued-hover-border: var(--color-accent);
+        // |-- DT Subdued Button :active
+        --color-button-subdued-active-bg: var(--color-juno-grey-blue-1);
+        --color-button-subdued-active-border: var(--color-text-default);
+        --color-button-subdued-active-text: var(--color-text-default);
+        // |-- DT Subdued Button :disabled
+        --color-button-subdued-disabled-text: rgb(76, 79, 83);
+        --color-button-subdued-disabled-bg: transparent;
+        --color-button-default-disabled-border: rgb(76, 79, 83);
     }
 
     // LIGHT COLORS ARE THE DEFAULT
@@ -121,6 +182,65 @@
     --color-accent: var(--color-juno-blue-5);
     --color-main-nav-border: var(--color-juno-grey-light-10);
 
+    // LT Button
+    // LT Primary Button
+    --color-button-primary-text: var(--color-white);
+    --gradient-button-primary-bg: linear-gradient(
+        to right top,
+        rgb(51, 242, 255) 0%,
+        var(--color-accent) 100%
+    );
+    --color-button-primary-border: var(--color-accent);
+    // |-- LT Primary Button :hover
+    --color-button-primary-hover-bg: var(--color-juno-blue-6);
+    --color-button-primary-hover-border: var(--color-accent);
+    --color-button-primary-hover-text: var(--color-white);
+    // |-- LT Primary Button :active
+    --color-button-primary-active-bg: var(--color-accent);
+    --color-button-primary-active-border: var(--color-accent);
+    --color-button-primary-active-text: var(--color-white);
+    // |-- LT Primary Button :disabled
+    --gradient-button-primary-disabled-bg: linear-gradient(
+        to right top,
+        rgb(253, 253, 253) 0%,
+        rgb(230, 230, 230) 100%
+    );
+    --color-button-primary-disabled-border: rgb(203, 203, 203);
+    --color-button-primary-disabled-text: rgb(203, 203, 203);
+    // LT Default Button
+    --color-button-default-text: var(--color-text-default);
+    --color-button-default-icon: var(--color-accent);
+    --color-button-default-bg: transparent;
+    --color-button-default-border: var(--color-accent);
+    // |-- LT Default Button :hover
+    --color-button-default-hover-text: var(--color-accent);
+    --color-button-default-hover-bg: transparent;
+    --color-button-default-hover-border: var(--color-accent);
+    // |-- LT Default Button :active
+    --color-button-default-active-bg: var(--color-juno-grey-light-5);
+    --color-button-default-active-border: var(--color-accent);
+    --color-button-default-active-text: var(--color-text-default);
+    // |-- LT Default Button :disabled
+    --color-button-default-disabled-text: rgb(203, 203, 203);
+    --color-button-default-disabled-bg: transparent;
+    --color-button-default-disabled-border: rgb(203, 203, 203);
+      // LT Subdued Button
+    --color-button-subdued-text: var(--color-text-default);
+    --color-button-subdued-bg: transparent;
+    --color-button-subdued-border: var(--color-juno-text-default);
+    // |-- LT Subdued Button :hover
+    --color-button-subdued-hover-text: var(--color-text-default);
+    --color-button-subdued-bg: transparent;
+    --color-button-subdued-hover-border: var(--color-accent);
+    // |-- LT Subdued Button :active
+    --color-button-subdued-active-bg: var(--color-juno-grey-light-5);
+    --color-button-subdued-active-border: var(--color-text-default);
+    --color-button-subdued-active-text: var(--color-text-default);
+    // |-- LT Subdued Button :disabled
+    --color-button-subdued-disabled-text: rgb(203, 203, 203);
+    --color-button-subdued-disabled-bg: transparent;
+    --color-button-default-disabled-border: rgb(203, 203, 203);
+
 }
 
 $google_font_name: "IBM Plex Sans";
@@ -140,6 +260,9 @@ $warning: #ffc107 !default;
 $danger: #dc3545 !default;
 //$white: rgb(222, 223, 224);
 $light: #fff;
+
+// no rounded buttons
+$enable-rounded: false;
 
 /* callout / hint/alert box */
 $bs-callout-lightness: +90%;

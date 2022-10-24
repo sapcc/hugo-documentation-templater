@@ -4,7 +4,7 @@ This guide shows you how to use this templater to create a Converged Cloud techn
 
 Custom landing page:
 
-![Landing page example](static/images/landing_page_example.png)
+![landing page example](https://user-images.githubusercontent.com/1465143/197484902-fe51387a-5ee8-4f7f-aeca-edaf6851e458.png)
 
 Documentation page:
 

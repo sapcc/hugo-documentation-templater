@@ -38,9 +38,15 @@ cd  my-docu-site
 
 ### Turn your site into a Hugo Module
 
+This can be done with hugo mod init `<module path>`.
+
 ```
 hugo mod init github.com/sapcc/my-docu-site
 ```
+
+The Go `<module path>` of the dependencies should resolve to a valid VCS repository like Git so it is possible
+for others to use the site as a dependency. If your site’s source code is not pushed to a public VCS repository,
+the Go module path for the site can be a single word as well.
 
 ### Declare the hugo-documentation-templater module as a dependency for your site
 

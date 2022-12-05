@@ -38,7 +38,7 @@ cd  my-docu-site
 
 ### Turn your site into a Hugo Module
 
-This can be done with hugo mod init `<module path>`.
+This can be done with `hugo mod init <module path>`.
 
 ```
 hugo mod init github.com/sapcc/my-docu-site

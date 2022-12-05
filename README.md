@@ -14,6 +14,8 @@ Documentation page:
 
 ### Install Hugo extended version
 
+Please refer to the official Hugo documentation for more details on [how to install Hugo in other operating systems](https://gohugo.io/installation).
+
 Prerequisite: Golang
 
 #### Mac users

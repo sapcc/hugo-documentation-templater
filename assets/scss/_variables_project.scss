@@ -241,6 +241,14 @@
     --color-button-subdued-disabled-bg: transparent;
     --color-button-default-disabled-border: rgb(203, 203, 203);
 
+      // LT (Text-) Input
+    --color-textinput-bg: var(--color-background-lvl-3);
+    --color-textinput-text: var(--color-juno-text-high);
+    --color-textinput-placeholder-text: var(--color-juno-text-high);
+    --color-textinput-focus-border: var(--color-accent);
+    // LT Select
+    --color-select-bg: var(--color-background-lvl-3);
+
 }
 
 $google_font_name: "IBM Plex Sans";

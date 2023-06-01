@@ -258,6 +258,22 @@ params:
   landingPageContentTemplateName: "landing-page-new-content"
 ```
 
+#### Style your own landing page content
+
+1. Create a file named `custom-styles.scss` on the folder `assets/scss`
+2. Add your styles like in follwing example:
+
+```css
+/* example of creating variables in sass reading params from the config*/
+$heroImage: unquote(
+  '{{ default "images/Hero_background.jpg" .Params.heroImage }}'
+);
+/* setup a new css class and use the variable in it  */
+.custom-jumbotron {
+  background: var(--color-global-bg) url($heroImage) top center no-repeat;
+}
+```
+
 ### Documentation
 
 #### Content

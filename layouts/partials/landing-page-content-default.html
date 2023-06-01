@@ -11,7 +11,8 @@
       Set heroSubtitle in frontmatter of /content/_index.md
     </p>
     {{ end }}
-    <a href="/docs" class="btn btn-primary">
+    {{ $docsUrl := absURL "docs" }}
+    <a href="{{ $docsUrl }}" class="btn btn-primary">
       <i class="fas fa-book"></i>
       Documentation
     </a>

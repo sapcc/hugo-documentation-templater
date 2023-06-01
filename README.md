@@ -153,12 +153,13 @@ outputs:
 
 #### Customize hero section
 
-Add a file named `_index.md` to the root of content folder with following content to customize the landing page:
+Add a file named `_index.md` to the root of folder `content` with following data to customize the landing page:
 
 ```markdown
 ---
 heroTitle: "The best documentation ever"
 heroSubtitle: "This is the subtitle of the hero section"
+heroImage: "images/custom-hero-image.jpg"
 ---
 ```
 

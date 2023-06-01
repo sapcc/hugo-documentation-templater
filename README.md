@@ -226,14 +226,14 @@ params:
   # overview section configuration
   overviewSection:
     - label: Compute
-      icon: "fas fa-paperclip"
+      icon: "fa-server"
       links:
         - label: Servers
           path: "/docs/customer/compute/virtual-servers/"
         - label: "Block Storage"
           path: "/docs/customer/compute/block-storage/"
     - label: Networking
-      icon: "fas fa-paperclip"
+      icon: "fa-wifi"
       links:
         - label: Jump Servers
           path: "/docs/customer/networking/jump-servers/"

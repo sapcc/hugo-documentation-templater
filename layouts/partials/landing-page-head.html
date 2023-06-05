@@ -2,9 +2,9 @@
 {{ $cssOpts := (dict "enableSourceMap" true ) }}
 {{ $styles := resources.Get "scss/landing-page.scss" | resources.ExecuteAsTemplate "landing-page.scss" . |
 resources.ToCSS $cssOpts}}
-<link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen" />
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}" media="screen" />
 <!-- prettier-ignore -->
 {{/*  add a css file to customize the app */}}
 {{ $customStyles := resources.Get "scss/custom-styles.scss" |
 resources.ExecuteAsTemplate "custom-styles.scss" . | resources.ToCSS $cssOpts}}
-<link rel="stylesheet" href="{{ $customStyles.Permalink }}" media="screen" />
+<link rel="stylesheet" href="{{ $customStyles.RelPermalink }}" media="screen" />

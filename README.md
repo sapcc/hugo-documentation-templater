@@ -55,7 +55,7 @@ the Go module path for the site can be a single word as well.
 Normally you would add the sapcc docs templater (hugo-documentation-templater) module as following:
 
 ```
-hugo mod get github.com/sapcc/hugo-documentation-templater@v1.6.0
+hugo mod get github.com/sapcc/hugo-documentation-templater@v1.6.3
 ```
 
 But if you are developing this module add the following config to the go.mod file and it will redirect to your local folder:
@@ -64,11 +64,11 @@ But if you are developing this module add the following config to the go.mod fil
 module github.com/me/my-docu-site
 
 // just for local dev add this line (adjust to your folder location)!
-replace github.com/sapcc/hugo-documentation-templater => /Users/d063222/Documents/sap/monsoon/hugo-documentation-templater
+replace github.com/sapcc/hugo-documentation-templater => /Users/d063222/Documents/sap/cc/hugo-documentation-templater
 
 go 1.20
 
-require github.com/sapcc/hugo-documentation-templater v1.6.0 // indirect
+require github.com/sapcc/hugo-documentation-templater v1.6.3 // indirect
 ```
 
 ### Edit the Hugo config file `config.yaml` (originally is `config.toml` but I prefer yaml) as following to import the templater:

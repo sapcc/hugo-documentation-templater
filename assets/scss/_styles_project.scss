@@ -136,6 +136,7 @@ select {
   line-height: 1.5rem;
 }
 
+// custom toolbar styles
 .content-area-toolbar {
   display: flex;
   align-items: center;
@@ -192,7 +193,7 @@ select {
     padding-bottom: 0;
   }
 
-  .td-search-input {
+  .td-search__input {
     max-width: 100%;
     margin-right: 0;
 
@@ -219,8 +220,15 @@ select {
 }
 
 // Search
+.td-search {
+  width: 100%;
+}
 
-.td-search-input {
+.td-navbar .td-search__icon {
+  color: $input-placeholder-color;
+}
+
+.td-search__input {
   background: var(--color-background-lvl-3);
   border-radius: 100rem;
   max-width: 100%;
@@ -232,6 +240,9 @@ select {
     &:focus {
       background: var(--color-background-lvl-3);
       border-color: none;
+    }
+    &:not(:focus) {
+      background: var(--color-background-lvl-3);
     }
   }
 

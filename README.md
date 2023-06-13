@@ -274,6 +274,10 @@ $heroImage: unquote(
 }
 ```
 
+#### Add code to the head section
+
+If you need to add some code (CSS import, cookie consent, or similar) to the head section on the landing page, add the `landing-page-head-custom.html` partial.
+
 ### Documentation
 
 #### Content
@@ -365,7 +369,7 @@ Example:
 
 ### Bootstrap version
 
-Based on Bootstrap 4.6
+Based on Bootstrap 4.6.2
 
 ### Buil assets
 

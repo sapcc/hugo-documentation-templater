@@ -2,11 +2,14 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.Language.Lang }}" class="no-js">
   <head>
-    {{ partial "head.html" . }} {{ partial "landing-page-head.html" . }}
+    <!-- prettier-ignore -->
+    {{ partial "head.html" . }} 
+    {{ partial "landing-page-head.html" . }} 
+    {{ partial "landing-page-head-custom.html" . }}
   </head>
   <body class="theme-dark docs-layout">
     <header>{{ partial "navbar.html" . }}</header>
-    
+
     <!-- prettier-ignore -->
     <main role="main">
     {{ if ($.Param "landingPageContentTemplateName")}}

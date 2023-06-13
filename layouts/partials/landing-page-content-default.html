@@ -1,33 +1,11 @@
-<section class="jumbotron jumbotron-lp bg-dark text-center">
-  <div class="container">
-    {{ if .Params.heroTitle}}
-    <h1>{{ .Params.heroTitle}}</h1>
-    {{ else }}
-    <h1>Set heroTitle in frontmatter of /content/_index.md</h1>
-    {{ end }} {{ if .Params.heroSubtitle}}
-    <p class="lead">{{ .Params.heroSubtitle}}</p>
-    {{ else }}
-    <p class="lead">
-      Set heroSubtitle in frontmatter of /content/_index.md
-    </p>
-    {{ end }}
-    {{ $docsUrl := relURL "docs" }}
-    <a href="{{ $docsUrl }}" class="btn btn-primary">
-      <i class="fas fa-book"></i>
-      Documentation
-    </a>
-  </div>
-</section>
+{{ partial "landing-page-section-hero" . }}
 
-  <div class="container mb-5">
-    {{ partial "landing-page-section-recent-blogposts" . }}
-  </div>
-  
-  <div class="container mb-5">
-    {{ partial "landing-page-section-overview" . }}    
-  </div>
-
-  <div class="container pt-5">
-    {{ partial "landing-page-section-footer" . }}  
-  </div>
+<div class="container mb-5">
+  {{ partial "landing-page-section-recent-blogposts" . }}
 </div>
+
+<div class="container mb-5">
+  {{ partial "landing-page-section-overview" . }}
+</div>
+
+<div class="container pt-5">{{ partial "landing-page-section-footer" . }}</div>

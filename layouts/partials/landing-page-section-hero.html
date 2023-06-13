@@ -1,0 +1,26 @@
+<section class="jumbotron jumbotron-lp bg-dark text-center">
+  <div class="container">
+    {{ if .Params.heroTitle}}
+    <h1>{{ .Params.heroTitle}}</h1>
+    {{ else }}
+    <h1>Set heroTitle in frontmatter of /content/_index.md</h1>
+    {{ end }}
+
+    <!-- prettier-ignore -->
+    {{ if .Params.heroSubtitle}}
+    <p class="lead">{{ .Params.heroSubtitle}}</p>
+    {{ else }}
+    <!-- prettier-ignore -->
+    <p class="lead">
+      Set heroSubtitle in frontmatter of /content/_index.md
+    </p>
+    {{ end }}
+
+    <!-- prettier-ignore -->
+    {{ $docsUrl := relURL "docs" }}
+    <a href="{{ $docsUrl }}" class="btn btn-primary">
+      <i class="fas fa-book"></i>
+      Documentation
+    </a>
+  </div>
+</section>

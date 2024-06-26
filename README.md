@@ -124,6 +124,15 @@ Afterwards start again the Hugo server as described in the section below.
 
 Edit the name attribute on the Hugo config file `config.yaml`.
 
+### Hide the **Go to CCloud** button in the navigation bar
+
+To hide the **Go to CCloud** button in the navigation bar, add the following configuration to the `config.yaml`:
+
+```yaml
+params:
+  hideGoToCCloudButton: true
+```
+
 ### Add Non-content Entries to a Menu
 
 Add a menu configuration similar to the following in the `config.yaml` (see [Hugo documentation](https://gohugo.io/content-management/menus/)):
@@ -397,6 +406,10 @@ npm install --save-dev postcss-cli
 https://www.dinofizzotti.com/blog/2017-05-01-adding-hugo-version-and-commit-information-to-a-status-page/
 https://sizeof.cat/post/git-info-on-a-hugo-static-website/
 
-```
+### Upgrade to new version
 
+```
+brew upgrade hugo
+hugo mod clean
+hugo mod tidy
 ```

@@ -1,20 +1,10 @@
 params:
-  # hideNavBarCCBtn: true
   # Enable local search
   offlineSearch: true
   ui:
     # disables search bar on the left navigation
     sidebar_search_disable: true
     sidebar_menu_foldable: true
-
-menu:
-  # uncomment this section to add custom links to the top navigation
-  main:
-    - identifier: "Github"
-      name: "Github"
-      pre: "<i class='fab fa-github'></i>"
-      url: "https://github.com/sapcc/your-repo-pointing-to-the-documentation"
-      weight: 0
 
 module:
   hugoVersion:

@@ -153,19 +153,6 @@ select {
 }
 
 .td-navbar {
-  .nav-header {
-    //   background: $primary;
-    //   min-height: 3.25rem;
-    //   padding: 0.625rem 2rem;
-    //   display: flex;
-    //   align-items: center;
-
-    .nav-header-buttons {
-      margin-left: auto;
-      padding-inline-start: 1rem;
-    }
-  }
-
   .navbar-brand {
     display: flex;
     align-items: center;
@@ -289,7 +276,6 @@ select {
 }
 
 // _sidebar-tree.scss
-
 .td-sidebar {
   @include media-breakpoint-up(md) {
     padding-top: 1rem;
@@ -305,7 +291,6 @@ select {
 }
 
 // _sidebar-toc.scss
-
 .td-sidebar-toc {
   border-left: none;
   background: #fff;
@@ -367,7 +352,7 @@ select {
 // _main-container.scss
 
 .td-main {
-  margin-top: 6.125rem;
+  margin-top: 3.125rem;
   padding-top: 3rem;
   // background: /* Shadow covers */ linear-gradient(var(--color-global-bg) 30%, transparent), /* Shadows */ linear-gradient(rgb(255,0,0), transparent 5%);
   // background-repeat: no-repeat;
@@ -392,7 +377,6 @@ select {
 }
 
 // main.scss
-
 footer {
   // overwrites
   min-height: 100px;
@@ -418,23 +402,7 @@ footer {
     // ----------
 
     background-image: none;
-
-    .footer-ccloud-shape {
-      right: 0;
-    }
-  }
-
-  .footer-ccloud-shape {
-    position: absolute;
-    bottom: 0;
-    right: -15px;
-  }
-
-  .footer-hero-link {
-    color: var(--color-sap-gold);
-    font-weight: 700;
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-    padding-left: 1rem;
   }
 }
+
+@import "custom_styles_project";

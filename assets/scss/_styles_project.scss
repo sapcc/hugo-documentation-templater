@@ -93,20 +93,6 @@ footer {
       color: var(--color-button-subdued-hover-text);
     }
   }
-
-  &.btn-ccloud {
-    background: var(--color-white) url("../images/ccloud_shape.svg") right
-      bottom no-repeat;
-    background-size: 36px;
-    color: #000;
-    border: none;
-    display: inline-block;
-    padding-right: 45px;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
 }
 
 // FORM ELEMENTS

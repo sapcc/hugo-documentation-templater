@@ -163,8 +163,8 @@ select {
   .nav-link {
     text-transform: none;
     color: var(--color-juno-text-high);
-    padding-top: 0;
-    padding-bottom: 0;
+    // padding-top: 0;
+    // padding-bottom: 0;
   }
 
   .td-search__input {
@@ -181,16 +181,18 @@ select {
   // background: var(--color-global-bg);
   // border-bottom: 1px solid var(--color-main-nav-border);
   padding: 0.325rem 2rem;
-  display: flex;
-  align-items: center;
+
+  // display: flex;
+  // align-items: center;
 
   .navbar-search {
     margin-left: auto;
   }
 
   .navbar-nav {
-    flex-direction: row;
-    align-items: center;
+    //   flex-direction: row;
+    //   align-items: center;
+    padding-top: 0;
   }
 }
 

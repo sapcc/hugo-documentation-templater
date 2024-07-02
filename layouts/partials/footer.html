@@ -1,14 +1,8 @@
 {{ $links := .Site.Params.links }}
+
 <footer class="d-print-none">
-  <div>
-    <a class="footer-hero-link" href="https://ccloud.global.cloud.sap/" target="_blank">https://convergedcloud.global.cloud.sap/</a>
-  </div>
-  <div
-    class="footer-ccloud-shape"
-  >
-    {{ with resources.Get "icons/ccloud_shape.svg" }}{{ ( . | minify
-    ).Content | safeHTML }}{{ end }}
-  </div>
-    
+
+  {{ partial "footer-custom-area" . }}
+
 </footer>
-{{ define "footer-links-block" }} {{ end }}
+{{ define "footer-links-block" }}{{ end }}

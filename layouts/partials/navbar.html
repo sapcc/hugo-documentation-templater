@@ -4,7 +4,6 @@
     (not .Site.Params.ui.navbar_translucent_over_cover_disable)
 }}
 {{ $baseURL := urls.Parse $.Site.Params.Baseurl -}}
-{{ $hideNavBarCCBtn := ($.Param "hideNavBarCCBtn") }}
 
 <nav class="td-navbar theme-dark js-navbar-scroll
             {{ if $cover}} td-navbar-cover {{ end }}" data-bs-theme="dark">
@@ -57,13 +56,9 @@
             {{ partial "theme-toggler" . }}
           </li>
         {{ end -}}
-        {{ if not $hideNavBarCCBtn }}
-          <li class="nav-item nav-header-buttons">
-            <a class="btn btn-ccloud" href="https://ccloud.global.cloud.sap">
-              Go to CCloud
-            </a>
-          </li>
-        {{ end -}}
+
+        {{ partial "navbar-custom-items" . }}
+
       </ul>
     </div>
     <div class="d-none d-lg-block">

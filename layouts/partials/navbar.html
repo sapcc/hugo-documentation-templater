@@ -5,8 +5,7 @@
 }}
 {{ $baseURL := urls.Parse $.Site.Params.Baseurl -}}
 
-<nav class="td-navbar theme-dark js-navbar-scroll
-            {{ if $cover}} td-navbar-cover {{ end }}" data-bs-theme="dark">
+<nav class="td-navbar js-navbar-scroll td-navbar-cover" data-bs-theme="dark">
   <div class="nav-header container-fluid flex-column flex-md-row">
     <a class="navbar-brand" href="{{ .Site.Home.RelPermalink }}">
       <span class="navbar-logo">

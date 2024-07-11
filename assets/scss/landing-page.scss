@@ -8,6 +8,7 @@ $heroImage: unquote(
   background: var(--color-global-bg) url($heroImage) top center no-repeat;
   background-size: cover;
   margin-top: 5.75rem;
+  margin-bottom: 2rem;
 
   .container {
     color: white;

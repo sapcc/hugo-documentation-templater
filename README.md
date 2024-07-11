@@ -124,15 +124,6 @@ Afterwards start again the Hugo server as described in the section below.
 
 Edit the name attribute on the Hugo config file `config.yaml`.
 
-### Hide the **Go to CCloud** button in the navigation bar
-
-To hide the **Go to CCloud** button in the navigation bar, add the following configuration to the `config.yaml`:
-
-```yaml
-params:
-  hideGoToCCloudButton: true
-```
-
 ### Add Non-content Entries to a Menu
 
 Add a menu configuration similar to the following in the `config.yaml` (see [Hugo documentation](https://gohugo.io/content-management/menus/)):
@@ -413,3 +404,39 @@ brew upgrade hugo
 hugo mod clean
 hugo mod tidy
 ```
+
+#### Release notes
+
+- Removed ccloud stuff (ccloud_icon_gold) (used in the landing page section footer)
+
+#### Sap Assets Module
+
+Add the sap assets module to the go.mod file:
+
+```
+require (
+  github.com/sapcc/sap-asset-module v0.0.1
+  github.com/sapcc/hugo-documentation-templater v2.0.0
+)
+```
+
+**Remember that the sap-assets-module should be added in the first line in the config.yaml file:**
+
+```yaml
+module:
+  imports:
+    - path: github.com/sapcc/hugo-documentation-templater-sap-assets
+      disable: false
+    - path: github.com/sapcc/hugo-documentation-templater
+      disable: false
+```
+
+### Todos
+
+- Update screenshots
+- change README references with version
+- Fix layout when the screen is too small
+- Need new favicons
+- Need to fix favicons into the sap assets
+- --color-button-primary-border do not exists but used in stylesheets. Other type of buttons have the border color defined.
+- Links have on hover a color

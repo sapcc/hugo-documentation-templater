@@ -13,7 +13,7 @@
 
 :root[data-bs-theme="light"] {
   // override
-  --bs-body-bg: var(--color-juno-grey-light-1);
+  --bs-body-bg: var(--color-global-bg);
 
   --bs-link-color-rgb: var(--color-text-link-raw);
   --bs-link-color: var(--color-text-link);
@@ -26,12 +26,12 @@
   );
 
   --footer-image-bg: url("../images/footer_img_light.svg") left center no-repeat;
-  --color-footer-bg: var(--color-background-lvl-1);
+  --color-footer-bg: var(--color-global-bg);
 }
 
 :root[data-bs-theme="dark"] {
   // override
-  --bs-body-bg: var(--color-juno-grey-blue-6);
+  --bs-body-bg: var(--color-global-bg);
   --bs-body-color: var(--color-global-text);
 
   --bs-link-color-rgb: var(--color-text-link-raw);
@@ -45,5 +45,5 @@
   );
 
   --footer-image-bg: url("../images/footer_img_dark.svg") left center no-repeat;
-  --color-footer-bg: var(--color-juno-grey-blue-4);
+  --color-footer-bg: var(--color-global-bg);
 }

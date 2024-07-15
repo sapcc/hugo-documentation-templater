@@ -118,7 +118,7 @@ footer {
 
 .td-navbar {
   // set background to override the body background when not landing page
-  background: var(--color-background-lvl-0) !important;
+  background: var(--color-juno-grey-blue-11) !important;
 
   .navbar-brand {
     display: flex;
@@ -154,23 +154,15 @@ footer {
 
 .td-search__input {
   background: var(--color-background-lvl-3);
-  border-radius: 100rem;
-  max-width: 100%;
-  margin-right: 0;
+  border-radius: 3px;
 
   &.form-control {
-    height: auto;
-
     &:focus {
       background: var(--color-background-lvl-3);
     }
     &:not(:focus) {
       background: var(--color-background-lvl-3);
     }
-  }
-
-  @if $enable-rounded {
-    border-radius: 100rem;
   }
 }
 
@@ -244,21 +236,6 @@ footer {
     padding-bottom: 1rem;
   }
 
-  a {
-    // display: block;
-    // font-weight: $font-weight-light;
-    // padding-bottom: .25rem;
-  }
-
-  li {
-    // list-style: none;
-    // display: block;
-  }
-
-  li li {
-    // margin-left: 0.5rem;
-  }
-
   #TableOfContents {
     > ul > li > a {
       font-weight: $font-weight-normal;
@@ -277,10 +254,6 @@ footer {
       }
     }
   }
-
-  ul {
-    // padding-left: 0;
-  }
 }
 
 // _main-container.scss
@@ -289,7 +262,7 @@ footer {
   padding-top: 3rem;
 
   main {
-    background: var(--color-background-lvl-0);
+    background: var(--color-content-area-bg);
     box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.05);
 
     @include media-breakpoint-up(md) {

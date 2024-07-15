@@ -1,5 +1,7 @@
 # Welcome to the Hugo documentation templater
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+
 This guide shows you how to use this templater to create a Converged Cloud technical documentation site. But before you keep reading have a look at our beauty:
 
 Custom landing page:

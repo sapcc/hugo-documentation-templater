@@ -403,21 +403,29 @@ https://sizeof.cat/post/git-info-on-a-hugo-static-website/
 
 ### Upgrade to V2 (braking changes)
 
-First update the hugo version, clean the modules and remove the public folder:
-
-```
-brew upgrade hugo
-hugo mod clean
-hugo mod tidy
-rm -rf public
-```
-
 #### Release notes
 
 - Removed ccloud assets (SAP logo and releated assets)
 - Upgraded to Docsy v0.10.0
 - Stylesheets adapted to the new Docsy version which includes Bootstrap 5.3.3 and dark mode.
 - Several bug fixes and improvements
+
+#### Upgrade
+
+First update the hugo version, clean the modules and remove the public folder:
+
+```bash
+brew upgrade hugo
+hugo mod clean
+hugo mod tidy
+rm -rf public
+```
+
+Afterwards update the module version in the go.mod file:
+
+```bash
+hugo mod get github.com/sapcc/hugo-documentation-templater@v2.0.0
+```
 
 #### Sap Assets Module
 

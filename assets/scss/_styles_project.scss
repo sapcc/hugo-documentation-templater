@@ -1,6 +1,8 @@
 body {
-  background: var(--color-global-bg);
-  color: var(--color-global-text);
+  &.landing-page {
+    // set the background color for the landing page darker then the default from bootstrap
+    background: var(--color-global-bg);
+  }
 }
 
 // LAYOUT
@@ -15,6 +17,13 @@ footer {
 }
 
 // BUTTONS
+.td-navbar {
+  .dropdown-toggle {
+    // override default btn color to match the navbar style since the .btn sets the color definition is different
+    color: var(--bs-nav-link-color);
+  }
+}
+
 .btn {
   background-color: var(--color-button-default-bg);
   background-image: none;
@@ -23,6 +32,7 @@ footer {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
     var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+
   font-weight: 700;
   padding-top: 0.375rem;
   padding-bottom: 0.375rem;
@@ -53,7 +63,7 @@ footer {
   }
 
   &.btn-primary {
-    background-image: var(--gradient-button-primary-bg);
+    background-color: var(--color-button-primary-bg);
     border: 1px solid var(--color-button-primary-border);
     color: var(--color-button-primary-text);
 
@@ -93,92 +103,28 @@ footer {
       color: var(--color-button-subdued-hover-text);
     }
   }
+}
 
-  &.btn-ccloud {
-    background: var(--color-white) url("../images/ccloud_shape.svg") right
-      bottom no-repeat;
-    background-size: 36px;
-    color: #000;
-    border: none;
-    display: inline-block;
-    padding-right: 45px;
-
-    &:hover {
-      text-decoration: underline;
+// NAVBAR
+.landing-page {
+  .td-navbar {
+    // remove background when landing page so the jumbotron bg is visible
+    background: transparent !important;
+    &.navbar-bg-onscroll {
+      background: var(--color-background-lvl-0) !important;
     }
-  }
-}
-
-// FORM ELEMENTS
-
-input {
-  color: var(--color-textinput-text);
-  border-radius: 3px;
-  border-width: 1px;
-  border-color: transparent;
-  background-color: var(--color-textinput-bg);
-  padding: 1rem;
-  line-height: 1rem;
-  font-size: 1rem;
-  height: 2.375rem;
-}
-
-select {
-  height: 2.375rem;
-  border-radius: 3px;
-  border-width: 0;
-  background-color: var(--color-select-bg);
-  background-position: right;
-  background-repeat: no-repeat;
-  padding-left: 1rem;
-  padding-right: 2.25rem;
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
-// custom toolbar styles
-.content-area-toolbar {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: var(--color-background-lvl-1);
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-
-  label {
-    margin-bottom: 0;
   }
 }
 
 .td-navbar {
-  .nav-header {
-    background: $primary;
-    min-height: 3.25rem;
-    padding: 0.625rem 2rem;
-    display: flex;
-    align-items: center;
-
-    .nav-header-buttons {
-      margin-left: auto;
-    }
-  }
+  // set background to override the body background when not landing page
+  background: var(--color-juno-grey-blue-11) !important;
 
   .navbar-brand {
     display: flex;
     align-items: center;
-    color: var(--color-juno-text-high);
     padding-top: 0;
     padding-bottom: 0;
-
-    &:hover {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .nav-link {
-      color: var(--color-juno-text-high);
-    }
 
     svg {
       height: 32px;
@@ -188,34 +134,16 @@ select {
 
   .nav-link {
     text-transform: none;
-    color: var(--color-juno-text-high);
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-
-  .td-search__input {
-    max-width: 100%;
-    margin-right: 0;
-
-    @include placeholder {
-      color: var(--color-juno-text-high);
-    }
   }
 }
 
 #main_navbar {
-  background: var(--color-global-bg);
-  border-bottom: 1px solid var(--color-main-nav-border);
   padding: 0.325rem 2rem;
-  display: flex;
-  align-items: center;
-
   .navbar-search {
     margin-left: auto;
   }
-
   .navbar-nav {
-    flex-direction: row;
+    padding-top: 0;
   }
 }
 
@@ -224,30 +152,17 @@ select {
   width: 100%;
 }
 
-.td-navbar .td-search__icon {
-  color: $input-placeholder-color;
-}
-
 .td-search__input {
   background: var(--color-background-lvl-3);
-  border-radius: 100rem;
-  max-width: 100%;
-  margin-right: 0;
+  border-radius: 3px;
 
   &.form-control {
-    height: auto;
-
     &:focus {
       background: var(--color-background-lvl-3);
-      border-color: none;
     }
     &:not(:focus) {
       background: var(--color-background-lvl-3);
     }
-  }
-
-  @if $enable-rounded {
-    border-radius: 100rem;
   }
 }
 
@@ -277,6 +192,7 @@ select {
   }
 }
 
+// keep it here although it is just for the landing page because of the variable $font-size-sm
 .modified-date {
   color: var(--color-juno-text-high);
   font-size: $font-size-sm;
@@ -287,11 +203,9 @@ select {
 }
 
 // _sidebar-tree.scss
-
 .td-sidebar {
   @include media-breakpoint-up(md) {
     padding-top: 1rem;
-    background-color: $td-sidebar-bg-color;
     border-right: none;
   }
 
@@ -303,10 +217,9 @@ select {
 }
 
 // _sidebar-toc.scss
-
 .td-sidebar-toc {
   border-left: none;
-  background: #fff;
+  background: var(--color-background-lvl-0);
 
   @supports (position: sticky) {
     top: 0;
@@ -321,21 +234,6 @@ select {
 
   .toc-header {
     padding-bottom: 1rem;
-  }
-
-  a {
-    // display: block;
-    // font-weight: $font-weight-light;
-    // padding-bottom: .25rem;
-  }
-
-  li {
-    // list-style: none;
-    // display: block;
-  }
-
-  li li {
-    // margin-left: 0.5rem;
   }
 
   #TableOfContents {
@@ -356,31 +254,15 @@ select {
       }
     }
   }
-
-  ul {
-    // padding-left: 0;
-  }
 }
 
 // _main-container.scss
-
 .td-main {
-  margin-top: 6.125rem;
+  margin-top: 3.125rem;
   padding-top: 3rem;
-  // background: /* Shadow covers */ linear-gradient(var(--color-global-bg) 30%, transparent), /* Shadows */ linear-gradient(rgb(255,0,0), transparent 5%);
-  // background-repeat: no-repeat;
-  // background-size: 100% 40px, 100% 4px;
-  // background-attachment: local, scroll;
-
-  // background: /* Shadow covers */ linear-gradient(white 30%, rgba(255,255,255,0)), linear-gradient(rgba(255,255,255,0), white 70%) 0 100%,
-  // /* Shadows */ radial-gradient(farthest-side at 50% 0, rgba(0,0,0,.2), rgba(0,0,0,0)), radial-gradient(farthest-side at 50% 100%, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%;
-  // background-repeat: no-repeat;
-  // background-color: white;
-  // background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
-  // background-attachment: local, local, scroll, scroll;
 
   main {
-    background: #fff;
+    background: var(--color-content-area-bg);
     box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.05);
 
     @include media-breakpoint-up(md) {
@@ -390,7 +272,6 @@ select {
 }
 
 // main.scss
-
 footer {
   // overwrites
   min-height: 100px;
@@ -403,7 +284,7 @@ footer {
   display: flex;
   align-items: center;
   position: relative;
-  background: url("../images/footer_img.svg") left center no-repeat;
+  background: var(--footer-image-bg);
 
   // COVERPAGE SPECIAL STUFF
   &.footer-landingpage {
@@ -416,23 +297,72 @@ footer {
     // ----------
 
     background-image: none;
-
-    .footer-ccloud-shape {
-      right: 0;
-    }
-  }
-
-  .footer-ccloud-shape {
-    position: absolute;
-    bottom: 0;
-    right: -15px;
-  }
-
-  .footer-hero-link {
-    color: var(--color-sap-gold);
-    font-weight: 700;
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-    padding-left: 1rem;
   }
 }
+
+// CALLOUTS
+.bs-callout {
+  padding: 20px !important;
+  margin: 20px 0;
+  border-left-width: 5px !important;
+  border-radius: 3px;
+  color: var(--color-text-high) !important;
+}
+.bs-callout h4 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+.bs-callout p:last-child {
+  margin-bottom: 0;
+}
+.bs-callout code {
+  border-radius: 3px;
+}
+.bs-callout + .bs-callout {
+  margin-top: -5px;
+}
+
+.bs-callout-info {
+  border-left-color: var(--color-info) !important;
+  background: var(--gradient-message-default-bg);
+}
+.bs-callout-info h4 {
+  color: var(--color-info);
+}
+.bs-callout-danger {
+  border-left-color: var(--color-danger) !important;
+  background: var(--gradient-message-danger-bg);
+}
+.bs-callout-danger h4 {
+  color: var(--color-danger);
+}
+.bs-callout-warning {
+  border-left-color: var(--color-warning) !important;
+  background: var(--gradient-message-warning-bg);
+}
+.bs-callout-warning h4 {
+  color: var(--color-warning);
+}
+.bs-callout-success {
+  border-left-color: var(--color-success) !important;
+  background: var(--gradient-message-success-bg);
+}
+.bs-callout-success h4 {
+  color: var(--color-success);
+}
+.bs-callout-default {
+  border-left-color: var(--color-juno-grey-light-9) !important;
+  background: var(--gradient-callout-default-bg);
+}
+.bs-callout-default h4 {
+  color: var(--color-juno-grey-light-9);
+}
+.bs-callout-white {
+  border-left-color: $primary-theme !important;
+  border: 1px solid $primary-theme;
+}
+.bs-callout-white h4 {
+  color: $primary-theme;
+}
+
+@import "custom_styles_project";

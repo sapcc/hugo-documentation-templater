@@ -3,24 +3,24 @@
 <html lang="{{ .Site.Language.Lang }}" class="no-js">
   <head>
     <!-- prettier-ignore -->
-    {{ partial "head.html" . }} 
-    {{ partial "landing-page-head.html" . }} 
+    {{ partial "head.html" . }}
+    {{ partial "landing-page-head.html" . }}
     {{ partial "landing-page-head-custom.html" . }}
   </head>
-  <body class="theme-dark docs-layout">
+  <body class="theme-dark docs-layout landing-page" data-bs-theme="dark">
     <header>{{ partial "navbar.html" . }}</header>
 
     <!-- prettier-ignore -->
     <main role="main">
-    {{ if ($.Param "landingPageContentTemplateName")}}
-    {{ partial ($.Param "landingPageContentTemplateName") . }}
-    {{ else }}
-    <!-- prettier-ignore -->
-    {{ partial "landing-page-content-default.html" . }}
-    {{ end }}
+      {{ if ($.Param "landingPageContentTemplateName")}}
+        {{ partial ($.Param "landingPageContentTemplateName") . }}
+      {{ else }}
+        <!-- prettier-ignore -->
+        {{ partial "landing-page-content-default.html" . }}
+      {{ end }}
     </main>
     <!-- prettier-ignore -->
-    {{ partial "footer_landingpage.html" . }}
+    {{ partial "landing-page-footer.html" . }}
     {{ partialCached "scripts.html" . }}
   </body>
 </html>

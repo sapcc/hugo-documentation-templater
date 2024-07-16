@@ -1,3 +1,5 @@
+title: "Documentation Templater"
+
 params:
   # Enable local search
   offlineSearch: true
@@ -5,6 +7,7 @@ params:
     # disables search bar on the left navigation
     sidebar_search_disable: true
     sidebar_menu_foldable: true
+    showLightDarkModeMenu: true  
 
 module:
   hugoVersion:

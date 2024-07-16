@@ -1,5 +1,7 @@
 # Welcome to the Hugo documentation templater
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+
 This guide shows you how to use this templater to create a Converged Cloud technical documentation site. But before you keep reading have a look at our beauty:
 
 Custom landing page:
@@ -55,7 +57,7 @@ the Go module path for the site can be a single word as well.
 Normally you would add the sapcc docs templater (hugo-documentation-templater) module as following:
 
 ```
-hugo mod get github.com/sapcc/hugo-documentation-templater@v1.6.3
+hugo mod get github.com/sapcc/hugo-documentation-templater@v2.0.0
 ```
 
 But if you are developing this module add the following config to the go.mod file and it will redirect to your local folder:
@@ -68,7 +70,7 @@ replace github.com/sapcc/hugo-documentation-templater => /Users/d063222/Document
 
 go 1.20
 
-require github.com/sapcc/hugo-documentation-templater v1.6.3 // indirect
+require github.com/sapcc/hugo-documentation-templater v2.0.0 // indirect
 ```
 
 ### Edit the Hugo config file `config.yaml` (originally is `config.toml` but I prefer yaml) as following to import the templater:
@@ -103,10 +105,11 @@ module:
 ### Start Hugo Server
 
 ```
-hugo server --disableFastRender
+hugo server --disableFastRender --ignoreCache
 ```
 
-The `--disableFastRender` option ensures that nothing is cached.
+The `--disableFastRender` enables full re-renders on changes.
+The `--ignoreCache` ignores the cache directory.
 
 ### Errors
 
@@ -114,9 +117,10 @@ If you have any errors when starting the application try running following comma
 
 ```bash
 hugo mod clean
+hugo mod tidy
 ```
 
-Afterwards start again the Hugo server as described in the section below.
+Afterwards start again the Hugo server as described in the section below. I this does not help, please remove the public folder and start the server again.
 
 ## Content and Customization
 
@@ -369,7 +373,7 @@ Example:
 
 ### Bootstrap version
 
-Based on Bootstrap 4.6.2
+Based on Bootstrap 5.3.3
 
 ### Buil assets
 
@@ -397,6 +401,48 @@ npm install --save-dev postcss-cli
 https://www.dinofizzotti.com/blog/2017-05-01-adding-hugo-version-and-commit-information-to-a-status-page/
 https://sizeof.cat/post/git-info-on-a-hugo-static-website/
 
+### Upgrade to V2 (braking changes)
+
+First update the hugo version, clean the modules and remove the public folder:
+
+```
+brew upgrade hugo
+hugo mod clean
+hugo mod tidy
+rm -rf public
 ```
 
+#### Release notes
+
+- Removed ccloud assets (SAP logo and releated assets)
+- Upgraded to Docsy v0.10.0
+- Stylesheets adapted to the new Docsy version which includes Bootstrap 5.3.3 and dark mode.
+- Several bug fixes and improvements
+
+#### Sap Assets Module
+
+To add the sap assets module install the module with the following command:
+
+```bash
+hugo mod get github.com/sapcc/hugo-documentation-templater-sap-assets@v1.0.0
+```
+
+You should see the following in your go.mod file:
+
+```
+require (
+  github.com/sapcc/sap-asset-module v0.0.1
+  github.com/sapcc/hugo-documentation-templater v2.0.0
+)
+```
+
+**Remember that the sap-assets-module should be added in the first line in the config.yaml file:**
+
+```yaml
+module:
+  imports:
+    - path: github.com/sapcc/hugo-documentation-templater-sap-assets
+      disable: false
+    - path: github.com/sapcc/hugo-documentation-templater
+      disable: false
 ```

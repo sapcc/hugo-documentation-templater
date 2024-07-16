@@ -1,0 +1,49 @@
+// =================
+// Add modify Bootstrap’s color maps
+// =================
+
+// override the default navbar color so it looks like the brand color
+// this is only for the dark theme
+[data-bs-theme="dark"].td-navbar {
+  --bs-navbar-color: rgba(255, 255, 255, 0.9);
+  --bs-navbar-hover-color: rgba(255, 255, 255, 1);
+  --bs-navbar-brand-color: rgba(255, 255, 255, 0.9);
+  --bs-navbar-brand-hover-color: rgba(255, 255, 255, 1);
+}
+
+:root[data-bs-theme="light"] {
+  // override
+  --bs-body-bg: var(--color-global-bg);
+
+  --bs-link-color-rgb: var(--color-text-link-raw);
+  --bs-link-color: var(--color-text-link);
+
+  --color-search-input-bg: var(--color-juno-grey-light-3);
+  --gradient-callout-default-bg: linear-gradient(
+    90deg,
+    rgb(250, 250, 250) 0%,
+    rgb(220, 220, 220) 100%
+  );
+
+  --footer-image-bg: url("../images/footer_img_light.svg") left center no-repeat;
+  --color-footer-bg: var(--color-global-bg);
+}
+
+:root[data-bs-theme="dark"] {
+  // override
+  --bs-body-bg: var(--color-global-bg);
+  --bs-body-color: var(--color-global-text);
+
+  --bs-link-color-rgb: var(--color-text-link-raw);
+  --bs-link-color: var(--color-text-link);
+
+  // base juno-grey-light-4
+  --gradient-callout-default-bg: linear-gradient(
+    90deg,
+    rgb(75, 75, 75) 0%,
+    rgb(200, 200, 200) 100%
+  );
+
+  --footer-image-bg: url("../images/footer_img_dark.svg") left center no-repeat;
+  --color-footer-bg: var(--color-global-bg);
+}

@@ -1,6 +1,6 @@
 {
-  "short_name": "CCloud Docs",
-  "name": "Converged Cloud Documentation",
+  "short_name": "Documentation Templater",
+  "name": "Hugo Documentation Templater",
   "icons": [
     {
       "src": "favicon.ico",

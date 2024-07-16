@@ -8,6 +8,7 @@ $heroImage: unquote(
   background: var(--color-global-bg) url($heroImage) top center no-repeat;
   background-size: cover;
   margin-top: 5.75rem;
+  margin-bottom: 2rem;
 
   .container {
     color: white;
@@ -92,7 +93,7 @@ $heroImage: unquote(
 .landing-page-grid {
   display: grid;
   // grid-template-columns: repeat(3, minmax(150px, 1fr));
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   grid-auto-rows: 1fr;
   gap: 1rem;
 

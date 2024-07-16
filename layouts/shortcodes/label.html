@@ -1,7 +1,7 @@
-<span class="badge badge-{{ .Get 0 }} ">
-{{ if eq .Page.File.Ext "md" }}
+<span class="badge text-bg-{{ .Get 0 }} ">
+  {{ if eq .Page.File.Ext "md" }}
     {{ .Inner | markdownify }}
-{{ else }}
+  {{ else }}
     {{ .Inner | htmlUnescape | safeHTML }}
-{{ end }}
+  {{ end }}
 </span>

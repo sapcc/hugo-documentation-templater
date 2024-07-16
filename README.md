@@ -105,10 +105,11 @@ module:
 ### Start Hugo Server
 
 ```
-hugo server --disableFastRender
+hugo server --disableFastRender --ignoreCache
 ```
 
-The `--disableFastRender` option ensures that nothing is cached.
+The `--disableFastRender` enables full re-renders on changes.
+The `--ignoreCache` ignores the cache directory.
 
 ### Errors
 
@@ -116,9 +117,10 @@ If you have any errors when starting the application try running following comma
 
 ```bash
 hugo mod clean
+hugo mod tidy
 ```
 
-Afterwards start again the Hugo server as described in the section below.
+Afterwards start again the Hugo server as described in the section below. I this does not help, please remove the public folder and start the server again.
 
 ## Content and Customization
 
@@ -371,7 +373,7 @@ Example:
 
 ### Bootstrap version
 
-Based on Bootstrap 4.6.2
+Based on Bootstrap 5.3.3
 
 ### Buil assets
 
@@ -399,21 +401,33 @@ npm install --save-dev postcss-cli
 https://www.dinofizzotti.com/blog/2017-05-01-adding-hugo-version-and-commit-information-to-a-status-page/
 https://sizeof.cat/post/git-info-on-a-hugo-static-website/
 
-### Upgrade to new version
+### Upgrade to V2 (braking changes)
+
+First update the hugo version, clean the modules and remove the public folder:
 
 ```
 brew upgrade hugo
 hugo mod clean
 hugo mod tidy
+rm -rf public
 ```
 
 #### Release notes
 
-- Removed ccloud stuff (ccloud_icon_gold) (used in the landing page section footer)
+- Removed ccloud assets (SAP logo and releated assets)
+- Upgraded to Docsy v0.10.0
+- Stylesheets adapted to the new Docsy version which includes Bootstrap 5.3.3 and dark mode.
+- Several bug fixes and improvements
 
 #### Sap Assets Module
 
-Add the sap assets module to the go.mod file:
+To add the sap assets module install the module with the following command:
+
+```bash
+hugo mod get github.com/sapcc/hugo-documentation-templater-sap-assets@v1.0.0
+```
+
+You should see the following in your go.mod file:
 
 ```
 require (
@@ -432,13 +446,3 @@ module:
     - path: github.com/sapcc/hugo-documentation-templater
       disable: false
 ```
-
-### Todos
-
-- Update screenshots
-- change README references with version
-- Fix layout when the screen is too small
-- Need new favicons
-- Need to fix favicons into the sap assets
-- --color-button-primary-border do not exists but used in stylesheets. Other type of buttons have the border color defined.
-- Links have on hover a color

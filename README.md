@@ -172,6 +172,8 @@ Add a file named `_index.md` to the root of folder `content` with following data
 heroTitle: "The best documentation ever"
 heroSubtitle: "This is the subtitle of the hero section"
 heroImage: "images/custom-hero-image.jpg"
+heroButtonTitle: "Documentation"
+heroButtonLink: "docs/customer"
 ---
 ```
 

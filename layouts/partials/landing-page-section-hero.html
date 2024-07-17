@@ -17,10 +17,10 @@
     {{ end }}
 
     <!-- prettier-ignore -->
-    {{ $docsUrl := relURL "docs" }}
+    {{ $docsUrl := relURL (default "docs" .Params.heroButtonLink) }}
     <a href="{{ $docsUrl }}" class="btn btn-primary">
       <i class="fas fa-book"></i>
-      Documentation
+      {{ default "Documentation" .Params.heroButtonTitle }}
     </a>
   </div>
 </section>

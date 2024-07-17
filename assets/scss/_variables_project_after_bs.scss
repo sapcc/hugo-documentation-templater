@@ -25,7 +25,6 @@
     rgb(220, 220, 220) 100%
   );
 
-  --footer-image-bg: url("../images/footer_img_light.svg") left center no-repeat;
   --color-footer-bg: var(--color-global-bg);
 }
 
@@ -44,6 +43,5 @@
     rgb(200, 200, 200) 100%
   );
 
-  --footer-image-bg: url("../images/footer_img_dark.svg") left center no-repeat;
   --color-footer-bg: var(--color-global-bg);
 }

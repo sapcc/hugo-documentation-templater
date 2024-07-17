@@ -12,6 +12,10 @@ Documentation page:
 
 ![Landing page example](static/images/documentation_page_example.png)
 
+## Example
+
+You can see the templater in action with its Markdown helpers, tools, and extensions that enhance standard Markdown, enabling you to create more dynamic and engaging documentation. Check it out at the following [link](https://sapcc.github.io/hugo-documentation-templater/).
+
 ## 🚨 Major Upgrade to V2 🚨
 
 **⚠️ Attention:** This release introduces significant changes that may impact your existing setup. Please review the [Upgrade to V2 (Breaking Changes)](#upgrade-to-v2-breaking-changes) section below for detailed instructions on how to update your project. This upgrade includes the removal of SAP-specific assets, updates to Docsy, and numerous improvements and bug fixes.
@@ -61,7 +65,7 @@ the Go module path for the site can be a single word as well.
 Normally you would add the sapcc docs templater (hugo-documentation-templater) module as following:
 
 ```
-hugo mod get github.com/sapcc/hugo-documentation-templater@v2.0.0
+hugo mod get github.com/sapcc/hugo-documentation-templater@v2.0.2
 ```
 
 But if you are developing this module add the following config to the go.mod file and it will redirect to your local folder:
@@ -74,7 +78,7 @@ replace github.com/sapcc/hugo-documentation-templater => /Users/d063222/Document
 
 go 1.20
 
-require github.com/sapcc/hugo-documentation-templater v2.0.0 // indirect
+require github.com/sapcc/hugo-documentation-templater v2.0.2 // indirect
 ```
 
 ### Edit the Hugo config file `config.yaml` (originally is `config.toml` but I prefer yaml) as following to import the templater:
@@ -428,7 +432,7 @@ rm -rf public
 Afterwards update the templater module version:
 
 ```bash
-hugo mod get github.com/sapcc/hugo-documentation-templater/v2@v2.0.0
+hugo mod get github.com/sapcc/hugo-documentation-templater/v2@v2.0.2
 ```
 
 #### Sap Assets Module
@@ -444,7 +448,7 @@ You should see the following in your go.mod file:
 ```
 require (
   github.com/sapcc/sap-asset-module v0.0.1
-  github.com/sapcc/hugo-documentation-templater v2.0.0
+  github.com/sapcc/hugo-documentation-templater v2.0.2
 )
 ```
 

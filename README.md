@@ -12,6 +12,10 @@ Documentation page:
 
 ![Landing page example](static/images/documentation_page_example.png)
 
+## 🚨 Major Upgrade to V2 🚨
+
+**⚠️ Attention:** This release introduces significant changes that may impact your existing setup. Please review the [Upgrade to V2 (Breaking Changes)](#upgrade-to-v2-breaking-changes) section below for detailed instructions on how to update your project. This upgrade includes the removal of SAP-specific assets, updates to Docsy, and numerous improvements and bug fixes.
+
 ## Create a new documentation site from scratch
 
 ### Install Hugo extended version
@@ -401,7 +405,7 @@ npm install --save-dev postcss-cli
 https://www.dinofizzotti.com/blog/2017-05-01-adding-hugo-version-and-commit-information-to-a-status-page/
 https://sizeof.cat/post/git-info-on-a-hugo-static-website/
 
-### Upgrade to V2 (braking changes)
+### Upgrade to V2 (Breaking Changes)
 
 #### Release notes
 
@@ -421,10 +425,10 @@ hugo mod tidy
 rm -rf public
 ```
 
-Afterwards update the module version in the go.mod file:
+Afterwards update the templater module version:
 
 ```bash
-hugo mod get github.com/sapcc/hugo-documentation-templater@v2.0.0
+hugo mod get github.com/sapcc/hugo-documentation-templater/v2@v2.0.0
 ```
 
 #### Sap Assets Module

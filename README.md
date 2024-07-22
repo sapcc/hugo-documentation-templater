@@ -1,4 +1,4 @@
-# Welcome to the Hugo documentation templater
+# Welcome to the Hugo Documentation Templater
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
@@ -12,23 +12,23 @@ Documentation page:
 
 ![Landing page example](static/images/documentation_page_example.png)
 
-## Example
+## Live Example
 
-You can see the templater in action with its Markdown helpers, tools, and extensions that enhance standard Markdown, enabling you to create more dynamic and engaging documentation. Check it out at the following [link](https://sapcc.github.io/hugo-documentation-templater/).
+Check out this documentation templater in action with its Markdown helpers, tools, and extensions at the following [link](https://sapcc.github.io/hugo-documentation-templater/).
 
 ## 🚨 Major Upgrade to V2 🚨
 
 **⚠️ Attention:** This release introduces significant changes that may impact your existing setup. Please review the [Upgrade to V2 (Breaking Changes)](#upgrade-to-v2-breaking-changes) section below for detailed instructions on how to update your project. This upgrade includes the removal of SAP-specific assets, updates to Docsy, and numerous improvements and bug fixes.
 
-## Create a new documentation site from scratch
+## Create a New Documentation Site from Scratch
 
-### Install Hugo extended version
+### Install Hugo Extended Version
 
 Please refer to the official Hugo documentation for more details on [how to install Hugo in other operating systems](https://gohugo.io/installation).
 
 Prerequisite: Golang
 
-#### Mac users
+#### Mac Users
 
 ```
 brew install golang
@@ -41,34 +41,32 @@ To verify your new install:
 hugo version
 ```
 
-### Create a Hugo site
+### Create a Hugo Site
 
 ```
 hugo new site my-docu-site
 cd  my-docu-site
 ```
 
-### Turn your site into a Hugo Module
+### Convert Your Site into a Hugo Module
 
-This can be done with `hugo mod init <module path>`.
+You can convert your site into a Hugo module using the `hugo mod init <module path>` command.
 
 ```
 hugo mod init github.com/sapcc/my-docu-site
 ```
 
-The Go `<module path>` of the dependencies should resolve to a valid VCS repository like Git so it is possible
-for others to use the site as a dependency. If your site’s source code is not pushed to a public VCS repository,
-the Go module path for the site can be a single word as well.
+The Go `<module path>` should resolve to a valid VCS (Version Control System) repository, such as Git, allowing others to use your site as a dependency. If your site's source code is not available in a public VCS repository, you can use a single word as the Go module path.
 
-### Declare the hugo-documentation-templater module as a dependency for your site
+### Declare the `hugo-documentation-templater` Module as a Dependency for Your Site
 
-Normally you would add the sapcc docs templater (hugo-documentation-templater) module as following:
+To add the templater (`hugo-documentation-templater`) module as a dependency, use the following command:
 
 ```
 hugo mod get github.com/sapcc/hugo-documentation-templater@v2.0.2
 ```
 
-But if you are developing this module add the following config to the go.mod file and it will redirect to your local folder:
+If you are developing this module locally, add the following configuration to your go.mod file to redirect to your local folder:
 
 ```go.mod
 module github.com/me/my-docu-site
@@ -81,12 +79,14 @@ go 1.20
 require github.com/sapcc/hugo-documentation-templater v2.0.2 // indirect
 ```
 
-### Edit the Hugo config file `config.yaml` (originally is `config.toml` but I prefer yaml) as following to import the templater:
+### Update the Hugo Config to Import the Templater
+
+To import the templater, add the necessary settings to the `config.yaml` file in the `imports` section:
 
 ```yaml
 baseURL: "http://example.org/"
 languageCode: "en-us"
-title: "My New SAP CC Doc Site"
+title: "My New Doc Site"
 
 params:
   # change this url to the one of your project to enable 'View page source', 'Edit this page' and 'Create documentation issue' links on the right side navigation
@@ -119,22 +119,26 @@ hugo server --disableFastRender --ignoreCache
 The `--disableFastRender` enables full re-renders on changes.
 The `--ignoreCache` ignores the cache directory.
 
-### Errors
+### Troubleshooting Application Start Errors
 
-If you have any errors when starting the application try running following command to clean up the cache:
+If you encounter any errors when starting the application, try running the following command to clean up the cache and remove unused modules:
 
 ```bash
 hugo mod clean
 hugo mod tidy
 ```
 
-Afterwards start again the Hugo server as described in the section below. I this does not help, please remove the public folder and start the server again.
+After running the cleanup command, restart the Hugo server as described in the previous section. If you still encounter issues, try deleting the public folder and then restart the server.
 
 ## Content and Customization
 
-### Site name
+### Site Name
 
 Edit the name attribute on the Hugo config file `config.yaml`.
+
+```yaml
+title: "My New Doc Site"
+```
 
 ### Add Non-content Entries to a Menu
 
@@ -150,7 +154,7 @@ menu:
       weight: 0
 ```
 
-### Print option
+### Print Option
 
 Add to the `config.yaml` following setting to display the print link:
 
@@ -161,11 +165,13 @@ outputs:
     - print
 ```
 
-### Landing page
+### Landing Page
 
-#### Customize hero section
+#### Customize Hero Section
 
-Add a file named `_index.md` to the root of folder `content` with following data to customize the landing page:
+### Customizing the Landing Page
+
+To customize the landing page, add a file named \_index.md to the root of the `content` folder. These are available attributes you can use to customize the hero section:
 
 ```markdown
 ---
@@ -177,9 +183,9 @@ heroButtonLink: "docs/customer"
 ---
 ```
 
-#### Configure the latest changes section in the landing page
+#### Configure the Latest Changes Section on the Landing Page
 
-Display the recent file changes of the documentation content as they are committed in github. To activate this section enter the number of file changes to be shown in the section adding following configuration to the `config.yaml`:
+To display recent file changes in your documentation content as they are committed to GitHub, you just need to configure the number of changes to be shown. Add the following configuration to your `config.yaml` to activate this section:
 
 ```yaml
 params:
@@ -187,9 +193,9 @@ params:
   recentDocChanges: 10
 ```
 
-#### Configure the news section in the landing page
+#### Configure the News Section on the Landing Page
 
-Display the recent news from the blog section as they are committed in github. To activate this section enter the number of blog posts to be shown by adding following configuration to the `config.yaml`:
+To display recent blog posts on the landing page as they are committed to GitHub, you need to activate this section by specifying the number of blog posts to show. Add the following configuration to your `config.yaml` file:
 
 ```yaml
 params:
@@ -197,12 +203,13 @@ params:
   recentBlogPosts: 5
 ```
 
-#### Add custom section index to jump to specific documentation sections in the landing page
+#### Add a Custom Section Index for Navigation
 
-Add this parameter `landingSectionIndex: true` to the `_index.md` file of the desired section or markdown file.
+To enable a custom section index that allows users to jump to specific documentation sections from the landing page, add the `landingSectionIndex: true` parameter to the `_index.md` file of the desired section.
 
 Example:
-Given an architecture folder with the section definition file `content/docs/architecture/_index.md` with parameter `landingSectionIndex: true` as following:
+
+If you have an architecture folder with a section definition file located at `content/docs/architecture/_index.md`, you should include the `landingSectionIndex: true` parameter as shown below:
 
 ```markdown
 ---
@@ -215,11 +222,13 @@ description: >
 ---
 ```
 
-A new entry will be created in the section at the bottom of the landing page with links and descriptions to jump directly to the desired sections.
+A new entry will be added at the bottom of the landing page, featuring links and descriptions to help users navigate directly to the desired sections.
 
-#### Configure an overview section for the landing page
+Here’s an improved version of the text along with the Markdown code:
 
-Display an overview index section based on a configuration
+#### Configure an Overview Section for the Landing Page
+
+Set up an overview section on the landing page by configuring the relevant settings. You can customize this section using the provided configuration options.
 
 Configuration description:
 
@@ -255,48 +264,49 @@ params:
           path: "/docs/customer/networking/load-balancers/"
 ```
 
-#### Create an own landing page content template
+#### Create a Custom Landing Page Content Template
 
-1. Create a file with the landing page content (`landing-page-new-content.html`) and save it in the `partials` folder.
-2. The content will be automatically added between the <main> tags in the landing page.
+1. Create a new file for your landing page content, e.g., `landing-page-new-content.html`, and save it in the `partials` folder.
+2. This content will be automatically inserted between the `<main>` tags on the landing page.
 
 ```html
-<main>{{/* your own content here coming from the partial */}}</main>
+<main>{{/* Your custom content here from the partial */}}</main>
 ```
 
-3. Reference the landing page content file in the configuration file `config.yaml`
+3. Reference the new content file in your `config.yaml` configuration file:
 
 ```yaml
 params:
-  # landing page content template
+  # Specify the landing page content template
   landingPageContentTemplateName: "landing-page-new-content"
 ```
 
-#### Style your own landing page content
+#### Style Your Custom Landing Page
 
-1. Create a file named `custom-styles.scss` on the folder `assets/scss`
-2. Add your styles like in follwing example:
+1. Create a file named `custom-styles.scss` in the `assets/scss` folder.
+2. Add your styles using the following example:
 
 ```css
-/* example of creating variables in sass reading params from the config*/
+/* Example of defining variables in Sass and reading parameters from the config */
 $heroImage: unquote(
   '{{ default "images/Hero_background.jpg" .Params.heroImage }}'
 );
-/* setup a new css class and use the variable in it  */
+
+/* Set up a new CSS class and use the variable in it */
 .custom-jumbotron {
   background: var(--color-global-bg) url($heroImage) top center no-repeat;
 }
 ```
 
-#### Add code to the head section
+#### Adding Custom Code to the Head Section
 
-If you need to add some code (CSS import, cookie consent, or similar) to the head section on the landing page, add the `landing-page-head-custom.html` partial.
+To insert custom code (such as CSS imports, cookie consent scripts, or similar) into the head section of the landing page, include the `landing-page-head-custom.html` partial.
 
 ### Documentation
 
 #### Content
 
-Just drop your documentation well organized in folders under `content/docs/`. Each folder should contain a `_index.md` file containing following information:
+Simply organize your documentation into folders under `content/docs/`. Each folder should include a `_index.md` file with the following information:
 
 ```markdown
 ---
@@ -335,25 +345,36 @@ sequenceDiagram
 
 <img src="https://github.com/sapcc/hugo-documentation-templater/blob/main/static/images/ex_mermaid.png"  width="500">
 
-#### Diagram draw.io / diagrams.net
+#### Using Diagrams from diagrams.net (previously draw.io)
 
-To use diagrams created with `draw.io` you need to save the it in the `.drawio` format.
+To incorporate diagrams created with [diagrams.net](https://www.drawio.com/) into your documentation, follow these steps:
 
-`File` -> `Save as` -> `Format: XML File (.drawio)`
+1. **Save the Diagram**:
 
-After you have created your `.drawio` file you have to push it to the desired location.
+   - Create your diagram in [diagrams.net](https://www.drawio.com/).
+   - Save it in the `.drawio` format:
+     - Go to `File` -> `Save as`.
+     - Select `Format: XML File (.drawio)`.
 
-Now to use the diagram you will have to include it in your document with the absolute path like this:
+2. **Push the File**:
 
-```tpl
-{{</* diagramsnet file="source/help/diagram-drawio-example.drawio" */>}}
-```
+   - After creating your `.drawio` file, push it to the desired location in your repository.
+
+3. **Include the Diagram**:
+
+   - To use the diagram in your document, include it with the absolute path as shown below:
+
+   ```tpl
+   {{</* diagramsnet file="source/help/diagram-drawio-example.drawio" */>}}
+   ```
+
+By following these steps, you can easily include and display your `draw.io` diagrams in your documentation. See example below:
 
 <img src="https://github.com/sapcc/hugo-documentation-templater/blob/main/static/images/ex_draw_io_diagrams_net.png"  width="500">
 
 #### Diagram Nomnoml
 
-Nomnoml is a tool to draw UML diagrams based on a simple syntax. Further details can be obtained at <https://www.nomnoml.com/> or the [github repo](https://github.com/skanaar/nomnoml).
+Nomnoml is a tool for creating UML diagrams using a straightforward syntax. For more information, visit the [Nomnoml website](https://www.nomnoml.com/) or check out the [GitHub repository](https://github.com/skanaar/nomnoml).
 
 Example:
 
@@ -379,13 +400,13 @@ Example:
 
 <img src="https://github.com/sapcc/hugo-documentation-templater/blob/main/static/images/ex_nomnoml.png"  width="500">
 
-## Extra information
+## Extra Information
 
-### Bootstrap version
+### Bootstrap Version
 
 Based on Bootstrap 5.3.3
 
-### Buil assets
+### Build Assets
 
 Creating a new package.json file
 https://docs.npmjs.com/creating-a-package-json-file
@@ -413,7 +434,7 @@ https://sizeof.cat/post/git-info-on-a-hugo-static-website/
 
 ### Upgrade to V2 (Breaking Changes)
 
-#### Release notes
+#### Release Notes
 
 - Removed ccloud assets (SAP logo and releated assets)
 - Upgraded to Docsy v0.10.0
@@ -437,9 +458,9 @@ Afterwards update the templater module version:
 hugo mod get github.com/sapcc/hugo-documentation-templater/v2@v2.0.2
 ```
 
-#### Sap Assets Module
+#### SAP Assets Module
 
-To add the sap assets module install the module with the following command:
+To add the SAP assets module install the module with the following command:
 
 ```bash
 hugo mod get github.com/sapcc/hugo-documentation-templater-sap-assets@v1.0.0

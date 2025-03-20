@@ -1,8 +1,8 @@
 <!-- prettier-ignore -->
 {{ $cssOpts := (dict "enableSourceMap" true ) }}
-{{ $styles := resources.Get "scss/landing-page.scss" | resources.ExecuteAsTemplate "landing-page.scss" . | resources.ToCSS $cssOpts}}
+{{ $styles := resources.Get "scss/landing-page.scss" | resources.ExecuteAsTemplate "landing-page.scss" . | css.Sass $cssOpts}}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}" media="screen" />
 
 <!-- prettier-ignore -->
-{{ $customStyles := resources.Get "scss/custom-styles.scss" | resources.ExecuteAsTemplate "custom-styles.scss" . | resources.ToCSS $cssOpts}}
+{{ $customStyles := resources.Get "scss/custom-styles.scss" | resources.ExecuteAsTemplate "custom-styles.scss" . | css.Sass $cssOpts}}
 <link rel="stylesheet" href="{{ $customStyles.RelPermalink }}" media="screen" />

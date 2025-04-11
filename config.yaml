@@ -11,7 +11,7 @@ params:
 
 module:
   hugoVersion:
-    min: 0.73.0
+    min: 0.128.0
 
   imports:
     - path: github.com/google/docsy

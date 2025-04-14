@@ -1,7 +1,11 @@
-{{- $path := .Get "path" -}} {{- if or (hasPrefix $path "http://") (hasPrefix
-$path "https://") -}} {{ errorf "Only relative paths are allowed in bpmn
-shortcode, but got: %q" $path }} {{- end -}} {{- $height := or (.Get "height")
-"400" -}} {{- $id := $path | md5 -}}
+<!-- prettier-ignore -->
+{{- $path := .Get "path" -}}
+{{- if or (hasPrefix $path "http://") (hasPrefix $path "https://") -}}
+  {{ errorf "Only relative paths are allowed in bpmn shortcode, but got: %q" $path }}
+{{- end -}}
+
+{{- $height := or (.Get "height") "400" -}}
+{{- $id := $path | md5 -}}
 
 <div class="bpmn">
   <div

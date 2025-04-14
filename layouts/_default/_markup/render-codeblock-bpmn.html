@@ -1,5 +1,7 @@
+{{- $height := or (.Attributes.height) "400" -}}
+
 <div class="bpmn">
-  <div id="canvas-bpmn-{{- .Inner | md5 -}}"></div>
+  <div id="canvas-bpmn-{{- .Inner | md5 -}}" style="width: 100%; height: {{ $height }}px;"></div>
   <script type="module">
     const containerId = "#canvas-bpmn-{{ .Inner | md5 }}";
     const viewer = new BpmnJS({container: containerId});

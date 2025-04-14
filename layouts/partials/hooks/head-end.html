@@ -1,16 +1,28 @@
+<!-- prettier-ignore -->
 {{/* vim: set filetype=gohtmltmpl shiftwidth=2 tabstop=2 : */}}
 {{ if .Page.Store.Get "hasMermaid" }}
-  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-  <script>
-    mermaid.initialize({ startOnLoad: true });
-  </script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({ startOnLoad: true })
+</script>
 {{ end }}
 
+<!-- prettier-ignore -->
 {{ if .Page.Store.Get "hasNomnoml" }}
-  <script src="https://cdn.jsdelivr.net/npm/graphre/dist/graphre.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/nomnoml/dist/nomnoml.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/graphre/dist/graphre.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/nomnoml/dist/nomnoml.min.js"></script>
 {{ end }}
 
+<!-- prettier-ignore -->
 {{- if .Page.Store.Get "hasDiagramsNet" -}}
-  <script src="/js/diagramsnet-loader.js"></script>
+<script src="/js/diagramsnet-loader.js"></script>
 {{- end -}}
+
+<!-- prettier-ignore -->
+{{ if .Page.Store.Get "hasBpmn" }}
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/bpmn-js@18.3.1/dist/assets/bpmn-js.css"
+/>
+<script src="https://unpkg.com/bpmn-js@18.3.1/dist/bpmn-viewer.development.js"></script>
+{{ end }}

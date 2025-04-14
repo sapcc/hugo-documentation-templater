@@ -1,0 +1,20 @@
+<div class="bpmn">
+  <div id="canvas-bpmn-{{- .Inner | md5 -}}"></div>
+  <script type="module">
+    const containerId = "#canvas-bpmn-{{ .Inner | md5 }}";
+    var diagramUrl = "{{ index .Params 0 }}";
+    const viewer = new BpmnJS({container: containerId});
+
+    async function openDiagram(bpmnXML) {
+      try {
+        await viewer.importXML(bpmnXML);
+        var canvas = viewer.get('canvas');
+        canvas.zoom('fit-viewport');
+      } catch (err) {
+        console.error('could not import BPMN 2.0 diagram', err);
+      }
+    }
+    $.get(diagramUrl, openDiagram, 'text');
+  </script>
+</div>
+{{- .Page.Store.Set "hasBpmn" true -}}

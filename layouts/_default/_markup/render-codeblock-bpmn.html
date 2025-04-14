@@ -1,0 +1,16 @@
+<div class="bpmn">
+  <div id="canvas-bpmn-{{- .Inner | md5 -}}"></div>
+  <script type="module">
+    const containerId = "#canvas-bpmn-{{ .Inner | md5 }}";
+    const viewer = new BpmnJS({container: containerId});
+    try {
+
+      await viewer.importXML(`{{ .Inner | safeJS }}`);
+      const canvas = viewer.get('canvas');
+      const zoom = canvas.zoom('fit-viewport');
+    } catch (err) {
+      console.error('could not import BPMN 2.0 diagram', err);
+    }
+  </script>
+</div>
+{{- .Page.Store.Set "hasBpmn" true -}}

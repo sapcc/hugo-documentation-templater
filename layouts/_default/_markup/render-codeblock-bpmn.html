@@ -1,17 +1,19 @@
 {{- $height := or (.Attributes.height) "400" -}}
 
 <div class="bpmn">
-  <div id="canvas-bpmn-{{- .Inner | md5 -}}" style="width: 100%; height: {{ $height }}px;"></div>
+  <div
+    id="canvas-bpmn-{{- .Inner | md5 -}}"
+    style="width: 100%; height: {{ $height }}px;"
+  ></div>
   <script type="module">
-    const containerId = "#canvas-bpmn-{{ .Inner | md5 }}";
-    const viewer = new BpmnJS({container: containerId});
+    const containerId = "#canvas-bpmn-{{ .Inner | md5 }}"
+    const viewer = new BpmnJS({ container: containerId })
     try {
-
-      await viewer.importXML(`{{ .Inner | safeJS }}`);
-      const canvas = viewer.get('canvas');
-      const zoom = canvas.zoom('fit-viewport');
+      await viewer.importXML(`{{ .Inner | safeJS }}`)
+      const canvas = viewer.get("canvas")
+      const zoom = canvas.zoom("fit-viewport")
     } catch (err) {
-      console.error('could not import BPMN 2.0 diagram', err);
+      console.error("could not import BPMN 2.0 diagram", err)
     }
   </script>
 </div>

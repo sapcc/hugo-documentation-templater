@@ -1,28 +1,28 @@
-{{- $path := .Get "path" -}}
-{{- if or (hasPrefix $path "http://") (hasPrefix $path "https://") -}}
-  {{ errorf "Only relative paths are allowed in bpmn shortcode, but got: %q" $path }}
-{{- end -}}
-
-{{- $height := or (.Get "height") "400" -}}
-{{- $id := $path | md5 -}}
+{{- $path := .Get "path" -}} {{- if or (hasPrefix $path "http://") (hasPrefix
+$path "https://") -}} {{ errorf "Only relative paths are allowed in bpmn
+shortcode, but got: %q" $path }} {{- end -}} {{- $height := or (.Get "height")
+"400" -}} {{- $id := $path | md5 -}}
 
 <div class="bpmn">
-  <div id="canvas-bpmn-{{ $id }}" style="width: 100%; height: {{ $height }}px;"></div>
+  <div
+    id="canvas-bpmn-{{ $id }}"
+    style="width: 100%; height: {{ $height }}px;"
+  ></div>
   <script type="module">
-    const containerId = "#canvas-bpmn-{{ $id }}";
-    var diagramUrl = "{{ $path }}";
-    const viewer = new BpmnJS({container: containerId});
+    const containerId = "#canvas-bpmn-{{ $id }}"
+    var diagramUrl = "{{ $path }}"
+    const viewer = new BpmnJS({ container: containerId })
 
     async function openDiagram(bpmnXML) {
       try {
-        await viewer.importXML(bpmnXML);
-        var canvas = viewer.get('canvas');
-        canvas.zoom('fit-viewport');
+        await viewer.importXML(bpmnXML)
+        var canvas = viewer.get("canvas")
+        canvas.zoom("fit-viewport")
       } catch (err) {
-        console.error('could not import BPMN 2.0 diagram', err);
+        console.error("could not import BPMN 2.0 diagram", err)
       }
     }
-    $.get(diagramUrl, openDiagram, 'text');
+    $.get(diagramUrl, openDiagram, "text")
   </script>
 </div>
 {{- .Page.Store.Set "hasBpmn" true -}}

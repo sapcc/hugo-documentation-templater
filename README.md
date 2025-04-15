@@ -63,7 +63,7 @@ The Go `<module path>` should resolve to a valid VCS (Version Control System) re
 To add the templater (`hugo-documentation-templater`) module as a dependency, use the following command:
 
 ```
-hugo mod get github.com/sapcc/hugo-documentation-templater@v2.0.4
+hugo mod get github.com/sapcc/hugo-documentation-templater/v2@v2.0.5
 ```
 
 If you are developing this module locally, add the following configuration to your go.mod file to redirect to your local folder:
@@ -76,7 +76,7 @@ replace github.com/sapcc/hugo-documentation-templater/v2 => /Users/d063222/Docum
 
 go 1.20
 
-require github.com/sapcc/hugo-documentation-templater/v2 v2.0.4 // indirect
+require github.com/sapcc/hugo-documentation-templater/v2 v2.0.5 // indirect
 ```
 
 ### Update the Hugo Config to Import the Templater
@@ -455,7 +455,7 @@ rm -rf public
 Afterwards update the templater module version:
 
 ```bash
-hugo mod get github.com/sapcc/hugo-documentation-templater/v2@v2.0.4
+hugo mod get github.com/sapcc/hugo-documentation-templater/v2@v2.0.5
 ```
 
 #### SAP Assets Module
@@ -471,7 +471,7 @@ You should see the following in your go.mod file:
 ```
 require (
   github.com/sapcc/hugo-documentation-templater-sap-assets v1.0.2 // indirect
-  github.com/sapcc/hugo-documentation-templater v2.0.4
+  github.com/sapcc/hugo-documentation-templater v2.0.5
 )
 ```
 

@@ -9,6 +9,21 @@ params:
     sidebar_menu_foldable: true
     showLightDarkModeMenu: true  
 
+# Create a new output format
+outputFormats:
+  viewer:
+    baseName: viewer
+    isPlainText: false
+    mediaType: text/html
+    path: bpmn
+    permalinkable: true
+
+# Specify the page kinds for which to render this output format
+outputs:
+  home:
+    - HTML
+    - Viewer   
+
 module:
   hugoVersion:
     min: 0.73.0

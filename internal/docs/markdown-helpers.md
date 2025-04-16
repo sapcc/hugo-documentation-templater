@@ -752,7 +752,7 @@ Useful for small diagrams that can be included directly in the markdown file. Th
 Useful if you want to use a BPMN file that is already created or also when the diagram is too large to be included in the markdown file directly. The file should be in the `content` folder or a subfolder of it. `height` is optional and will be set to 400px by default.
 
 ```tpl
-{{</* bpmn path="path/to/diagram.bpmn" height="400"*/>}}
+{{</* bpmn path="path/to/diagram.bpmn" size="" */>}}
 ```
 
-{{< bpmn path="../example.bpmn" >}}
+{{< bpmn path="/bpmn/example.bpmn" size="">}}

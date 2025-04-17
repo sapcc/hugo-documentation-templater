@@ -4,12 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    types:
-      - opened
-      - reopened
-      - synchronize
-      - closed
   workflow_dispatch: {}
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
@@ -31,7 +25,6 @@ env:
   REPO_OWNER: ${{ github.repository_owner }}
 
 jobs:
-  # build the job
   build:
     runs-on: [ubuntu-latest]
     env:

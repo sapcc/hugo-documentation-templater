@@ -16,7 +16,6 @@ outputFormats:
     isPlainText: false
     mediaType: text/html
     path: bpmn
-    permalinkable: true
 
 # Specify the page kinds for which to render this output format
 outputs:

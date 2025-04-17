@@ -26,6 +26,10 @@ defaults:
   run:
     shell: bash
 
+env:
+  REPO_NAME: ${{ github.event.repository.name }}
+  REPO_OWNER: ${{ github.repository_owner }}
+
 jobs:
   # build the job
   build:
@@ -57,7 +61,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: recursive
           fetch-depth: 0
 
       - name: Install Node.js dependencies
@@ -76,7 +79,7 @@ jobs:
             --gc \
             --minify \
             --contentDir ./internal \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+            --baseURL https://${REPO_OWNER}.github.io/${REPO_NAME}
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4

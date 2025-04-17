@@ -663,10 +663,14 @@ Example:
 
 ##### Inline
 
-Useful for small diagrams that can be included directly in the markdown file. The BPMN code should be enclosed in triple backticks with the `bpmn` language identifier. `height` is optional and will be set to 400px by default.
+Useful for small diagrams that can be included directly in the markdown file. The BPMN code should be enclosed in triple backticks with the `bpmn` language identifier.
+
+**Attributes**
+
+- The `size` parameter is optional and can be used to set the height of the diagram. The default value is `small`, which sets the height to 400px. Other options are `medium` (600px) and `large` (800px).
 
 ````tpl
-```bpmn{height="400"}
+```bpmn{size="small"}
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
@@ -707,7 +711,7 @@ Useful for small diagrams that can be included directly in the markdown file. Th
 ```
 ````
 
-```bpmn{height="400"}
+```bpmn{size="small"}
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
@@ -749,10 +753,15 @@ Useful for small diagrams that can be included directly in the markdown file. Th
 
 ##### Frome file
 
-Useful if you want to use a BPMN file that is already created or also when the diagram is too large to be included in the markdown file directly. The file should be in the `content` folder or a subfolder of it. `height` is optional and will be set to 400px by default.
+Useful for larger diagrams that are stored in a separate file. When using this method a link `View in Fullscreen` will be created, which allows users to view the diagram in a larger format.
+
+**Attributes**
+
+- The `path` parameter should be the absolute path to the BPMN file. Only paths without http(s) are allowed
+- The `size` parameter is optional and can be used to set the height of the diagram. The default value is `small`, which sets the height to 400px. Other options are `medium` (600px) and `large` (800px).
 
 ```tpl
-{{</* bpmn path="path/to/diagram.bpmn" size="" */>}}
+{{</* bpmn path="path/to/diagram.bpmn" size="small" */>}}
 ```
 
-{{< bpmn path="/bpmn/example.bpmn" size="">}}
+{{< bpmn path="/bpmn/example.bpmn" size="small">}}

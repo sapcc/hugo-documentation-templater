@@ -42,7 +42,7 @@
         diagramPath.startsWith("https://")
       ) {
         console.error(
-          `Only relative paths are allowed, but got: ${diagramPath}`
+          `Only paths without http(s) are allowed, but got: ${diagramPath}`
         )
       } else {
         const viewer = new BpmnJS({ container: "#canvas" })

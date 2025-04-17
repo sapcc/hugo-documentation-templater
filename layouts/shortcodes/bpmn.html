@@ -4,10 +4,26 @@
   {{ errorf "Only relative paths are allowed in bpmn shortcode, but got: %q" $path }}
 {{- end -}}
 
-{{- $height := or (.Get "height") "400" -}}
+{{/*  Available sizes are: small, medium and large */}}
+{{/* small: 400px */}}
+{{/* medium: 600px */}}
+{{/* large: 800px */}}
+{{- $size := .Get "size" | default "small" -}}
+{{- $height := cond (eq $size "small") "400" (cond (eq $size "large") "800" "600") -}}
+
 {{- $id := $path | md5 -}}
 
-<div class="bpmn">
+<div class="bpmn" style="max-width: 80%">
+  <div class="d-flex justify-content-end">
+    <a
+      href="{{ .Site.BaseURL }}/bpmn/viewer.html?path={{ $path }}"
+      title=""
+      target="_blank"
+      >View in Fullscreen<i
+        class="fa-solid fa-arrow-up-right-from-square fa-xs"
+      ></i
+    ></a>
+  </div>
   <div
     id="canvas-bpmn-{{ $id }}"
     style="width: 100%; height: {{ $height }}px;"

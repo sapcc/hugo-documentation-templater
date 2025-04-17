@@ -16,9 +16,15 @@ Documentation page:
 
 Check out this documentation templater in action with its Markdown helpers, tools, and extensions at the following [link](https://sapcc.github.io/hugo-documentation-templater/).
 
-## 🚨 Major Upgrade to V2 🚨
+## 🚨 Major Upgrade to V3 🚨
 
-**⚠️ Attention:** This release introduces significant changes that may impact your existing setup. Please review the [Upgrade to V2 (Breaking Changes)](#upgrade-to-v2-breaking-changes) section below for detailed instructions on how to update your project. This upgrade includes the removal of SAP-specific assets, updates to Docsy, and numerous improvements and bug fixes.
+**⚠️ Attention:** This release requires **Hugo v0.128** or higher. Running it with an older version is not supported and will not work with v3. This release introduces support for BPMN diagrams and numerous improvements and bug fixes.
+
+## Release Notes
+
+- Introduces support for BPMN diagrams and numerous improvements and bug fixes.
+- Removes deprecated code to ensure compatibility with newer Hugo versions.
+- Upgrade Docsy to v0.11.0
 
 ## Create a New Documentation Site from Scratch
 

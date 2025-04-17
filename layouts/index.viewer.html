@@ -5,68 +5,61 @@
     <!-- prettier-ignore -->
     {{ partial "head.html" . }}
 
-    <!-- viewer distro (with pan and zoom) -->
+    <!-- bpmn viewer distro (with pan and zoom) -->
     <script src="https://unpkg.com/bpmn-js@18.3.1/dist/bpmn-navigated-viewer.development.js"></script>
-
-    <!-- needed for this example only -->
     <link
       rel="stylesheet"
       href="https://unpkg.com/bpmn-js@18.3.1/dist/assets/bpmn-js.css"
     />
 
+    <!-- #canvas needed to stretch the container to its maximum size -->
     <style>
-      body,
-      html {
-        height: 100%;
-        padding: 0;
-        margin: 0;
-      }
       #canvas {
-        margin-top: 5.125rem;
         height: 100%;
         width: 100%;
       }
     </style>
   </head>
-  <body class="td-page" data-bs-theme="dark">
-    <header>
-      <nav
-        class="td-navbar js-navbar-scroll td-navbar-cover"
-        data-bs-theme="dark"
-      >
-        <div class="nav-header container-fluid flex-column flex-md-row">
-          <a class="navbar-brand" href="{{ .Site.BaseURL }}">
-            <span class="navbar-logo">
-              {{ with resources.Get "icons/logo.svg" }}{{ ( . | minify ).Content
-              | safeHTML }} {{ end }}
-            </span>
-            <span class="navbar-logo"></span><span>{{ .Site.Title }}</span>
-          </a>
-        </div>
-      </nav>
-    </header>
+  <body class="theme-dark docs-layout">
+    <header>{{ partial "navbar.html" . }}</header>
 
-    <div id="canvas"></div>
+    <!-- This piece of code (aside from the #canvas part) is used to respond to theme mode changes -->
+    <!-- https://github.com/google/docsy/blob/main/layouts/docs/baseof.html -->
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div id="canvas"></div>
+      </div>
+    </div>
 
     <script type="module">
       const urlParams = new URLSearchParams(window.location.search)
       const diagramPath = urlParams.get("path")
 
-      const viewer = new BpmnJS({ container: "#canvas" })
+      if (!diagramPath) {
+        console.error("Missing ?path= parameter")
+      } else if (
+        diagramPath.startsWith("http://") ||
+        diagramPath.startsWith("https://")
+      ) {
+        console.error(
+          `Only relative paths are allowed, but got: ${diagramPath}`
+        )
+      } else {
+        const viewer = new BpmnJS({ container: "#canvas" })
 
-      async function openDiagram(path) {
-        if (!path) return console.error("Missing ?path= parameter")
-        try {
-          const res = await fetch(path)
-          const xml = await res.text()
-          await viewer.importXML(xml)
-          viewer.get("canvas").zoom("fit-viewport")
-        } catch (err) {
-          console.error("Failed to open diagram", err)
+        async function openDiagram(path) {
+          try {
+            const res = await fetch(path)
+            const xml = await res.text()
+            await viewer.importXML(xml)
+            viewer.get("canvas").zoom("fit-viewport")
+          } catch (err) {
+            console.error("Failed to open diagram", err)
+          }
         }
+        openDiagram(diagramPath)
       }
-
-      openDiagram(diagramPath)
     </script>
+    {{ partialCached "scripts.html" . }}
   </body>
 </html>

@@ -16,7 +16,7 @@ env:
 
 jobs:
   build-deploy-hugo-128:
-    runs-on: [default]
+    runs-on: [ubuntu-latest]
     env:
       HUGO_VERSION: 0.128.0 # future versions should be fixed first
     steps:

@@ -1,0 +1,78 @@
+name: PR Preview Deployment 🚀
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+
+# Limit the concurrency of entire workflow
+concurrency: deploy-pr-preview-${{ github.ref }}
+
+env:
+  DEPLOY_PATH: tmp
+
+jobs:
+  build-deploy-hugo-128:
+    runs-on: [default]
+    env:
+      HUGO_VERSION: 0.128.0 # future versions should be fixed first
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #v4.2.2
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 #v4.4.0
+        if: github.event.action != 'closed'
+        with:
+          node-version: "20.x"
+
+      - name: Install Node.js dependencies
+        if: github.event.action != 'closed'
+        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+
+      - name: Install postcss-cli and autoprefixer
+        if: github.event.action != 'closed'
+        run: "npm install postcss-cli autoprefixer"
+
+      - name: Install Hugo CLI
+        if: github.event.action != 'closed'
+        run: |
+          if ! which wget > /dev/null; then
+            echo "wget not found. Installing..."
+            sudo apt-get update
+            sudo apt-get install -y wget
+          else
+            echo "wget already installed."
+          fi
+
+          echo "Downloading and installing Hugo CLI version ${HUGO_VERSION}..."
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+
+      - name: Create a folder with all compiled apps and pkgs
+        if: github.event.action != 'closed'
+        run: |
+          mkdir -p ${{ env.DEPLOY_PATH }}
+
+      - name: Build
+        if: github.event.action != 'closed'
+        env:
+          HUGO_ENVIRONMENT: production
+          HUGO_ENV: production
+        run: |
+          hugo \
+            --gc \
+            --minify \
+            --contentDir ./internal \
+            --baseURL https://${REPO_OWNER}.github.io/${REPO_NAME}
+
+      - uses: rossjrw/pr-preview-action@2fb559e4766555e23d07b73d313fe97c4f8c3cfe #v1.6.1
+        with:
+          source-dir: ${{ env.DEPLOY_PATH }}/
+          preview-branch: gh-pages
+          umbrella-dir: pr-preview
+          action: auto

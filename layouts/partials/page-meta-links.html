@@ -15,6 +15,7 @@
   </a>
   {{ else if $gh_repo }}
   <!-- prettier-ignore -->
+  {{ $currentPageURL := $.Permalink }}
   {{ $gh_repo_path := printf "%s/%s" $gh_branch $pathFormatted }} 
     {{ if and ($gh_subdir) }} 
       {{ $gh_repo_path = printf "%s/%s/%s" $gh_branch $gh_subdir $pathFormatted }} 
@@ -23,7 +24,7 @@
     {{ end }}
     {{ $editURL := printf "%s/edit/%s" $gh_repo $gh_repo_path }} 
     {{ $createURL := printf "%s/edit/%s" $gh_repo $gh_repo_path }} 
-    {{ $issuesURL := printf "%s/issues/new?title=%s" $gh_repo (safeURL $.Title )}} 
+    {{ $issuesURL := printf "%s/issues/new?title=%s&body=Page%%20URL:%%20%s" $gh_repo (safeURL $.Title) (safeURL $currentPageURL) }}
     {{ $newPageStub := resources.Get "stubs/new-page-template.md" }} 
     {{ $newPageQS := querify "value" $newPageStub.Content "filename" "change-me.md" | safeURL }} 
     {{ $newPageURL := printf "%s/new/%s?%s" $gh_repo $gh_repo_path $newPageQS }}

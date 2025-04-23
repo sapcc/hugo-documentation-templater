@@ -27,6 +27,7 @@ Check out this documentation templater in action with its Markdown helpers, tool
 - Ensured compatibility with the latest Hugo version.
 - Upgraded Docsy to version v0.11.0.
 - Fixed load of drawio diagrams when base URL is different of the root URL.
+- The `Create documentation issue` link now includes the page source URL, which will be displayed in the description of the GitHub issue.
 
 ## Create a New Documentation Site from Scratch
 

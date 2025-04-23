@@ -575,6 +575,24 @@ For more complex tables (e.g. multiple paragraphs in one cell) you will have to 
 
 ### Diagrams
 
+#### draw.io / diagrams.net
+
+To use diagrams created with `draw.io` you need to save the it in the `.drawio` format.
+
+`File` -> `Save as` -> `Format: XML File (.drawio)`
+
+After you have created your `.drawio` file you have to push it to the desired location.
+
+**Attributes**
+
+- The `file` parameter must be the absolute path to the drawio file located within the `static` or the `content` folder of the repository. Only paths without an http or https prefix are allowed. The shortcode automatically prepends the site's base URL to the specified path.
+
+```tpl
+{{</* diagramsnet file="/docs/example.drawio" */>}}
+```
+
+{{< diagramsnet file="/docs/example.drawio" >}}
+
 #### Mermaid
 
 Original documentation: <https://geekdocs.de/shortcodes/mermaid/>
@@ -757,11 +775,11 @@ Useful for larger diagrams that are stored in a separate file. When using this m
 
 **Attributes**
 
-- The `path` parameter must be the absolute path to the BPMN file within the repository. Only paths without an http or https prefix are allowed. The shortcode automatically prepends the site's base URL to the specified path.
+- The `path` parameter must be the absolute path to the BPMN file located within the `static` or the `content` folder of the repository. Only paths without an http or https prefix are allowed. The shortcode automatically prepends the site's base URL to the specified path.
 - The `size` parameter is optional and can be used to set the height of the diagram. The default value is `small`, which sets the height to 400px. Other options are `medium` (600px) and `large` (800px).
 
 ```tpl
 {{</* bpmn path="/bpmn/example.bpmn" size="small"*/>}}
 ```
 
-{{< bpmn path="/bpmn/example.bpmn" size="small">}}
+{{< bpmn path="/docs/example.bpmn" size="small">}}

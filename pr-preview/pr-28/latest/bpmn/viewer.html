@@ -23,6 +23,10 @@ Auto<svg class="bi ms-auto d-none"><use href="#check2"/></svg></button></li></ul
       } else {
         const viewer = new BpmnJS({ container: "#canvas" })
 
+        
+        const baseURL = "https:\/\/sapcc.github.io\/hugo-documentation-templater\/pr-preview\/pr-28\/latest\/"
+        const fullPath = `${baseURL}${diagramPath}`
+
         async function openDiagram(path) {
           try {
             const res = await fetch(path)
@@ -33,6 +37,6 @@ Auto<svg class="bi ms-auto d-none"><use href="#check2"/></svg></button></li></ul
             console.error("Failed to open diagram", err)
           }
         }
-        openDiagram(diagramPath)
+        openDiagram(fullPath)
       }
     </script><script src=/hugo-documentation-templater/pr-preview/pr-28/latest/js/main.min.aff4ce35b309a4d980bacae9f5655ed19b051e3326f91363d5f05b626a54749a.js integrity="sha256-r/TONbMJpNmAusrp9WVe0ZsFHjMm+RNj1fBbYmpUdJo=" crossorigin=anonymous></script><script defer src=/hugo-documentation-templater/pr-preview/pr-28/latest/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js integrity="sha256-c0eKfUgHaYrtfjVesj+YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin=anonymous></script><script src=/hugo-documentation-templater/pr-preview/pr-28/latest/js/tabpane-persist.js></script></body></html>

@@ -12,6 +12,9 @@ on:
 concurrency: deploy-pr-preview-${{ github.ref }}
 
 env:
+  REPO_NAME: ${{ github.event.repository.name }}
+  REPO_OWNER: ${{ github.repository_owner }}
+  PR_NUMBER: ${{ github.event.pull_request.number }}
   HUGO_VERSION: 0.128.0 # future versions should be fixed first
 
 jobs:
@@ -23,10 +26,6 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #v4.2.2
         with:
           fetch-depth: 0
-
-      - name: Extract PR Number
-        id: extract-pr
-        run: echo "PR_NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
 
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 #v4.4.0
         with:
@@ -78,10 +77,6 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #v4.2.2
         with:
           fetch-depth: 0
-
-      - name: Extract PR Number
-        id: extract-pr
-        run: echo "PR_NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
 
       - name: Install latest Hugo
         run: |

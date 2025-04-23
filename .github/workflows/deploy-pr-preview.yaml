@@ -60,7 +60,7 @@ jobs:
             --baseURL https://${REPO_OWNER}.github.io/${REPO_NAME}
 
       - name: Upload custom artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 #v4.6.2
         with:
           name: hugo-custom
           path: custom
@@ -99,7 +99,7 @@ jobs:
             --baseURL https://${REPO_OWNER}.github.io/${REPO_NAME}
 
       - name: Upload latest artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 #v4.6.2
         with:
           name: hugo-latest
           path: latest
@@ -121,17 +121,23 @@ jobs:
         run: |
           mkdir -p ${{ env.DEPLOY_PATH }}
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@95815c38cf2ff2164869cbab79da8d1f422bc89e #v4.2.1
         if: github.event.action != 'closed'
         with:
           name: hugo-custom
           path: ${{ env.DEPLOY_PATH }}/custom
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@95815c38cf2ff2164869cbab79da8d1f422bc89e #v4.2.1
         if: github.event.action != 'closed'
         with:
           name: hugo-latest
           path: ${{ env.DEPLOY_PATH }}/latest
+
+      - name: Generate index.html for Deployed Apps
+        if: github.event.action != 'closed'
+        run: |
+          echo "<!DOCTYPE html><head><title>PR Preview</title></head><html><body><h1>Deployed Hugo Templater for PR ${GITHUB_HEAD_REF}</h1><ul>" > ${{ env.DEPLOY_PATH }}/index.html        
+          echo "</ul></body></html>" >> ${{ env.DEPLOY_PATH }}/index.html
 
       - uses: rossjrw/pr-preview-action@2fb559e4766555e23d07b73d313fe97c4f8c3cfe #v1.6.1
         with:

@@ -63,7 +63,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: hugo-custom
-          path: custo
+          path: custom
 
   build-hugo-latest:
     runs-on: [ubuntu-latest]

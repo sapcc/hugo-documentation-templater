@@ -1,8 +1,11 @@
 <!-- prettier-ignore -->
-{{- $path := .Get "path" | relURL  -}}
+{{- $path := .Get "path" -}}
 {{- if or (hasPrefix $path "http://") (hasPrefix $path "https://") -}}
   {{ errorf "Only relative paths are allowed in bpmn shortcode, but got: %q" $path }}
 {{- end -}}
+
+{{/* transform the path to a absolute path */}}
+{{- $file := printf "%s%s" .Site.BaseURL $path -}}
 
 {{/*  Available sizes are: small, medium and large */}}
 {{/* small: 400px */}}
@@ -11,7 +14,7 @@
 {{- $size := .Get "size" | default "small" -}}
 {{- $height := cond (eq $size "small") "400" (cond (eq $size "large") "800" "600") -}}
 
-{{- $id := $path | md5 -}}
+{{- $id := $file | md5 -}}
 
 <div class="bpmn" style="max-width: 80%">
   <div class="d-flex justify-content-end">
@@ -30,7 +33,7 @@
   ></div>
   <script type="module">
     const containerId = "#canvas-bpmn-{{ $id }}"
-    var diagramUrl = "{{ $path }}"
+    var diagramUrl = "{{ $file }}"
     const viewer = new BpmnJS({ container: containerId })
     async function openDiagram(bpmnXML) {
       try {

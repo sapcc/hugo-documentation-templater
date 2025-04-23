@@ -47,6 +47,10 @@
       } else {
         const viewer = new BpmnJS({ container: "#canvas" })
 
+        // transform the path to a absolute path
+        const baseURL = "{{ .Site.BaseURL }}"
+        const fullPath = `${baseURL}${diagramPath}`
+
         async function openDiagram(path) {
           try {
             const res = await fetch(path)
@@ -57,7 +61,7 @@
             console.error("Failed to open diagram", err)
           }
         }
-        openDiagram(diagramPath)
+        openDiagram(fullPath)
       }
     </script>
     {{ partialCached "scripts.html" . }}

@@ -16,14 +16,14 @@
 
 {{- $id := $file | md5 -}}
 
-<div class="bpmn" style="max-width: 80%">
-  <div class="d-flex justify-content-end">
+<div class="bpmn">
+  <div class="full-screen-link">
     <a
       href="{{ .Site.BaseURL }}/bpmn/viewer.html?path={{ $path }}"
-      title=""
+      title="Display bpmn in full screen"
       target="_blank"
       >View in Fullscreen<i
-        class="fa-solid fa-arrow-up-right-from-square fa-xs"
+        class="full-screen-icon fa-solid fa-arrow-up-right-from-square fa-xs"
       ></i>
     </a>
   </div>

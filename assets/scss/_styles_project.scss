@@ -365,4 +365,16 @@ footer {
   color: $primary-theme;
 }
 
+// bpmn diagram
+.bpmn {
+  max-width: 80%;
+  .full-screen-link {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .full-screen-icon {
+    margin-left: 0.5rem;
+  }
+}
+
 @import "custom_styles_project";

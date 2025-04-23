@@ -28,7 +28,7 @@ jobs:
           node-version: "20.x"
 
       - name: Install Node.js dependencies
-        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+        run: "[[ -f package-lock.json ]] && npm ci || true"
 
       - name: Install postcss-cli and autoprefixer
         run: "npm install postcss-cli autoprefixer"
@@ -79,6 +79,12 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y hugo
 
+      - name: Install Node.js dependencies
+        run: "[[ -f package-lock.json ]] && npm ci || true"
+
+      - name: Install postcss-cli and autoprefixer
+        run: "npm install postcss-cli autoprefixer"
+
       - name: Build
         if: github.event.action != 'closed'
         env:
@@ -100,7 +106,7 @@ jobs:
 
   deploy:
     needs: [build-hugo-128, build-hugo-latest]
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest]
     env:
       DEPLOY_PATH: tmp
     steps:

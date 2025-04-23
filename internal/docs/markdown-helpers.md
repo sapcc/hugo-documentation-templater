@@ -757,12 +757,11 @@ Useful for larger diagrams that are stored in a separate file. When using this m
 
 **Attributes**
 
-- The `path` parameter should be the absolute path to the BPMN file. Only paths without http(s) are allowed
+- The `path` parameter must be the absolute path to the BPMN file within the repository. Only paths without an http or https prefix are allowed. The shortcode automatically prepends the site's base URL to the specified path.
 - The `size` parameter is optional and can be used to set the height of the diagram. The default value is `small`, which sets the height to 400px. Other options are `medium` (600px) and `large` (800px).
 
 ```tpl
-{{/* $path := "/bpmn/example.bpmn" | relURL */}}
-{{</* bpmn path=$path" size="small"*/>}}
+{{</* bpmn path="/bpmn/example.bpmn" size="small"*/>}}
 ```
 
 {{< bpmn path="/bpmn/example.bpmn" size="small">}}

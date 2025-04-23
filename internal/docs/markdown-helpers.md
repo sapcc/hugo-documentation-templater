@@ -575,6 +575,24 @@ For more complex tables (e.g. multiple paragraphs in one cell) you will have to 
 
 ### Diagrams
 
+#### draw.io / diagrams.net
+
+To use diagrams created with `draw.io` you need to save the it in the `.drawio` format.
+
+`File` -> `Save as` -> `Format: XML File (.drawio)`
+
+After you have created your `.drawio` file you have to push it to the desired location.
+
+**Attributes**
+
+- The `file` parameter must be the absolute path to the drawio file located within the `static` or the `content` folder of the repository. Only paths without an http or https prefix are allowed. The shortcode automatically prepends the site's base URL to the specified path.
+
+```tpl
+{{</* diagramsnet file="/docs/example.drawio" */>}}
+```
+
+{{< diagramsnet file="/docs/example.drawio" >}}
+
 #### Mermaid
 
 Original documentation: <https://geekdocs.de/shortcodes/mermaid/>
@@ -656,3 +674,112 @@ Example:
 [more loot] no ->[<end>e]
 [<actor>Sailor] - [<usecase>shiver me;timbers]
 ```
+
+#### BPMN
+
+`bpmn-js` is a library for rendering and interacting with BPMN 2.0 diagrams directly in the browser. Further details can be found at https://bpmn.io/toolkit/bpmn-js/ or the GitHub repository.
+
+##### Inline
+
+Useful for small diagrams that can be included directly in the markdown file. The BPMN code should be enclosed in triple backticks with the `bpmn` language identifier.
+
+**Attributes**
+
+- The `size` parameter is optional and can be used to set the height of the diagram. The default value is `small`, which sets the height to 400px. Other options are `medium` (600px) and `large` (800px).
+
+````tpl
+```bpmn{size="small"}
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+                  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+                  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+                  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+                  id="Definitions_1"
+                  targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="Process_1" isExecutable="false">
+    <bpmn:startEvent id="StartEvent_1" name="Start" />
+    <bpmn:task id="Task_1" name="Do Something" />
+    <bpmn:endEvent id="EndEvent_1" name="End" />
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="StartEvent_1" targetRef="Task_1" />
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="Task_1" targetRef="EndEvent_1" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="100" y="100" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_1_di" bpmnElement="Task_1">
+        <dc:Bounds x="170" y="90" width="100" height="56"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="300" y="100" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="136" y="118"/>
+        <di:waypoint x="170" y="118"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="270" y="118"/>
+        <di:waypoint x="300" y="118"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
+```
+````
+
+```bpmn{size="small"}
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+                  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+                  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+                  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+                  id="Definitions_1"
+                  targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="Process_1" isExecutable="false">
+    <bpmn:startEvent id="StartEvent_1" name="Start" />
+    <bpmn:task id="Task_1" name="Do Something" />
+    <bpmn:endEvent id="EndEvent_1" name="End" />
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="StartEvent_1" targetRef="Task_1" />
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="Task_1" targetRef="EndEvent_1" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="100" y="100" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_1_di" bpmnElement="Task_1">
+        <dc:Bounds x="170" y="90" width="100" height="56"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="300" y="100" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="136" y="118"/>
+        <di:waypoint x="170" y="118"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="270" y="118"/>
+        <di:waypoint x="300" y="118"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
+```
+
+##### Frome file
+
+Useful for larger diagrams that are stored in a separate file. When using this method a link `View in Fullscreen` will be created, which allows users to view the diagram in a larger format.
+
+**Attributes**
+
+- The `path` parameter must be the absolute path to the BPMN file located within the `static` or the `content` folder of the repository. Only paths without an http or https prefix are allowed. The shortcode automatically prepends the site's base URL to the specified path.
+- The `size` parameter is optional and can be used to set the height of the diagram. The default value is `small`, which sets the height to 400px. Other options are `medium` (600px) and `large` (800px).
+
+```tpl
+{{</* bpmn path="/bpmn/example.bpmn" size="small"*/>}}
+```
+
+{{< bpmn path="/docs/example.bpmn" size="small">}}

@@ -1,0 +1,69 @@
+<!-- prettier-ignore -->
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}" class="no-js">
+  <head>
+    <!-- prettier-ignore -->
+    {{ partial "head.html" . }}
+
+    <!-- bpmn viewer distro (with pan and zoom) -->
+    <script src="https://unpkg.com/bpmn-js@18.3.1/dist/bpmn-navigated-viewer.development.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/bpmn-js@18.3.1/dist/assets/bpmn-js.css"
+    />
+
+    <!-- #canvas needed to stretch the container to its maximum size -->
+    <style>
+      #canvas {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body class="theme-dark docs-layout">
+    <header>{{ partial "navbar.html" . }}</header>
+
+    <!-- This piece of code (aside from the #canvas part) is used to respond to theme mode changes -->
+    <!-- https://github.com/google/docsy/blob/main/layouts/docs/baseof.html -->
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div id="canvas"></div>
+      </div>
+    </div>
+
+    <script type="module">
+      const urlParams = new URLSearchParams(window.location.search)
+      const diagramPath = urlParams.get("path")
+
+      if (!diagramPath) {
+        console.error("Missing ?path= parameter")
+      } else if (
+        diagramPath.startsWith("http://") ||
+        diagramPath.startsWith("https://")
+      ) {
+        console.error(
+          `Only paths without http(s) are allowed, but got: ${diagramPath}`
+        )
+      } else {
+        const viewer = new BpmnJS({ container: "#canvas" })
+
+        // transform the path to a absolute path
+        const baseURL = "{{ .Site.BaseURL }}"
+        const fullPath = `${baseURL}${diagramPath}`
+
+        async function openDiagram(path) {
+          try {
+            const res = await fetch(path)
+            const xml = await res.text()
+            await viewer.importXML(xml)
+            viewer.get("canvas").zoom("fit-viewport")
+          } catch (err) {
+            console.error("Failed to open diagram", err)
+          }
+        }
+        openDiagram(fullPath)
+      }
+    </script>
+    {{ partialCached "scripts.html" . }}
+  </body>
+</html>

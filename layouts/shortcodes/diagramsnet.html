@@ -1,4 +1,5 @@
-{{ $file := .Get "file" }}
+<!-- prettier-ignore -->
+{{ $file := .Get "file" | relURL }}
 
 {{- $file | readFile | safeHTML -}}
 {{ .Page.Store.Set "hasDiagramsNet" true }}

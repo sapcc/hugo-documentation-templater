@@ -1,0 +1,50 @@
+<!-- prettier-ignore -->
+{{- $path := .Get "path" -}}
+{{- if or (hasPrefix $path "http://") (hasPrefix $path "https://") -}}
+  {{ errorf "Only relative paths are allowed in bpmn shortcode, but got: %q" $path }}
+{{- end -}}
+
+{{/* transform the path to a absolute path */}}
+{{- $file := printf "%s%s" .Site.BaseURL $path -}}
+
+{{/*  Available sizes are: small, medium and large */}}
+{{/* small: 400px */}}
+{{/* medium: 600px */}}
+{{/* large: 800px */}}
+{{- $size := .Get "size" | default "small" -}}
+{{- $height := cond (eq $size "small") "400" (cond (eq $size "large") "800" "600") -}}
+
+{{- $id := $file | md5 -}}
+
+<div class="bpmn">
+  <div class="full-screen-link">
+    <a
+      href="{{ .Site.BaseURL }}/bpmn/viewer.html?path={{ $path }}"
+      title="Display bpmn in full screen"
+      target="_blank"
+      >View in Fullscreen<i
+        class="full-screen-icon fa-solid fa-arrow-up-right-from-square fa-xs"
+      ></i>
+    </a>
+  </div>
+  <div
+    id="canvas-bpmn-{{ $id }}"
+    style="width: 100%; height: {{ $height }}px;"
+  ></div>
+  <script type="module">
+    const containerId = "#canvas-bpmn-{{ $id }}"
+    var diagramUrl = "{{ $file }}"
+    const viewer = new BpmnJS({ container: containerId })
+    async function openDiagram(bpmnXML) {
+      try {
+        await viewer.importXML(bpmnXML)
+        var canvas = viewer.get("canvas")
+        canvas.zoom("fit-viewport")
+      } catch (err) {
+        console.error("could not import BPMN 2.0 diagram", err)
+      }
+    }
+    $.get(diagramUrl, openDiagram, "text")
+  </script>
+</div>
+{{- .Page.Store.Set "hasBpmn" true -}}

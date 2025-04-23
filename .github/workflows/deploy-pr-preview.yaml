@@ -1,0 +1,153 @@
+name: PR Preview Deployment 🚀
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+
+# Limit the concurrency of entire workflow
+concurrency: deploy-pr-preview-${{ github.ref }}
+
+env:
+  REPO_NAME: ${{ github.event.repository.name }}
+  REPO_OWNER: ${{ github.repository_owner }}
+  PR_NUMBER: ${{ github.event.pull_request.number }}
+  HUGO_VERSION: 0.128.0 # future versions should be fixed first
+
+jobs:
+  build-hugo-128:
+    if: github.event.action != 'closed'
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #v4.2.2
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 #v4.4.0
+        with:
+          node-version: "20.x"
+
+      - name: Install Node.js dependencies
+        run: "[[ -f package-lock.json ]] && npm ci || true"
+
+      - name: Install postcss-cli and autoprefixer
+        run: "npm install postcss-cli autoprefixer"
+
+      - name: Install Hugo CLI
+        run: |
+          if ! which wget > /dev/null; then
+            echo "wget not found. Installing..."
+            sudo apt-get update
+            sudo apt-get install -y wget
+          else
+            echo "wget already installed."
+          fi
+
+          echo "Downloading and installing Hugo CLI version ${HUGO_VERSION}..."
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+
+      - name: Build
+        env:
+          HUGO_ENVIRONMENT: production
+          HUGO_ENV: production
+        run: |
+          hugo \
+            --gc \
+            --minify \
+            --contentDir ./internal \
+            --destination custom \
+            --baseURL https://${REPO_OWNER}.github.io/${REPO_NAME}/pr-preview/pr-${{ env.PR_NUMBER }}/custom/
+
+      - name: Upload custom artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 #v4.6.2
+        with:
+          name: hugo-custom
+          path: custom
+
+  build-hugo-latest:
+    runs-on: [ubuntu-latest]
+    if: github.event.action != 'closed'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Install latest Hugo
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y hugo
+
+      - name: Install Node.js dependencies
+        run: "[[ -f package-lock.json ]] && npm ci || true"
+
+      - name: Install postcss-cli and autoprefixer
+        run: "npm install postcss-cli autoprefixer"
+
+      - name: Build
+        if: github.event.action != 'closed'
+        env:
+          HUGO_ENVIRONMENT: production
+          HUGO_ENV: production
+        run: |
+          hugo \
+            --gc \
+            --minify \
+            --contentDir ./internal \
+            --destination latest \
+            --baseURL https://${REPO_OWNER}.github.io/${REPO_NAME}/pr-preview/pr-${{ env.PR_NUMBER }}/latest/
+
+      - name: Upload latest artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 #v4.6.2
+        with:
+          name: hugo-latest
+          path: latest
+
+  deploy:
+    needs: [build-hugo-128, build-hugo-latest]
+    runs-on: [ubuntu-latest]
+    env:
+      DEPLOY_PATH: tmp
+    steps:
+      # needed so the working directory is recognized as a Git repository
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Create a folder with all compiled versions
+        if: github.event.action != 'closed'
+        run: |
+          mkdir -p ${{ env.DEPLOY_PATH }}
+
+      - uses: actions/download-artifact@95815c38cf2ff2164869cbab79da8d1f422bc89e #v4.2.1
+        if: github.event.action != 'closed'
+        with:
+          name: hugo-custom
+          path: ${{ env.DEPLOY_PATH }}/custom
+
+      - uses: actions/download-artifact@95815c38cf2ff2164869cbab79da8d1f422bc89e #v4.2.1
+        if: github.event.action != 'closed'
+        with:
+          name: hugo-latest
+          path: ${{ env.DEPLOY_PATH }}/latest
+
+      - name: Generate index.html for Deployed Apps
+        if: github.event.action != 'closed'
+        run: |
+          echo "<!DOCTYPE html><head><title>PR Preview</title></head><html><body><h1>Deployed Hugo Templater for PR ${GITHUB_HEAD_REF}</h1><ul>" > ${{ env.DEPLOY_PATH }}/index.html        
+          echo "<li><a href='./custom/index.html' target="_blank">Hugo ${HUGO_VERSION}</a></li>" >> ${{ env.DEPLOY_PATH }}/index.html
+          echo "<li><a href='./latest/index.html' target="_blank">Hugo latest</a></li>" >> ${{ env.DEPLOY_PATH }}/index.html
+          echo "</ul></body></html>" >> ${{ env.DEPLOY_PATH }}/index.html
+
+      - uses: rossjrw/pr-preview-action@2fb559e4766555e23d07b73d313fe97c4f8c3cfe #v1.6.1
+        with:
+          source-dir: ${{ env.DEPLOY_PATH }}/
+          preview-branch: gh-pages
+          umbrella-dir: pr-preview
+          action: auto

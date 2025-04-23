@@ -1,8 +1,10 @@
 <!-- prettier-ignore -->
+<!-- ExecuteAsTemplate to enable dynamically templating inside SCSS -->
 {{ $cssOpts := (dict "enableSourceMap" true ) }}
-{{ $styles := resources.Get "scss/landing-page.scss" | resources.ExecuteAsTemplate "landing-page.scss" . | css.Sass $cssOpts}}
-<link rel="stylesheet" href="{{ $styles.RelPermalink }}" media="screen" />
+{{ $styles := resources.Get "scss/landing-page.scss" | resources.ExecuteAsTemplate "landing-page.scss" . | toCSS $cssOpts}}
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}" media="screen"/>
 
 <!-- prettier-ignore -->
-{{ $customStyles := resources.Get "scss/custom-styles.scss" | resources.ExecuteAsTemplate "custom-styles.scss" . | css.Sass $cssOpts}}
-<link rel="stylesheet" href="{{ $customStyles.RelPermalink }}" media="screen" />
+<!-- ExecuteAsTemplate to enable dynamically templating inside SCSS -->
+{{ $customStyles := resources.Get "scss/custom-styles.scss" | resources.ExecuteAsTemplate "custom-styles.scss" . | toCSS $cssOpts}}
+<link rel="stylesheet" href="{{ $customStyles.RelPermalink }}" media="screen"/>

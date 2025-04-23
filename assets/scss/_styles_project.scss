@@ -119,6 +119,7 @@ footer {
 .td-navbar {
   // set background to override the body background when not landing page
   background: var(--color-juno-grey-blue-11) !important;
+  z-index: 1000;
 
   .navbar-brand {
     display: flex;
@@ -362,6 +363,18 @@ footer {
 }
 .bs-callout-white h4 {
   color: $primary-theme;
+}
+
+// bpmn diagram
+.bpmn {
+  max-width: 80%;
+  .full-screen-link {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .full-screen-icon {
+    margin-left: 0.5rem;
+  }
 }
 
 @import "custom_styles_project";

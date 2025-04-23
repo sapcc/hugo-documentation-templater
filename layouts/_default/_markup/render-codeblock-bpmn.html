@@ -1,0 +1,27 @@
+<!-- prettier-ignore -->
+{{/*  Available sizes are: small, medium and large */}}
+{{/* small: 400px */}}
+{{/* medium: 600px */}}
+{{/* large: 800px */}}
+{{- $size := .Attributes.size | default "small" -}} {{- $height := cond (eq
+$size "small") "400" (cond (eq $size "large") "800" "600") -}}
+
+<div class="bpmn" style="max-width: 80%">
+  <div class="d-flex justify-content-end"></div>
+  <div
+    id="canvas-bpmn-{{- .Inner | md5 -}}"
+    style="width: 100%; height: {{ $height }}px;"
+  ></div>
+  <script type="module">
+    const containerId = "#canvas-bpmn-{{ .Inner | md5 }}"
+    const viewer = new BpmnJS({ container: containerId })
+    try {
+      await viewer.importXML(`{{ .Inner | safeJS }}`)
+      const canvas = viewer.get("canvas")
+      const zoom = canvas.zoom("fit-viewport")
+    } catch (err) {
+      console.error("could not import BPMN 2.0 diagram", err)
+    }
+  </script>
+</div>
+{{- .Page.Store.Set "hasBpmn" true -}}

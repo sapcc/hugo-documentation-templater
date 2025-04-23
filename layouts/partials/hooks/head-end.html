@@ -15,7 +15,7 @@
 
 <!-- prettier-ignore -->
 {{- if .Page.Store.Get "hasDiagramsNet" -}}
-<script src="/js/diagramsnet-loader.js"></script>
+<script src="{{ "/js/diagramsnet-loader.js" | relURL }}"></script>
 {{- end -}}
 
 <!-- prettier-ignore -->

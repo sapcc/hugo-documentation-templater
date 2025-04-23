@@ -22,9 +22,10 @@ Check out this documentation templater in action with its Markdown helpers, tool
 
 ## Release Notes
 
-- Introduces support for BPMN diagrams and numerous improvements and bug fixes.
-- Removes deprecated code to ensure compatibility with newer Hugo versions.
-- Upgrade Docsy to v0.11.0
+- Introduces support for BPMN diagrams. For more details, refer to the [diagrams section](https://sapcc.github.io/hugo-documentation-templater/docs/markdown-helpers/#diagrams).
+- Removed deprecated code to maintain compatibility with newer Hugo versions.
+- Upgraded Docsy to version v0.11.0.
+- Ensured compatibility with the latest Hugo version.
 
 ## Create a New Documentation Site from Scratch
 

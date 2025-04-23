@@ -1,5 +1,5 @@
 <!-- prettier-ignore -->
-{{- $path := .Get "path" | absURL  -}}
+{{- $path := .Get "path" | relURL  -}}
 {{- if or (hasPrefix $path "http://") (hasPrefix $path "https://") -}}
   {{ errorf "Only relative paths are allowed in bpmn shortcode, but got: %q" $path }}
 {{- end -}}

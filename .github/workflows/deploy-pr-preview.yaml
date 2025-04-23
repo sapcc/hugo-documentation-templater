@@ -110,6 +110,12 @@ jobs:
     env:
       DEPLOY_PATH: tmp
     steps:
+      # needed so the working directory is recognized as a Git repository
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #v4.2.2
+        with:
+          fetch-depth: 0
+
       - name: Create a folder with all compiled versions
         if: github.event.action != 'closed'
         run: |

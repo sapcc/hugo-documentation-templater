@@ -382,17 +382,15 @@ end</div><h4 id=nomnoml>Nomnoml</h4><p>Nomnoml is a tool to draw UML diagrams ba
 </span></span></code></pre></div><div class=bpmn style=max-width:80%><div class="d-flex justify-content-end"><a href="https://sapcc.github.io/hugo-documentation-templater/pr-preview/pr-28/latest//bpmn/viewer.html?path=%2fbpmn%2fexample.bpmn" title target=_blank>View in Fullscreen<i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i></a></div><div id=canvas-bpmn-abd5c3132168b980432a767392dbefa2 style=width:100%;height:400px></div><script type=module>
     const containerId = "#canvas-bpmn-abd5c3132168b980432a767392dbefa2"
     var diagramUrl = "\/bpmn\/example.bpmn"
-    const viewer =
-      new BpmnJS({ container: containerId }) <
-      !--prettier - ignore-- >
-      async function openDiagram(bpmnXML) {
-        try {
-          await viewer.importXML(bpmnXML)
-          var canvas = viewer.get("canvas")
-          canvas.zoom("fit-viewport")
-        } catch (err) {
-          console.error("could not import BPMN 2.0 diagram", err)
-        }
+    const viewer = new BpmnJS({ container: containerId })
+    async function openDiagram(bpmnXML) {
+      try {
+        await viewer.importXML(bpmnXML)
+        var canvas = viewer.get("canvas")
+        canvas.zoom("fit-viewport")
+      } catch (err) {
+        console.error("could not import BPMN 2.0 diagram", err)
       }
+    }
     $.get(diagramUrl, openDiagram, "text")
   </script></div></div></main></div></div><footer class=d-print-none></footer></div><script src=/hugo-documentation-templater/pr-preview/pr-28/latest/js/main.min.aff4ce35b309a4d980bacae9f5655ed19b051e3326f91363d5f05b626a54749a.js integrity="sha256-r/TONbMJpNmAusrp9WVe0ZsFHjMm+RNj1fBbYmpUdJo=" crossorigin=anonymous></script><script defer src=/hugo-documentation-templater/pr-preview/pr-28/latest/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js integrity="sha256-c0eKfUgHaYrtfjVesj+YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin=anonymous></script><script src=/hugo-documentation-templater/pr-preview/pr-28/latest/js/tabpane-persist.js></script></body></html>

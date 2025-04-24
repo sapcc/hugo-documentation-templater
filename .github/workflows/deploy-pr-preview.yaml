@@ -90,7 +90,6 @@ jobs:
         run: "npm install postcss-cli autoprefixer"
 
       - name: Build
-        if: github.event.action != 'closed'
         env:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production

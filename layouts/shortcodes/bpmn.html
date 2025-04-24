@@ -17,19 +17,20 @@
 {{- $id := $file | md5 -}}
 
 <div class="bpmn">
-  <div class="full-screen-link">
+  <div class="bpmn-full-screen-link">
     <a
       href="{{ .Site.BaseURL }}/bpmn/viewer.html?path={{ $path }}"
       title="Display bpmn in full screen"
       target="_blank"
       >View in Fullscreen<i
-        class="full-screen-icon fa-solid fa-arrow-up-right-from-square fa-xs"
+        class="bpmn-full-screen-icon fa-solid fa-arrow-up-right-from-square fa-xs"
       ></i>
     </a>
   </div>
   <div
+    class="bpmn-diagram"
     id="canvas-bpmn-{{ $id }}"
-    style="width: 100%; height: {{ $height }}px;"
+    style="height: {{ $height }}px;"
   ></div>
   <script type="module">
     const containerId = "#canvas-bpmn-{{ $id }}"

@@ -6,11 +6,11 @@
 {{- $size := .Attributes.size | default "small" -}} {{- $height := cond (eq
 $size "small") "400" (cond (eq $size "large") "800" "600") -}}
 
-<div class="bpmn" style="max-width: 80%">
-  <div class="d-flex justify-content-end"></div>
+<div class="bpmn">
   <div
+    class="bpmn-diagram"
     id="canvas-bpmn-{{- .Inner | md5 -}}"
-    style="width: 100%; height: {{ $height }}px;"
+    style="height: {{ $height }}px;"
   ></div>
   <script type="module">
     const containerId = "#canvas-bpmn-{{ .Inner | md5 }}"

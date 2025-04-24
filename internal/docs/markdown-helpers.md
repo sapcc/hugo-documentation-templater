@@ -779,7 +779,7 @@ Useful for larger diagrams that are stored in a separate file. When using this m
 - The `size` parameter is optional and can be used to set the height of the diagram. The default value is `small`, which sets the height to 400px. Other options are `medium` (600px) and `large` (800px).
 
 ```tpl
-{{</* bpmn path="/bpmn/example.bpmn" size="small"*/>}}
+{{</* bpmn path="/docs/example.bpmn" size="small"*/>}}
 ```
 
 {{< bpmn path="/docs/example.bpmn" size="small">}}

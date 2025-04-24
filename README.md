@@ -20,6 +20,8 @@ Check out this documentation templater in action with its Markdown helpers, tool
 
 **⚠️ Attention:** This release requires **Hugo v0.128** or higher. Running it with an older version is not supported and will not work with v3. This release introduces support for BPMN diagrams and numerous improvements and bug fixes.
 
+Please see [Upgrade to V3](#upgrade-to-v3) for detailed instructions on how to upgrade your site to v3.
+
 ## Release Notes
 
 - Introduces support for BPMN diagrams. For more details, refer to the [diagrams section](https://sapcc.github.io/hugo-documentation-templater/docs/markdown-helpers/#diagrams).
@@ -72,7 +74,7 @@ The Go `<module path>` should resolve to a valid VCS (Version Control System) re
 To add the templater (`hugo-documentation-templater`) module as a dependency, use the following command:
 
 ```
-hugo mod get github.com/sapcc/hugo-documentation-templater/v2@v2.0.5
+hugo mod get github.com/sapcc/hugo-documentation-templater/v3@v3.0.0
 ```
 
 If you are developing this module locally, add the following configuration to your go.mod file to redirect to your local folder:
@@ -81,11 +83,11 @@ If you are developing this module locally, add the following configuration to yo
 module github.com/me/my-docu-site
 
 // just for local dev add this line (adjust to your folder location)!
-replace github.com/sapcc/hugo-documentation-templater/v2 => /Users/d063222/Documents/sap/cc/hugo-documentation-templater
+replace github.com/sapcc/hugo-documentation-templater/v3 => /Users/d063222/Documents/sap/cc/hugo-documentation-templater
 
 go 1.20
 
-require github.com/sapcc/hugo-documentation-templater/v2 v2.0.5 // indirect
+require github.com/sapcc/hugo-documentation-templater/v3 v3.0.0 // indirect
 ```
 
 ### Update the Hugo Config to Import the Templater
@@ -115,7 +117,7 @@ module:
     extended: true
     min: 0.73.0
   imports:
-    - path: github.com/sapcc/hugo-documentation-templater/v2
+    - path: github.com/sapcc/hugo-documentation-templater/v3
       disable: false
 ```
 
@@ -441,30 +443,40 @@ npm install --save-dev postcss-cli
 https://www.dinofizzotti.com/blog/2017-05-01-adding-hugo-version-and-commit-information-to-a-status-page/
 https://sizeof.cat/post/git-info-on-a-hugo-static-website/
 
-### Upgrade to V2 (Breaking Changes)
+### Upgrade to V3
 
-#### Release Notes
-
-- Removed ccloud assets (SAP logo and releated assets)
-- Upgraded to Docsy v0.10.0
-- Stylesheets adapted to the new Docsy version which includes Bootstrap 5.3.3 and dark mode.
-- Several bug fixes and improvements
-
-#### Upgrade
-
-First update the hugo version, clean the modules and remove the public folder:
+1. Update the hugo version:
 
 ```bash
 brew upgrade hugo
+```
+
+2. Update the hugo-documentation-templater module version:
+
+```bash
+hugo mod get github.com/sapcc/hugo-documentation-templater/v3@v3.0.0
+```
+
+3. Update the `config.yaml` file to include the new module path and if not yet change the hugo version to 0.128.0:
+
+```yaml
+...
+module:
+  hugoVersion:
+    extended: true
+    min: 0.128.0
+  imports:
+  ...
+    - path: github.com/sapcc/hugo-documentation-templater/v3
+      disable: false
+```
+
+4. Clean up the cache and remove unused modules:
+
+```bash
 hugo mod clean
 hugo mod tidy
 rm -rf public
-```
-
-Afterwards update the templater module version:
-
-```bash
-hugo mod get github.com/sapcc/hugo-documentation-templater/v2@v2.0.5
 ```
 
 #### SAP Assets Module
@@ -480,17 +492,17 @@ You should see the following in your go.mod file:
 ```
 require (
   github.com/sapcc/hugo-documentation-templater-sap-assets v1.0.2 // indirect
-  github.com/sapcc/hugo-documentation-templater v2.0.5
+  ...
 )
 ```
 
 **Remember that the sap-assets-module should be added in the first line in the config.yaml file:**
 
 ```yaml
+...
 module:
   imports:
     - path: github.com/sapcc/hugo-documentation-templater-sap-assets
       disable: false
-    - path: github.com/sapcc/hugo-documentation-templater
-      disable: false
+    ...
 ```

@@ -119,6 +119,7 @@ footer {
 .td-navbar {
   // set background to override the body background when not landing page
   background: var(--color-juno-grey-blue-11) !important;
+  // needed to hide the bpmn links from the diagram when scrolling
   z-index: 1000;
 
   .navbar-brand {
@@ -368,13 +369,31 @@ footer {
 // bpmn diagram
 .bpmn {
   max-width: 80%;
-  .full-screen-link {
+  .bpmn-diagram {
+    background-color: var(--color-white);
+  }
+  .bpmn-full-screen-link {
     display: flex;
     justify-content: flex-end;
   }
-  .full-screen-icon {
+  .bpmn-full-screen-icon {
     margin-left: 0.5rem;
   }
+}
+
+// draw.io / diagrams.net
+.mxgraph {
+  background-color: var(--color-white);
+}
+
+// mermaid diagram
+.mermaid > svg {
+  background-color: var(--color-white);
+}
+
+// nomnoml diagram
+.nomnoml > canvas {
+  background-color: var(--color-white);
 }
 
 @import "custom_styles_project";

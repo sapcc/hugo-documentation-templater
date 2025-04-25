@@ -411,6 +411,18 @@ Example:
 
 <img src="https://github.com/sapcc/hugo-documentation-templater/blob/main/static/images/ex_nomnoml.png"  width="500">
 
+#### BPMN
+
+`bpmn-js` is a library for rendering and interacting with BPMN 2.0 diagrams directly in the browser. Further details can be found at https://bpmn.io/toolkit/bpmn-js/ or the GitHub repository.
+
+Example:
+
+```bpmn
+{{< bpmn file="source/help/diagram-bpmn-example.bpmn" >}}
+```
+
+<img src="https://github.com/sapcc/hugo-documentation-templater/blob/main/static/images/ex_bpmn.png"  width="500">
+
 ## Extra Information
 
 ### Bootstrap Version

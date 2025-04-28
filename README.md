@@ -87,7 +87,7 @@ replace github.com/sapcc/hugo-documentation-templater/v3 => /Users/d063222/Docum
 
 go 1.20
 
-require github.com/sapcc/hugo-documentation-templater/v3 v3.0.0 // indirect
+require github.com/sapcc/hugo-documentation-templater/v3 v3.0.1 // indirect
 ```
 
 ### Update the Hugo Config to Import the Templater

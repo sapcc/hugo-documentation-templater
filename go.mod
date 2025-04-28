@@ -1,6 +1,6 @@
 module github.com/sapcc/hugo-documentation-templater/v3
 
-go 1.20
+go 1.24
 
 require (
 	github.com/FortAwesome/Font-Awesome v0.0.0-20240716171331-37eff7fa00de // indirect

@@ -423,6 +423,8 @@ Example:
 
 <img src="https://github.com/sapcc/hugo-documentation-templater/blob/main/static/images/ex_bpmn.png"  width="500">
 
+See further details on how to use BPMN diagrams in the [diagrams section](https://sapcc.github.io/hugo-documentation-templater/docs/markdown-helpers/#diagrams).
+
 ## Extra Information
 
 ### Bootstrap Version

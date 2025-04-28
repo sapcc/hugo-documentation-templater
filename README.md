@@ -85,7 +85,7 @@ module github.com/me/my-docu-site
 // just for local dev add this line (adjust to your folder location)!
 replace github.com/sapcc/hugo-documentation-templater/v3 => /Users/d063222/Documents/sap/cc/hugo-documentation-templater
 
-go 1.20
+go 1.24
 
 require github.com/sapcc/hugo-documentation-templater/v3 v3.0.1 // indirect
 ```

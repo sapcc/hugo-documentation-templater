@@ -32,9 +32,6 @@ jobs:
         with:
           node-version: "22.x"
 
-      - name: Install Node.js dependencies
-        run: "[[ -f package-lock.json ]] && npm ci || true"
-
       - name: Install postcss-cli and autoprefixer
         run: "npm install postcss-cli autoprefixer"
 

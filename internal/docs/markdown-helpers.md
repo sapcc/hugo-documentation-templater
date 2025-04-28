@@ -679,6 +679,16 @@ Example:
 
 `bpmn-js` is a library for rendering and interacting with BPMN 2.0 diagrams directly in the browser. Further details can be found at https://bpmn.io/toolkit/bpmn-js/ or the GitHub repository.
 
+**Note:**  
+When setting up a project with `hugo-documentation-templater`, if you still want to use the BPMN fullscreen viewer, make sure that the following configuration entry is **not overridden** in your `config.yaml`
+
+```yaml
+outputs:
+  home:
+    - HTML
+    - Viewer
+```
+
 ##### Inline
 
 Useful for small diagrams that can be included directly in the markdown file. The BPMN code should be enclosed in triple backticks with the `bpmn` language identifier.

@@ -74,7 +74,7 @@ The Go `<module path>` should resolve to a valid VCS (Version Control System) re
 To add the templater (`hugo-documentation-templater`) module as a dependency, use the following command:
 
 ```
-hugo mod get github.com/sapcc/hugo-documentation-templater/v3@v3.0.0
+hugo mod get github.com/sapcc/hugo-documentation-templater/v3@v3.0.1
 ```
 
 If you are developing this module locally, add the following configuration to your go.mod file to redirect to your local folder:
@@ -468,7 +468,7 @@ brew upgrade hugo
 2. Update the hugo-documentation-templater module version:
 
 ```bash
-hugo mod get github.com/sapcc/hugo-documentation-templater/v3@v3.0.0
+hugo mod get github.com/sapcc/hugo-documentation-templater/v3@v3.0.1
 ```
 
 3. Update the `config.yaml` file to include the new module path and if not yet change the hugo version to 0.128.0:

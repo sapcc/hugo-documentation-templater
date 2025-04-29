@@ -18,8 +18,10 @@ env:
 
 jobs:
   build-hugo-128:
-    if: github.event.action != 'closed'
     runs-on: [ubuntu-latest]
+    permissions:
+      contents: read
+    if: github.event.action != 'closed'
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #v4.2.2
@@ -55,6 +57,8 @@ jobs:
 
   build-hugo-latest:
     runs-on: [ubuntu-latest]
+    permissions:
+      contents: read
     if: github.event.action != 'closed'
     steps:
       - name: Checkout
@@ -92,6 +96,8 @@ jobs:
   deploy:
     needs: [build-hugo-128, build-hugo-latest]
     runs-on: [ubuntu-latest]
+    permissions:
+      contents: write
     env:
       DEPLOY_PATH: tmp
     steps:

@@ -97,7 +97,7 @@ jobs:
     needs: [build-hugo-128, build-hugo-latest]
     runs-on: [ubuntu-latest]
     permissions:
-      contents: read
+      contents: write
       actions: write
     env:
       DEPLOY_PATH: tmp

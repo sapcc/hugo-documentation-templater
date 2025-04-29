@@ -8,6 +8,10 @@ on:
       - synchronize
       - closed
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: write
+
 # Limit the concurrency of entire workflow
 concurrency: deploy-pr-preview-${{ github.ref }}
 
@@ -18,8 +22,8 @@ env:
 
 jobs:
   build-hugo-128:
-    if: github.event.action != 'closed'
     runs-on: [ubuntu-latest]
+    if: github.event.action != 'closed'
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #v4.2.2

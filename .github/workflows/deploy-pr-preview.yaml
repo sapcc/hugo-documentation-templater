@@ -1,8 +1,9 @@
 name: PR Preview Deployment 🚀
 
 on:
-  pull_request:
+  pull_request_target:
     types:
+      - labeled
       - opened
       - reopened
       - synchronize
@@ -23,7 +24,7 @@ env:
 jobs:
   build-hugo-128:
     runs-on: [ubuntu-latest]
-    if: github.event.action != 'closed'
+    if: github.event.action != 'closed' && github.event.label.name == 'safe-to-deploy'
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #v4.2.2
@@ -59,7 +60,7 @@ jobs:
 
   build-hugo-latest:
     runs-on: [ubuntu-latest]
-    if: github.event.action != 'closed'
+    if: github.event.action != 'closed' && github.event.label.name == 'safe-to-deploy'
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #v4.2.2
@@ -96,6 +97,7 @@ jobs:
   deploy:
     needs: [build-hugo-128, build-hugo-latest]
     runs-on: [ubuntu-latest]
+    if: github.event.label.name == 'safe-to-deploy'
     env:
       DEPLOY_PATH: tmp
     steps:

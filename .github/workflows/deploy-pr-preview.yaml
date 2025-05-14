@@ -23,7 +23,7 @@ env:
 jobs:
   build-hugo-128:
     runs-on: [ubuntu-latest]
-    if: github.event.action != 'closed' && github.event.pull_request.head.repo.full_name == github.repository
+    if: github.event.action != 'closed'
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #v4.2.2
@@ -59,7 +59,7 @@ jobs:
 
   build-hugo-latest:
     runs-on: [ubuntu-latest]
-    if: github.event.action != 'closed' && github.event.pull_request.head.repo.full_name == github.repository
+    if: github.event.action != 'closed'
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #v4.2.2
@@ -96,7 +96,6 @@ jobs:
   deploy:
     needs: [build-hugo-128, build-hugo-latest]
     runs-on: [ubuntu-latest]
-    if: github.event.pull_request.head.repo.full_name == github.repository
     env:
       DEPLOY_PATH: tmp
     steps:

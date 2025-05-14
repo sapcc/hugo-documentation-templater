@@ -1,26 +1,84 @@
-<!-- prettier-ignore -->
 <!DOCTYPE html>
-<html lang="{{ .Site.Language.Lang }}" class="no-js">
+<html lang="en">
   <head>
-    <!-- prettier-ignore -->
-    {{ partial "head.html" . }}
-    {{ partial "landing-page-head.html" . }}
-    {{ partial "landing-page-head-custom.html" . }}
-  </head>
-  <body class="theme-dark docs-layout landing-page" data-bs-theme="dark">
-    <header>{{ partial "navbar.html" . }}</header>
+    <meta charset="UTF-8" />
+    <title>😂 The Official Fun Zone</title>
+    <style>
+      body {
+        background: #fefbd8;
+        font-family: Comic Sans MS, cursive, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
 
-    <!-- prettier-ignore -->
-    <main role="main">
-      {{ if ($.Param "landingPageContentTemplateName")}}
-        {{ partial ($.Param "landingPageContentTemplateName") . }}
-      {{ else }}
-        <!-- prettier-ignore -->
-        {{ partial "landing-page-content-default.html" . }}
-      {{ end }}
-    </main>
-    <!-- prettier-ignore -->
-    {{ partial "landing-page-footer.html" . }}
-    {{ partialCached "scripts.html" . }}
+      h1 {
+        font-size: 3rem;
+        margin-top: 50px;
+        animation: spin 3s infinite linear;
+      }
+
+      .banana {
+        font-size: 5rem;
+        animation: dance 0.5s infinite alternate;
+        margin: 30px 0;
+      }
+
+      @keyframes dance {
+        from {
+          transform: rotate(-20deg);
+        }
+        to {
+          transform: rotate(20deg);
+        }
+      }
+
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .joke {
+        font-size: 1.5rem;
+        color: #444;
+        margin: 20px;
+        transition: transform 0.3s ease;
+      }
+
+      .joke:hover {
+        transform: scale(1.2) rotate(2deg);
+        color: #e91e63;
+      }
+
+      footer {
+        margin-top: 40px;
+        font-size: 0.9rem;
+        color: #888;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎉 Welcome to the Fun Zone! 🎉</h1>
+    <div class="banana">🍌</div>
+
+    <div class="joke">
+      Why did the JavaScript developer go broke? <br />
+      Because he kept using <code>var</code> when he should’ve been saving with
+      <code>const</code>!
+    </div>
+    <div class="joke">
+      What do you call 8 hobbits? <br />
+      A hobbyte.
+    </div>
+    <div class="joke">
+      Why do functions break up? <br />
+      Because they have too many arguments.
+    </div>
+
+    <footer>© 2025 FunZone™ – Powered by Banana Energy 🍌</footer>
   </body>
 </html>

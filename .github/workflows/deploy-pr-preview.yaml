@@ -8,10 +8,6 @@ on:
       - synchronize
       - closed
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: write
-
 # Limit the concurrency of entire workflow
 concurrency: deploy-pr-preview-${{ github.ref }}
 
@@ -97,6 +93,8 @@ jobs:
     needs: [build-hugo-128, build-hugo-latest]
     runs-on: [ubuntu-latest]
     if: github.event.pull_request.head.repo.full_name == github.repository
+    permissions:
+      contents: write
     env:
       DEPLOY_PATH: tmp
     steps:

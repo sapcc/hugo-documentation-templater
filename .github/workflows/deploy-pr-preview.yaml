@@ -104,6 +104,7 @@ jobs:
       # needed so the working directory is recognized as a Git repository
       - name: Checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+
         with:
           fetch-depth: 0
 
@@ -112,13 +113,13 @@ jobs:
         run: |
           mkdir -p ${{ env.DEPLOY_PATH }}
 
-      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+      - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5.0.0
         if: github.event.action != 'closed'
         with:
           name: hugo-custom
           path: ${{ env.DEPLOY_PATH }}/custom
 
-      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+      - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5.0.0
         if: github.event.action != 'closed'
         with:
           name: hugo-latest
@@ -132,7 +133,7 @@ jobs:
           echo "<li><a href='./latest/index.html' target="_blank">Hugo latest</a></li>" >> ${{ env.DEPLOY_PATH }}/index.html
           echo "</ul></body></html>" >> ${{ env.DEPLOY_PATH }}/index.html
 
-      - uses: rossjrw/pr-preview-action@2fb559e4766555e23d07b73d313fe97c4f8c3cfe #v1.6.1
+      - uses: rossjrw/pr-preview-action@9f77b1d057b494e662c50b8ca40ecc63f21e0887 # v1.6.2
         with:
           source-dir: ${{ env.DEPLOY_PATH }}/
           preview-branch: gh-pages

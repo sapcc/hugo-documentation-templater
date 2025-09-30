@@ -418,7 +418,7 @@ Example:
 Example:
 
 ```bpmn
-{{< bpmn file="source/help/diagram-bpmn-example.bpmn" >}}
+{{< bpmn path="source/help/diagram-bpmn-example.bpmn" >}}
 ```
 
 <img src="https://github.com/sapcc/hugo-documentation-templater/blob/main/static/images/ex_bpmn.png"  width="500">

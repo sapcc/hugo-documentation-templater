@@ -2,37 +2,34 @@
 {{ $overviewSection := ($.Param "overviewSection") }}
 
 {{ if $overviewSection }}
-  <div class="landing-page-doc-overview">
-    <h3 class="landing-page-section-header">Documentation Overview</h3>
-    <div class="landing-page-grid" >
-      {{ range $overviewSection }}
-        <div class="layout-box">
-          <div class="landing-page-section">
-            <div class="landing-page-section-entry">
-              <div class="grid-hero-icon">
-                <i class="fa fa-fw {{ .icon }}"></i>
-              </div>
-              <div>
-                <h3 class="landing-page-section-entry-header">
-                  {{ .label }}
-                </h3>
-                <div>
-                  {{ if .links }}
-                    <ul>
-                      {{ range .links }}
-                        <li>
-                          <i class="fa fa-arrow-right"></i>
-                          <a href="{{ .path }}">{{ .label }}</a>
-                        </li>
-                      {{ end }}
-                    </ul>
-                  {{ end }}
-                </div>
-              </div>
+<div class="landing-page-doc-overview">
+  <h3 class="landing-page-section-header">Documentation Overview</h3>
+  <div class="landing-page-grid">
+    {{ range $overviewSection }}
+    <div class="layout-box">
+      <div class="landing-page-section">
+        <div class="landing-page-section-entry">
+          <div class="grid-hero-icon">
+            <i class="fa fa-fw {{ .icon }}"></i>
+          </div>
+          <div>
+            <h3 class="landing-page-section-entry-header">{{ .label }}</h3>
+            <div>
+              {{ if .links }}
+              <ul>
+                {{ range .links }}
+                <li>
+                  <a href="{{ .path | relURL }}">{{ .label }}</a>
+                </li>
+                {{ end }}
+              </ul>
+              {{ end }}
             </div>
           </div>
         </div>
-      {{ end }}
+      </div>
     </div>
+    {{ end }}
   </div>
+</div>
 {{ end }}

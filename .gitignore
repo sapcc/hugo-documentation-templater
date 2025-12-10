@@ -6,3 +6,5 @@
 
 # Temporary lock file while building
 /.hugo_build.lock
+
+/.out-of-code-insights

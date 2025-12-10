@@ -7,6 +7,11 @@
 {{/* transform the path to a absolute path */}}
 {{- $pathAbs := cond (hasPrefix $path "/") $path (printf "/%s" $path) -}}
 {{- $file := $pathAbs | absLangURL -}}
+{{/*  print out the path  */}}
+test::::
+{{- $file -}}
+::::test1::::
+{{- $pathAbs -}}
 
 {{/*  Available sizes are: small, medium and large */}}
 {{/* small: 400px */}}

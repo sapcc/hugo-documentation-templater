@@ -5,7 +5,7 @@
 {{- end -}}
 
 {{/* transform the path to a absolute path */}}
-{{- $file := printf "%s%s" .Site.BaseURL $path -}}
+{{- $file := $path | absURL -}}
 
 {{/*  Available sizes are: small, medium and large */}}
 {{/* small: 400px */}}
@@ -19,7 +19,7 @@
 <div class="bpmn">
   <div class="bpmn-full-screen-link">
     <a
-      href="{{ .Site.BaseURL }}/bpmn/viewer.html?path={{ $path }}"
+      href="{{ (printf "bpmn/viewer.html?path=%s" $path) | absLangURL }}"
       title="Display bpmn in full screen"
       target="_blank"
       >View in Fullscreen<i

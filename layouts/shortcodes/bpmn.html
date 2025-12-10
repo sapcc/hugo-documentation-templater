@@ -4,14 +4,16 @@
   {{ errorf "Only relative paths are allowed in bpmn shortcode, but got: %q" $path }}
 {{- end -}}
 
-{{/* transform the path to a absolute path */}}
-{{- $pathAbs := cond (hasPrefix $path "/") $path (printf "/%s" $path) -}}
-{{- $file := $pathAbs | absLangURL -}}
-{{/*  print out the path  */}}
-test::::
-{{- $file -}}
-::::test1::::
-{{- $pathAbs -}}
+{{/*  Hugo treats this as a file on disk, not a served resource → no baseURL  */}}
+{{/* Normalize path: remove any leading slash */}}
+{{- $pathClean := strings.TrimPrefix "/" $path -}}
+{{/* Remove trailing slash from baseURL if present */}}
+{{- $base := .Site.BaseURL -}}
+{{- if strings.HasSuffix $base "/" -}}
+  {{- $base = strings.TrimSuffix "/" $base -}}
+{{- end -}}
+{{/* Combine safely */}}
+{{- $file := printf "%s/%s" $base $pathClean -}}
 
 {{/*  Available sizes are: small, medium and large */}}
 {{/* small: 400px */}}
@@ -24,6 +26,8 @@ test::::
 
 <div class="bpmn">
   <div class="bpmn-full-screen-link">
+    {{/* it recognizes the served path, so it prepends the baseURL when using
+    absLangURL */}}
     <a
       href='{{ (printf "bpmn/viewer.html?path=%s" $path) | absLangURL }}'
       title="Display bpmn in full screen"

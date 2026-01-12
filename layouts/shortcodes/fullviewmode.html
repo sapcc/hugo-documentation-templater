@@ -1,0 +1,12 @@
+<div class="fullviewmode-wrapper">
+  <p>
+    <a href="#" class="fullviewmode-btn" target="_blank"
+      >View in Fullscreen<i
+        class="bpmn-full-screen-icon fa-solid fa-arrow-up-right-from-square fa-xs"
+      ></i
+    ></a>
+  </p>
+  {{ .Inner | safeHTML }}
+</div>
+
+{{- .Page.Store.Set "hasFullViewMode" true }}

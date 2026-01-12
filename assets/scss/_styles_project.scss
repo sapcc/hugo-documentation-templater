@@ -396,4 +396,45 @@ footer {
   background-color: var(--color-white);
 }
 
+/////////////////////
+// FULL VIEW MODE OVERLAY
+/////////////////////
+
+/* Right-align the button */
+.fullviewmode-wrapper p {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0.5rem 0;
+}
+
+/* Overlay styling */
+.fullviewmode-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(
+    --color-content-area-bg
+  ); // Use background color theme variable
+  overflow: auto;
+  z-index: 9999;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Close button */
+.fullviewmode-overlay .btn-close {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10000;
+}
+
+.fullviewmode-overlay table {
+  width: auto; /* allow table to expand beyond viewport */
+  min-width: 1200px; /* optional: set minimum width for readability */
+}
+
 @import "custom_styles_project";

@@ -969,8 +969,6 @@ For HTML content and figures you can also use the non-Markdown-aware version:
 {{< figure src="../landing_page_example.png" class="ma0 w-25">}}
 {{< /fullviewmode >}}
 
-{{% fullviewmode %}}
-
 ##### Mermaid diagrams
 
 ````tpl
@@ -981,8 +979,10 @@ sequenceDiagram
     alt is sick
     ...
 ```
-{{%/* /fullviewmode */%}}
+{{%/* fullviewmode */%}}
 ````
+
+{{% fullviewmode %}}
 
 ```mermaid
 sequenceDiagram

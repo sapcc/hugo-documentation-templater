@@ -400,11 +400,16 @@ footer {
 // FULL VIEW MODE OVERLAY
 /////////////////////
 
-/* Right-align the button */
-.fullviewmode-wrapper p {
-  display: flex;
-  justify-content: flex-end;
-  margin: 0.5rem 0;
+.fullviewmode-wrapper {
+  .fullviewmode-link-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0.5rem 0;
+
+    .fullviewmode-icon {
+      margin-left: 0.5rem;
+    }
+  }
 }
 
 /* Overlay styling */
@@ -422,19 +427,19 @@ footer {
   z-index: 9999;
   padding: 2rem;
   box-sizing: border-box;
-}
 
-/* Close button */
-.fullviewmode-overlay .btn-close {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 10000;
-}
+  /* Close button */
+  .btn-close {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10000;
+  }
 
-.fullviewmode-overlay table {
-  width: auto; /* allow table to expand beyond viewport */
-  min-width: 1200px; /* optional: set minimum width for readability */
+  table {
+    width: auto; /* allow table to expand beyond viewport */
+    min-width: 1200px; /* optional: set minimum width for readability */
+  }
 }
 
 @import "custom_styles_project";

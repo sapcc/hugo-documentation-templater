@@ -1,11 +1,9 @@
 <!-- prettier-ignore -->
 <div class="fullviewmode-wrapper">
-  <div class="fullviewmode-link-wrapper">
-    <a href="#" class="fullviewmode-btn">
-      View in Fullscreen
-      <i class="fullviewmode-icon fa-solid fa-arrow-up-right-from-square fa-xs"></i>
-    </a>
-  </div>
+  <a href="#" class="fullviewmode-link js-fullviewmode-open">
+    <span class="fullviewmode-link__label">View in fullscreen</span>
+    <i class="fullviewmode-link__icon fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+  </a>
   {{ .Inner | safeHTML }}
 </div>
 

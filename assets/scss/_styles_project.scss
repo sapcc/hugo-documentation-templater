@@ -400,15 +400,14 @@ footer {
 // FULL VIEW MODE OVERLAY
 /////////////////////
 
-.fullviewmode-wrapper {
-  .fullviewmode-link-wrapper {
-    display: flex;
-    justify-content: flex-end;
-    margin: 0.5rem 0;
+.fullviewmode-link {
+  display: inline-flex;
+  align-items: center;
+  margin: 0.5rem 0;
+  float: right;
 
-    .fullviewmode-icon {
-      margin-left: 0.5rem;
-    }
+  &__icon {
+    margin-left: 0.5rem;
   }
 }
 

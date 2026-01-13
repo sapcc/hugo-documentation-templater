@@ -133,7 +133,7 @@ jobs:
           echo "<li><a href='./latest/index.html' target="_blank">Hugo latest</a></li>" >> ${{ env.DEPLOY_PATH }}/index.html
           echo "</ul></body></html>" >> ${{ env.DEPLOY_PATH }}/index.html
 
-      - uses: rossjrw/pr-preview-action@9f77b1d057b494e662c50b8ca40ecc63f21e0887 # v1.6.2
+      - uses: rossjrw/pr-preview-action@5fd5f8e2f88e735fc3d1151302b32242037e3962 # v1.8.0
         with:
           source-dir: ${{ env.DEPLOY_PATH }}/
           preview-branch: gh-pages

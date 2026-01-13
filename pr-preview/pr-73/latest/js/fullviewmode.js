@@ -2,49 +2,59 @@ document.addEventListener("DOMContentLoaded", function () {
   const wrappers = document.querySelectorAll(".fullviewmode-wrapper")
 
   wrappers.forEach((wrapper) => {
-    const btn = wrapper.querySelector(".fullviewmode-btn")
-    if (!btn) return
+    const openLink = wrapper.querySelector(".js-fullviewmode-open")
+    if (!openLink) return
 
     // Create overlay
     const overlay = document.createElement("div")
-    overlay.className = "fullviewmode-overlay td-content"
+    overlay.className = "fullviewmode-overlay"
 
     // Close function
     const closeOverlay = () => {
       overlay.style.display = "none"
     }
 
-    // Adds bootstrap close button
+    // Bootstrap close button
     const closeBtn = document.createElement("button")
     closeBtn.type = "button"
-    closeBtn.className = "btn-close"
+    closeBtn.className = "fullviewmode-btn btn-close"
     closeBtn.setAttribute("aria-label", "Close")
     closeBtn.addEventListener("click", closeOverlay)
     overlay.appendChild(closeBtn)
 
-    // Clone all inner content
+    // Clone wrapper content
     const contentClone = wrapper.cloneNode(true)
-    // Remove the original button from the clone to avoid duplicate button
-    const clonedBtn = contentClone.querySelector(".fullviewmode-btn")
-    if (clonedBtn) clonedBtn.remove()
 
-    overlay.appendChild(contentClone)
+    // remove open trigger from cloned content
+    contentClone
+      .querySelectorAll(".js-fullviewmode-open")
+      .forEach((el) => el.remove())
 
-    // Click outside to close
+    // Wrap content to inherit Docsy typography/colors
+    const contentWrapper = document.createElement("div")
+    contentWrapper.className = "td-content"
+    contentWrapper.appendChild(contentClone)
+
+    overlay.appendChild(contentWrapper)
+
+    // Click outside content to close
     overlay.addEventListener("click", (e) => {
       if (e.target === overlay) closeOverlay()
     })
 
-    // Esc key to close
+    // Esc key to close (once per overlay)
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeOverlay()
+      if (e.key === "Escape" && overlay.style.display === "block") {
+        closeOverlay()
+      }
     })
 
     document.body.appendChild(overlay)
 
-    // Show overlay on click
-    btn.addEventListener("click", (e) => {
+    // Open overlay
+    openLink.addEventListener("click", (e) => {
       e.preventDefault()
+      e.stopPropagation()
       overlay.style.display = "block"
     })
   })

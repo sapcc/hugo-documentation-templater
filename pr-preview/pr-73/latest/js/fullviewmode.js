@@ -17,7 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Bootstrap close button
     const closeBtn = document.createElement("button")
     closeBtn.type = "button"
-    closeBtn.className = "fullviewmode-btn btn-close"
+    closeBtn.className = "btn btn-outline-secondary fullviewmode-btn_close"
+    closeBtn.textContent = "Close fullscreen view"
     closeBtn.setAttribute("aria-label", "Close")
     closeBtn.addEventListener("click", closeOverlay)
     overlay.appendChild(closeBtn)

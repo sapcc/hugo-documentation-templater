@@ -26,8 +26,7 @@
 
 <div class="bpmn">
   <div class="bpmn-full-screen-link">
-    {{/* it recognizes the served path, so it prepends the baseURL when using
-    absLangURL */}}
+    {{/* adds base url manually so swift is supported */}}
     <a
       href="{{ $base }}/bpmn/viewer.html?path={{ $path }}"
       title="Display bpmn in full screen"

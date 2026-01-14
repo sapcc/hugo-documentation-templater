@@ -396,4 +396,53 @@ footer {
   background-color: var(--color-white);
 }
 
+/////////////////////
+// FULL VIEW MODE OVERLAY
+/////////////////////
+
+.fullviewmode-link {
+  display: inline-flex;
+  align-items: center;
+  margin: 0.5rem 0;
+  float: right;
+
+  &__icon {
+    margin-left: 0.5rem;
+  }
+}
+
+/* Overlay styling */
+.fullviewmode-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(
+    --color-content-area-bg
+  ); // Use background color theme variable
+  overflow: auto;
+  z-index: 9999;
+  padding: 2rem;
+  box-sizing: border-box;
+
+  .fullviewmode-wrapper {
+    margin-top: 2rem;
+  }
+
+  /* Close button */
+  .fullviewmode-btn_close {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10000;
+  }
+
+  table {
+    width: auto; /* allow table to expand beyond viewport */
+    min-width: 1200px; /* optional: set minimum width for readability */
+  }
+}
+
 @import "custom_styles_project";

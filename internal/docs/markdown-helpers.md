@@ -395,11 +395,13 @@ You can do it in different ways
 #### 1. with `figure` (recommended)
 
 ```tpl
-{{</* figure src="/help/monsoon_logo.png" title="This is the old Monsoon 3 logo!" */>}}
+{{</* figure src="../landing_page_example.png" title="This is landing page example" class="ma0 w-25"*/>}}
 ```
 
-{{< hint warning >}}Don't add an empty `title=""` to a `{{ figure }}` if you dont provide a proper alt/subtext{{< /hint >}}
-{{< hint info >}}If the pics are in a subfolder, just write `src="your-directory/monsoon_logo.png"`{{< /hint >}}
+{{< figure src="../landing_page_example.png" title="This is landing page example" class="ma0 w-25">}}
+
+{{< hint warning >}}Don't add an empty `title=""` to a `{{ figure }}` if you don't provide a proper alt/subtext{{< /hint >}}
+{{< hint info >}}If the pics are in a subfolder, just write `src="your-directory/landing_page_example.png"`{{< /hint >}}
 
 Further [examples and additional formatting options](https://gohugo.io/content-management/shortcodes/#figure) in the hugo documentation.
 
@@ -412,8 +414,10 @@ Alternative syntax is pur Markdown - which is not recommended as it
 - won't work inside lists and code blocks
 
 ```markdown
-![Alt text which describes the used image if required](/monsoon_logo.png)
+![Alt text which describes the used image if required](../landing_page_example.png)
 ```
+
+![Alt text which describes the used image if required](../landing_page_example.png)
 
 #### 3. Hugo Image Processing
 
@@ -793,3 +797,204 @@ Useful for larger diagrams that are stored in a separate file. When using this m
 ```
 
 {{< bpmn path="/docs/example.bpmn" size="small">}}
+
+### Full View Mode
+
+The `fullviewmode` shortcode allows content to be displayed in a **full-screen overlay**, removing sidebar and width constraints.  
+It is intended for **large or wide content** that is hard to read in the normal page layout.
+
+Supported content types:
+
+- HTML tables
+- Markdown tables
+- Figures / images
+- Mermaid diagrams
+- Mixed content
+
+The full-mode view preserves **Docsy / Bootstrap styling**, supports **light and dark mode**, and includes a Bootstrap close button.
+
+#### When to use Full Mode
+
+Use this shortcode when content:
+
+- Has many columns or long text
+- Requires more horizontal space
+- Should be inspected in detail (tables, diagrams)
+- Would otherwise overflow or wrap excessively
+
+#### Basic usage
+
+{{< hint warning >}}
+**Always use `{ { % fullviewmode % } }` (Markdown-aware shortcode)** for Markdown tables and Mermaid diagrams.
+{{< /hint >}}
+
+```text
+{{%/* fullviewmode */%}}
+Content goes here
+{{%/* /fullviewmode */%}}
+```
+
+For HTML content and figures you can also use the non-Markdown-aware version:
+
+```md
+{{</* fullviewmode */>}}
+{{</* figure src="../landing_page_example.png" class="ma0 w-25" */>}}
+{{</* /fullviewmode */>}}
+```
+
+#### Supported content types
+
+##### HTML tables
+
+<!-- prettier-ignore -->
+```md
+{{%/* fullviewmode */%}}
+<table>
+  ...
+</table>
+{{%/* /fullviewmode */%}}
+```
+
+{{< fullviewmode >}}
+
+<table class="table align-middle table-sm table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Peak Name</th>
+            <th>Height (m)</th>
+            <th>Range</th>
+            <th>Country</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>First Ascent</th>
+            <th>Prominence (m)</th>
+            <th>Isolation (km)</th>
+            <th>Coordinates Type</th>
+            <th>Climbing Difficulty</th>
+            <th>Glacier Present</th>
+            <th>Rock Type</th>
+            <th>Snow Line (m)</th>
+            <th>Nearby Base Camp</th>
+            <th>Tourism Level</th>
+            <th>Protected Area</th>
+            <th>Climbing Season</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td><td>Mount Everest</td><td>8848</td><td>Himalaya</td><td>Nepal/China</td>
+            <td>27.9881</td><td>86.9250</td><td>1953</td><td>8848</td><td>0</td><td>Decimal</td><td>Extreme</td>
+            <td>Yes</td><td>Granite</td><td>5800</td><td>Everest Base Camp</td><td>High</td><td>Yes</td><td>Spring/Autumn</td><td>Tallest in the world</td>
+        </tr>
+        <tr>
+            <td>2</td><td>K2</td><td>8611</td><td>Karakoram</td><td>Pakistan/China</td>
+            <td>35.8808</td><td>76.5158</td><td>1954</td><td>4017</td><td>1.5</td><td>Decimal</td><td>Extreme</td>
+            <td>Yes</td><td>Metamorphic</td><td>6200</td><td>Concordia</td><td>High</td><td>Yes</td><td>Summer</td><td>Second highest</td>
+        </tr>
+        <tr>
+            <td>3</td><td>Kangchenjunga</td><td>8586</td><td>Himalaya</td><td>Nepal/India</td>
+            <td>27.7025</td><td>88.1475</td><td>1955</td><td>3922</td><td>5.2</td><td>Decimal</td><td>Very Hard</td>
+            <td>Yes</td><td>Granite</td><td>6000</td><td>Yumthang</td><td>Medium</td><td>Yes</td><td>Spring/Autumn</td><td>Third highest</td>
+        </tr>
+        <tr>
+            <td>4</td><td>Lhotse</td><td>8516</td><td>Himalaya</td><td>Nepal/China</td>
+            <td>27.9617</td><td>86.9330</td><td>1956</td><td>610</td><td>0.8</td><td>Decimal</td><td>Extreme</td>
+            <td>Yes</td><td>Granite</td><td>5800</td><td>Everest Base Camp</td><td>Medium</td><td>Yes</td><td>Spring/Autumn</td><td>Near Everest</td>
+        </tr>
+        <tr>
+            <td>5</td><td>Makalu</td><td>8485</td><td>Himalaya</td><td>Nepal/China</td>
+            <td>27.8897</td><td>87.0883</td><td>1955</td><td>2386</td><td>19.5</td><td>Decimal</td><td>Very Hard</td>
+            <td>Yes</td><td>Granite</td><td>5700</td><td>Makalu Base Camp</td><td>Medium</td><td>Yes</td><td>Spring/Autumn</td><td>Fifth highest</td>
+        </tr>
+        <tr>
+            <td>6</td><td>Cho Oyu</td><td>8188</td><td>Himalaya</td><td>Nepal/China</td>
+            <td>28.0942</td><td>86.6608</td><td>1954</td><td>2340</td><td>6.6</td><td>Decimal</td><td>Moderate</td>
+            <td>Yes</td><td>Granite</td><td>5600</td><td>Cho Oyu Base</td><td>Medium</td><td>Yes</td><td>Spring/Autumn</td><td>Sixth highest</td>
+        </tr>
+        <tr>
+            <td>7</td><td>Dhaulagiri</td><td>8167</td><td>Himalaya</td><td>Nepal</td>
+            <td>28.6967</td><td>83.4875</td><td>1960</td><td>3357</td><td>18.0</td><td>Decimal</td><td>Hard</td>
+            <td>Yes</td><td>Granite</td><td>5600</td><td>Dhaulagiri Base</td><td>Low</td><td>Yes</td><td>Spring/Autumn</td><td>Seventh highest</td>
+        </tr>
+        <tr>
+            <td>8</td><td>Manaslu</td><td>8163</td><td>Himalaya</td><td>Nepal</td>
+            <td>28.5497</td><td>84.5597</td><td>1956</td><td>3092</td><td>20.0</td><td>Decimal</td><td>Hard</td>
+            <td>Yes</td><td>Granite</td><td>5600</td><td>Manaslu Base</td><td>Medium</td><td>Yes</td><td>Spring/Autumn</td><td>Eighth highest</td>
+        </tr>
+        <tr>
+            <td>9</td><td>Nanga Parbat</td><td>8126</td><td>Himalaya</td><td>Pakistan</td>
+            <td>35.2375</td><td>74.5897</td><td>1953</td><td>4608</td><td>25.0</td><td>Decimal</td><td>Extreme</td>
+            <td>Yes</td><td>Granite</td><td>5400</td><td>Nanga Parbat Base</td><td>Low</td><td>Yes</td><td>Summer</td><td>Ninth highest</td>
+        </tr>
+        <tr>
+            <td>10</td><td>Annapurna I</td><td>8091</td><td>Himalaya</td><td>Nepal</td>
+            <td>28.5958</td><td>83.8203</td><td>1950</td><td>2984</td><td>19.5</td><td>Decimal</td><td>Extreme</td>
+            <td>Yes</td><td>Granite</td><td>5500</td><td>Annapurna Base</td><td>Medium</td><td>Yes</td><td>Spring/Autumn</td><td>Tenth highest</td>
+        </tr>
+    </tbody>
+</table>
+{{< /fullviewmode >}}
+
+##### Markdown tables
+
+```md
+{{%/* fullviewmode */%}}
+| Header 1 | Header 2 | Header 3 |
+| -------- | -------- | -------- |
+| Row 1 Col 1 | Row 1 Col 2 | Row 1 Col 3 |
+| Row 2 Col 1 | Row 2 Col 2 | Row 2 Col 3 |
+{{%/* /fullviewmode */%}}
+```
+
+{{% fullviewmode %}}
+| State | Description |
+| --------- | ------------------------------- |
+| Queued | Lorem ipsum dolor sit amet, ... |
+| Executing | Lorem ipsum dolor sit amet, ... |
+| Failed | Lorem ipsum dolor sit amet, ... |
+| Complete | Lorem ipsum dolor sit amet, ... |
+{{% /fullviewmode %}}
+
+##### Figures
+
+```md
+{{</* fullviewmode */>}}
+{{</* figure src="../landing_page_example.png" class="ma0 w-25" */>}}
+{{</* /fullviewmode */>}}
+```
+
+{{< fullviewmode >}}
+{{< figure src="../landing_page_example.png" class="ma0 w-25">}}
+{{< /fullviewmode >}}
+
+##### Mermaid diagrams
+
+````tpl
+{{%/* fullviewmode */%}}
+```mermaid
+sequenceDiagram
+    Alice->>Bob: Hello Bob, how are you?
+    alt is sick
+    ...
+```
+{{%/* fullviewmode */%}}
+````
+
+{{% fullviewmode %}}
+
+```mermaid
+sequenceDiagram
+    Alice->>Bob: Hello Bob, how are you?
+    alt is sick
+        Bob->>Alice: Not so good :(
+    else is well
+        Bob->>Alice: Feeling fresh like a daisy
+    end
+    opt Extra response
+        Bob->>Alice: Thanks for asking
+    end
+```
+
+{{% /fullviewmode %}}

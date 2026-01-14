@@ -427,8 +427,12 @@ footer {
   padding: 2rem;
   box-sizing: border-box;
 
+  .fullviewmode-wrapper {
+    margin-top: 2rem;
+  }
+
   /* Close button */
-  .btn-close {
+  .fullviewmode-btn_close {
     position: fixed;
     top: 1rem;
     right: 1rem;

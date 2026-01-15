@@ -417,8 +417,6 @@ Alternative syntax is pur Markdown - which is not recommended as it
 ![Alt text which describes the used image if required](../landing_page_example.png)
 ```
 
-![Alt text which describes the used image if required](../landing_page_example.png)
-
 #### 3. Hugo Image Processing
 
 [Hugo image processing.](https://gohugo.io/content-management/image-processing/)

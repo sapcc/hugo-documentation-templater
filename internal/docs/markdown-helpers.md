@@ -996,3 +996,58 @@ sequenceDiagram
 ```
 
 {{% /fullviewmode %}}
+
+Another example with an Entity Relationship Diagram:
+
+````tpl
+{{%/* fullviewmode */%}}
+```mermaid
+erDiagram
+    USER {
+        string id
+        string name
+        string email
+    }
+    ORDER {
+        string id
+        date createdAt
+        float totalAmount
+    }
+    PRODUCT {
+        string id
+        string name
+        float price
+    }
+    USER ||--o{ ORDER : places
+    ORDER ||--|{ PRODUCT : contains
+```
+{{%/* /fullviewmode */%}}
+````
+
+{{% fullviewmode %}}
+
+```mermaid
+erDiagram
+    USER {
+        string id
+        string name
+        string email
+    }
+
+    ORDER {
+        string id
+        date createdAt
+        float totalAmount
+    }
+
+    PRODUCT {
+        string id
+        string name
+        float price
+    }
+
+    USER ||--o{ ORDER : places
+    ORDER ||--|{ PRODUCT : contains
+```
+
+{{% /fullviewmode %}}

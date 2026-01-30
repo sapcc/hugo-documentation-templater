@@ -139,3 +139,4 @@ jobs:
           preview-branch: gh-pages
           umbrella-dir: pr-preview
           action: auto
+          qr-code: false # don't need qr code for pr preview link

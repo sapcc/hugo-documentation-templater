@@ -20,7 +20,14 @@
 {{/* medium: 600px */}}
 {{/* large: 800px */}}
 {{- $size := .Get "size" | default "small" -}}
-{{- $height := cond (eq $size "small") "400" (cond (eq $size "large") "800" "600") -}}
+{{- $height := "" -}}
+{{- if eq $size "small" -}}
+  {{- $height = "400" -}}
+{{- else if eq $size "large" -}}
+  {{- $height = "800" -}}
+{{- else -}}
+  {{- $height = "600" -}}
+{{- end -}}
 
 {{- $id := $file | md5 -}}
 
@@ -41,7 +48,7 @@
     id="canvas-bpmn-{{ $id }}"
     style="height: {{ $height }}px;"
   ></div>
-  <script type="module">
+  <script>
     const containerId = "#canvas-bpmn-{{ $id }}"
     var diagramUrl = "{{ $file }}"
     const viewer = new BpmnJS({ container: containerId })
@@ -51,7 +58,7 @@
         var canvas = viewer.get("canvas")
         canvas.zoom("fit-viewport")
       } catch (err) {
-        console.error("could not import BPMN 2.0 diagram", err)
+        console.error("could not import BPMN 2.0 diagram for container", containerId, err)
       }
     }
     $.get(diagramUrl, openDiagram, "text")

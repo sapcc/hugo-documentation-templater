@@ -97,38 +97,33 @@ jobs:
   deploy:
     needs: [build-hugo-128, build-hugo-latest]
     runs-on: [ubuntu-latest]
-    if: github.event.pull_request.head.repo.full_name == github.repository
+    if: github.event.action != 'closed' && github.event.pull_request.head.repo.full_name == github.repository
     env:
       DEPLOY_PATH: tmp
     steps:
       # needed so the working directory is recognized as a Git repository
       - name: Checkout
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
-
         with:
           fetch-depth: 0
 
       - name: Create a folder with all compiled versions
-        if: github.event.action != 'closed'
         run: |
           mkdir -p ${{ env.DEPLOY_PATH }}
 
       - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
-        if: github.event.action != 'closed'
         with:
           name: hugo-custom
           path: ${{ env.DEPLOY_PATH }}/custom
 
       - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
-        if: github.event.action != 'closed'
         with:
           name: hugo-latest
           path: ${{ env.DEPLOY_PATH }}/latest
 
       - name: Generate index.html for Deployed Apps
-        if: github.event.action != 'closed'
         run: |
-          echo "<!DOCTYPE html><head><title>PR Preview</title></head><html><body><h1>Deployed Hugo Templater for PR ${GITHUB_HEAD_REF}</h1><ul>" > ${{ env.DEPLOY_PATH }}/index.html        
+          echo "<!DOCTYPE html><head><title>PR Preview</title></head><html><body><h1>Deployed Hugo Templater for PR ${GITHUB_HEAD_REF}</h1><ul>" > ${{ env.DEPLOY_PATH }}/index.html
           echo "<li><a href='./custom/index.html' target="_blank">Hugo ${HUGO_VERSION}</a></li>" >> ${{ env.DEPLOY_PATH }}/index.html
           echo "<li><a href='./latest/index.html' target="_blank">Hugo latest</a></li>" >> ${{ env.DEPLOY_PATH }}/index.html
           echo "</ul></body></html>" >> ${{ env.DEPLOY_PATH }}/index.html
@@ -140,3 +135,22 @@ jobs:
           umbrella-dir: pr-preview
           action: auto
           qr-code: false # don't need qr code for pr preview link
+
+  # Cleanup job runs independently when PR is closed (doesn't depend on build jobs)
+  cleanup:
+    runs-on: [ubuntu-latest]
+    if: github.event.action == 'closed' && github.event.pull_request.head.repo.full_name == github.repository
+    steps:
+      - name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          fetch-depth: 0
+
+      - name: Remove PR preview from gh-pages
+        uses: rossjrw/pr-preview-action@ffa7509e91a3ec8dfc2e5536c4d5c1acdf7a6de9 # v1.8.1
+        with:
+          source-dir: ./
+          preview-branch: gh-pages
+          umbrella-dir: pr-preview
+          action: remove
+          qr-code: false

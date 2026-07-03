@@ -1,4 +1,4 @@
-# Welcome to the Hugo Documentation Templater test
+# Welcome to the Hugo Documentation Templater
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 

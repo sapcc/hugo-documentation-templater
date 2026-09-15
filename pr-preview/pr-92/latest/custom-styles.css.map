@@ -1,0 +1,13 @@
+{
+	"version": 3,
+	"file": "custom-styles.css",
+	"sourceRoot": "/home/runner/work/hugo-documentation-templater/hugo-documentation-templater",
+	"sources": [
+		"assets/scss/custom-styles.scss"
+	],
+	"sourcesContent": [
+		"/*\n\nNothing defined here. The Hugo Documentation Templater includes this file in the landing page to facilitate adding or overriding predefined styles:\n\nassets/scss/custom_styles.scss\n\n*/\n"
+	],
+	"names": [],
+	"mappings": "AAAA;;;;;;EAME"
+}

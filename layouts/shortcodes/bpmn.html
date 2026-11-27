@@ -61,7 +61,9 @@
         console.error("could not import BPMN 2.0 diagram for container", containerId, err)
       }
     }
-    $.get(diagramUrl, openDiagram, "text")
+    $.get(diagramUrl, openDiagram, "text").fail(function (jqXHR, textStatus, errorThrown) {
+      console.error("failed to load BPMN diagram from", diagramUrl, "for container", containerId, textStatus, errorThrown)
+    })
   </script>
 </div>
 {{- .Page.Store.Set "hasBpmn" true -}}

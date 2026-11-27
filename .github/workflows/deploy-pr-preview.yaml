@@ -37,6 +37,9 @@ jobs:
           hugo-version: "0.128.0"
           extended: true
 
+      - name: Install Dart Sass
+        run: sudo snap install dart-sass
+
       - name: Install postcss-cli and autoprefixer
         run: "npm install postcss-cli autoprefixer"
 
@@ -72,6 +75,9 @@ jobs:
         with:
           hugo-version: "latest"
           extended: true
+
+      - name: Install Dart Sass
+        run: sudo snap install dart-sass
 
       - name: Install postcss-cli and autoprefixer
         run: "npm install postcss-cli autoprefixer"

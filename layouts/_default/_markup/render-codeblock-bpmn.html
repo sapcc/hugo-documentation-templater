@@ -3,8 +3,15 @@
 {{/* small: 400px */}}
 {{/* medium: 600px */}}
 {{/* large: 800px */}}
-{{- $size := .Attributes.size | default "small" -}} {{- $height := cond (eq
-$size "small") "400" (cond (eq $size "large") "800" "600") -}}
+{{- $size := .Attributes.size | default "small" -}}
+{{- $height := "" -}}
+{{- if eq $size "small" -}}
+  {{- $height = "400" -}}
+{{- else if eq $size "large" -}}
+  {{- $height = "800" -}}
+{{- else -}}
+  {{- $height = "600" -}}
+{{- end -}}
 
 <div class="bpmn">
   <div
@@ -20,7 +27,7 @@ $size "small") "400" (cond (eq $size "large") "800" "600") -}}
       const canvas = viewer.get("canvas")
       canvas.zoom("fit-viewport")
     } catch (err) {
-      console.error("could not import BPMN 2.0 diagram", err)
+      console.error("could not import BPMN 2.0 diagram for container", containerId, err)
     }
   </script>
 </div>

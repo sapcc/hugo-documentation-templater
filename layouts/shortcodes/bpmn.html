@@ -50,18 +50,20 @@
   ></div>
   <script>
     const containerId = "#canvas-bpmn-{{ $id }}"
-    var diagramUrl = "{{ $file }}"
+    const diagramUrl = "{{ $file }}"
     const viewer = new BpmnJS({ container: containerId })
     async function openDiagram(bpmnXML) {
       try {
         await viewer.importXML(bpmnXML)
-        var canvas = viewer.get("canvas")
+        const canvas = viewer.get("canvas")
         canvas.zoom("fit-viewport")
       } catch (err) {
         console.error("could not import BPMN 2.0 diagram for container", containerId, err)
       }
     }
-    $.get(diagramUrl, openDiagram, "text")
+    $.get(diagramUrl, openDiagram, "text").fail(function(jqXHR, textStatus, errorThrown) {
+      console.error("failed to load BPMN diagram from", diagramUrl, "for container", containerId, textStatus, errorThrown)
+    })
   </script>
 </div>
 {{- .Page.Store.Set "hasBpmn" true -}}

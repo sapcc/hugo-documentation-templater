@@ -50,7 +50,7 @@
   ></div>
   <script>
     const containerId = "#canvas-bpmn-{{ $id }}"
-    var diagramUrl = "{{ $file }}"
+    const diagramUrl = "{{ $file }}"
     const viewer = new BpmnJS({ container: containerId })
     async function openDiagram(bpmnXML) {
       try {

@@ -55,7 +55,7 @@
     async function openDiagram(bpmnXML) {
       try {
         await viewer.importXML(bpmnXML)
-        var canvas = viewer.get("canvas")
+        const canvas = viewer.get("canvas")
         canvas.zoom("fit-viewport")
       } catch (err) {
         console.error("could not import BPMN 2.0 diagram for container", containerId, err)
